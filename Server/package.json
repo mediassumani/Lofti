@@ -1,5 +1,5 @@
 {
-  "name": "server",
+  "name": "lofti-backend",
   "version": "1.0.0",
   "description": "The RESTFul API server that will interface with the Lofti ios client",
   "main": "server.js",
