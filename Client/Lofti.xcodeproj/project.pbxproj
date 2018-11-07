@@ -17,6 +17,9 @@
 		B8866D74218BE911002B7CDF /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8866D73218BE911002B7CDF /* Address.swift */; };
 		B88BA16C219212E8009C56DC /* HomePageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88BA16B219212E8009C56DC /* HomePageTableViewCell.swift */; };
 		B88BA17021921395009C56DC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88BA16F21921395009C56DC /* Constants.swift */; };
+		B88BA17321921F89009C56DC /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88BA17221921F89009C56DC /* UIView+Extension.swift */; };
+		B88BA17521927E6F009C56DC /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88BA17421927E6F009C56DC /* UIColor+Extension.swift */; };
+		B88BA177219291D3009C56DC /* Double+String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88BA176219291D3009C56DC /* Double+String+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		B8866D73218BE911002B7CDF /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		B88BA16B219212E8009C56DC /* HomePageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageTableViewCell.swift; sourceTree = "<group>"; };
 		B88BA16F21921395009C56DC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B88BA17221921F89009C56DC /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		B88BA17421927E6F009C56DC /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		B88BA176219291D3009C56DC /* Double+String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+String+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +70,7 @@
 		B8866D58218BE5B7002B7CDF /* Lofti */ = {
 			isa = PBXGroup;
 			children = (
+				B88BA17121921F66009C56DC /* Extensions */,
 				B88BA16E2192137B009C56DC /* Network */,
 				B88BA16D21921371009C56DC /* Helpers */,
 				B8866D75218BEA4F002B7CDF /* Services */,
@@ -71,7 +78,6 @@
 				B8866D6C218BE7DF002B7CDF /* Views */,
 				B8866D6B218BE7D9002B7CDF /* Models */,
 				B8866D59218BE5B8002B7CDF /* AppDelegate.swift */,
-				B8866D5B218BE5B8002B7CDF /* HomePageViewController.swift */,
 				B8866D5D218BE5B8002B7CDF /* Main.storyboard */,
 				B8866D60218BE5BB002B7CDF /* Assets.xcassets */,
 				B8866D62218BE5BB002B7CDF /* LaunchScreen.storyboard */,
@@ -101,6 +107,7 @@
 		B8866D6D218BE7EA002B7CDF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B8866D5B218BE5B8002B7CDF /* HomePageViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -125,6 +132,16 @@
 			children = (
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		B88BA17121921F66009C56DC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B88BA176219291D3009C56DC /* Double+String+Extension.swift */,
+				B88BA17221921F89009C56DC /* UIView+Extension.swift */,
+				B88BA17421927E6F009C56DC /* UIColor+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,11 +217,14 @@
 			files = (
 				B8866D72218BE905002B7CDF /* User.swift in Sources */,
 				B88BA16C219212E8009C56DC /* HomePageTableViewCell.swift in Sources */,
+				B88BA17321921F89009C56DC /* UIView+Extension.swift in Sources */,
+				B88BA17521927E6F009C56DC /* UIColor+Extension.swift in Sources */,
 				B8866D5C218BE5B8002B7CDF /* HomePageViewController.swift in Sources */,
 				B8866D5A218BE5B8002B7CDF /* AppDelegate.swift in Sources */,
 				B88BA17021921395009C56DC /* Constants.swift in Sources */,
 				B8866D6F218BE801002B7CDF /* Space.swift in Sources */,
 				B8866D74218BE911002B7CDF /* Address.swift in Sources */,
+				B88BA177219291D3009C56DC /* Double+String+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

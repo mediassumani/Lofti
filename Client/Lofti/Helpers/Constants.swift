@@ -10,5 +10,5 @@ import Foundation
 
 struct Constants{
     
-    static let homePageTableViewCellIdentifier = "homepagecellidentifier"
+    static let homePageCellID = "homepagecellidentifier"
 }
