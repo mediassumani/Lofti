@@ -17,11 +17,12 @@ class HomePageViewController: UITableViewController {
         
         navigationItem.title = "Feeds"
         tableView.register(HomePageTableViewCell.self, forCellReuseIdentifier: Constants.homePageCellID)
+        createDummyData()
     }
 
     
     fileprivate func createDummyData(){
-        spaces.append(Space("Ozone Studio", "Nice Cozy space to study", "12:30PM - 4:45 PM", UIImage(named: "<#T##String#>")!, "246 McAllister Ave", "Medi Assumani", 3, false, 5.30))
+        spaces.append(Space("Ozone Studio", "Nice Cozy space to study", "12:30PM - 4:45 PM", UIImage(named: "MakeSchoolLogo")!, "246 McAllister Ave", "Medi Assumani", 3, false, 5.30))
         
         spaces.append(Space("Redwood Baklava", "Small tidy place to work", "09:00AM - 5:00PM", UIImage(named: "MakeSchoolLogo")!, "555 Post ST", "Make School", 5, true, 7.50))
         
@@ -46,10 +47,12 @@ extension HomePageViewController{
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell =  tableView.dequeueReusableCell(withIdentifier: Constants.homePageCellID, for: indexPath) as! HomePageTableViewCell
-        
-        cell.space =
-        
+        let currentLastItem = spaces[indexPath.row]
+        cell.space = currentLastItem
         return cell
     }
     
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 50
+//    }
 }
