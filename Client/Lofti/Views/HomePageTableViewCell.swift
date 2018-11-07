@@ -53,7 +53,7 @@ class HomePageTableViewCell: UITableViewCell{
         let imageView = UIImageView()
 //        imageView.image = UIImage(named: "MakeSchoolLogo")
         imageView.contentMode = .scaleToFill
-        imageView.layer.cornerRadius = 50
+        imageView.layer.cornerRadius = 60
         imageView.clipsToBounds = true
         imageView.layer.masksToBounds = true
         imageView.layer.shadowRadius = 1
