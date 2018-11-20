@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/MediBoss/Lofti/issues"
   },
-  "homepage": "https://github.com/MediBoss/Lofti#readme"
+  "homepage": "https://github.com/MediBoss/Lofti#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
 }
