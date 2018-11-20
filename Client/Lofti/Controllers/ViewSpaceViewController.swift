@@ -80,6 +80,7 @@ class ViewSpaceViewController: UIViewController{
     private let spaceImagesContainerView: UIView = {
        
         let view = UIView()
+        view.backgroundColor = .black
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
