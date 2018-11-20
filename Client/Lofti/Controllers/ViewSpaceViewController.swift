@@ -41,47 +41,24 @@ class ViewSpaceViewController: UIViewController{
     // The textview to show the renting price
     private let rentingPriceTextView: UITextView = {
         let textView = UITextView()
-        let attributedText = NSMutableAttributedString(string: "$7/Hr",attributes: [NSAttributedString.Key.font:UIFont.boldSystemFont(ofSize: 15)])
-        
-        textView.attributedText = attributedText
-        textView.textAlignment = .center
-        textView.isEditable = false
-        textView.isScrollEnabled = false
-        textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
     }()
     
     // The textview to show the description of the place
     private let spaceDescriptionTextView: UITextView = {
         let textView = UITextView()
-        let attributedText = NSMutableAttributedString(string: "The space is a tiny but tidy and well cleaned space with a monitor, 4 chairs, and a white board. Wifi is also available",attributes: [NSAttributedString.Key.font:UIFont.systemFont(ofSize: 15)])
-        
-        textView.attributedText = attributedText
-        textView.textAlignment = .center
-        textView.isEditable = false
-        textView.isScrollEnabled = false
-        textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
     }()
     
     // The textview to show the time availability of the place
     private let timeAvailabilityTextView: UITextView = {
         let textView = UITextView()
-        let attributedText = NSMutableAttributedString(string: "Wednesday 10th | 12:30 PM - 03:45PM",attributes: [NSAttributedString.Key.font:UIFont.systemFont(ofSize: 15)])
-        
-        textView.attributedText = attributedText
-        textView.textAlignment = .center
-        textView.isEditable = false
-        textView.isScrollEnabled = false
-        textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
     }()
     
     private let spaceImagesContainerView: UIView = {
        
         let view = UIView()
-        view.backgroundColor = .black
-        view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
     }()
@@ -89,14 +66,6 @@ class ViewSpaceViewController: UIViewController{
     private let rentButton: UIButton = {
         
         let button = UIButton()
-        button.backgroundColor = .white
-        button.setTitle("Rent", for: .normal)
-        button.layer.cornerRadius = 10
-        button.clipsToBounds = true
-        button.layer.masksToBounds = true
-        button.layer.shadowRadius = 1
-        button.setTitleColor(.gloomyBlue, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
     }()
