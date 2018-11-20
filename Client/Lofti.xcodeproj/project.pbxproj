@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B846FD0721A4B46F0034DFB4 /* SpaceServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = B846FD0621A4B46F0034DFB4 /* SpaceServices.swift */; };
 		B8866D5A218BE5B8002B7CDF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8866D59218BE5B8002B7CDF /* AppDelegate.swift */; };
 		B8866D5C218BE5B8002B7CDF /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8866D5B218BE5B8002B7CDF /* HomePageViewController.swift */; };
 		B8866D5F218BE5B8002B7CDF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8866D5D218BE5B8002B7CDF /* Main.storyboard */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B846FD0621A4B46F0034DFB4 /* SpaceServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceServices.swift; sourceTree = "<group>"; };
 		B8866D56218BE5B7002B7CDF /* Lofti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lofti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8866D59218BE5B8002B7CDF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8866D5B218BE5B8002B7CDF /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
@@ -73,9 +75,8 @@
 			isa = PBXGroup;
 			children = (
 				B88BA17121921F66009C56DC /* Extensions */,
-				B88BA16E2192137B009C56DC /* Network */,
 				B88BA16D21921371009C56DC /* Helpers */,
-				B8866D75218BEA4F002B7CDF /* Services */,
+				B8866D75218BEA4F002B7CDF /* Networking */,
 				B8866D6D218BE7EA002B7CDF /* Controllers */,
 				B8866D6C218BE7DF002B7CDF /* Views */,
 				B8866D6B218BE7D9002B7CDF /* Models */,
@@ -115,11 +116,12 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		B8866D75218BEA4F002B7CDF /* Services */ = {
+		B8866D75218BEA4F002B7CDF /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				B846FD0621A4B46F0034DFB4 /* SpaceServices.swift */,
 			);
-			path = Services;
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		B88BA16D21921371009C56DC /* Helpers */ = {
@@ -128,13 +130,6 @@
 				B88BA16F21921395009C56DC /* Constants.swift */,
 			);
 			path = Helpers;
-			sourceTree = "<group>";
-		};
-		B88BA16E2192137B009C56DC /* Network */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Network;
 			sourceTree = "<group>";
 		};
 		B88BA17121921F66009C56DC /* Extensions */ = {
@@ -220,6 +215,7 @@
 			files = (
 				B8866D72218BE905002B7CDF /* User.swift in Sources */,
 				B88CACE821938869005786BA /* ViewSpaceViewController.swift in Sources */,
+				B846FD0721A4B46F0034DFB4 /* SpaceServices.swift in Sources */,
 				B88BA16C219212E8009C56DC /* HomePageTableViewCell.swift in Sources */,
 				B88BA17321921F89009C56DC /* UIView+Extension.swift in Sources */,
 				B88BA17521927E6F009C56DC /* UIColor+Extension.swift in Sources */,
