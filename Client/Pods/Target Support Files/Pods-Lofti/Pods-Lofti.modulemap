@@ -1,0 +1,6 @@
+framework module Pods_Lofti {
+  umbrella header "Pods-Lofti-umbrella.h"
+
+  export *
+  module * { export * }
+}

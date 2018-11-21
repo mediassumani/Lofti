@@ -49,4 +49,4 @@ class Space{
 //        self.renter = renter
 //        self.price = price
 //    }
-}
+    }
