@@ -34,16 +34,17 @@ struct SpaceServices{
      @param completion ->[Space]: The list of reminder objects to be returned after the method call
      */
 
-    static func index(completion: @escaping([Space]?) -> ()){
+    static func index(categories: [String],completion: @escaping([Space]?) -> ()){
         
         // base url
-        let baseUrl = URL(string: "https://api.yelp.com/v3/businesses/search?latitude=37.785771&longitude=-122.406165")
+        let baseUrl = URL(string: "https://api.yelp.com/v3/businesses/search?latitude=37.785771&longitude=-122.406165&categories=schools,libraries,collegeunive,highschools,adultedu,coffeeshops")
         
         // request
         var request = URLRequest(url: baseUrl!)
         
         // headers
         request.setValue("Bearer \(Constants.YELP_API_KEY)", forHTTPHeaderField: "Authorization")
+        //request.setValue("school", forHTTPHeaderField: "term")
         //request.setValue("San Francisco", forHTTPHeaderField: "location")
         //request.setValue("Thai", forHTTPHeaderField: "term")
         

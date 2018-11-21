@@ -11,6 +11,7 @@ import UIKit
 class HomePageViewController: UITableViewController {
 
     var spaces: [Space] = [Space]()
+    var categories = ["adultedu", "collegeuniv","highschools", "privateschools", "libraries"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,8 +21,8 @@ class HomePageViewController: UITableViewController {
     }
 
     func makeApiRequest(location: String){
-        SpaceServices.index { (space) in
-            print("hi")
+        SpaceServices.index(categories: categories) { (spaces) in
+            print("yay")
         }
     }
 }
