@@ -16,9 +16,14 @@ class HomePageViewController: UITableViewController {
         super.viewDidLoad()
         navigationItem.title = "Feeds"
         tableView.register(HomePageTableViewCell.self, forCellReuseIdentifier: Constants.homePageCellID)
+        makeApiRequest(location: "San Francisco")
     }
 
-    
+    func makeApiRequest(location: String){
+        SpaceServices.index { (space) in
+            print("hi")
+        }
+    }
 }
 
 

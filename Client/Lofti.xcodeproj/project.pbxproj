@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4629A7F1E36B28C73791B4C6 /* Pods_Lofti.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00550652662810EF30C8D2D8 /* Pods_Lofti.framework */; };
+		B816800E21A5CA990042D139 /* YelpSortMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B816800D21A5CA990042D139 /* YelpSortMode.swift */; };
 		B846FD0721A4B46F0034DFB4 /* SpaceServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = B846FD0621A4B46F0034DFB4 /* SpaceServices.swift */; };
 		B8866D5A218BE5B8002B7CDF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8866D59218BE5B8002B7CDF /* AppDelegate.swift */; };
 		B8866D5C218BE5B8002B7CDF /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8866D5B218BE5B8002B7CDF /* HomePageViewController.swift */; };
@@ -25,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		00550652662810EF30C8D2D8 /* Pods_Lofti.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lofti.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B816800D21A5CA990042D139 /* YelpSortMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpSortMode.swift; sourceTree = "<group>"; };
 		B846FD0621A4B46F0034DFB4 /* SpaceServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceServices.swift; sourceTree = "<group>"; };
 		B8866D56218BE5B7002B7CDF /* Lofti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lofti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8866D59218BE5B8002B7CDF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +46,8 @@
 		B88BA17421927E6F009C56DC /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		B88BA176219291D3009C56DC /* Double+String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+String+Extension.swift"; sourceTree = "<group>"; };
 		B88CACE721938869005786BA /* ViewSpaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSpaceViewController.swift; sourceTree = "<group>"; };
+		E483F10AE2A9B441A888DE33 /* Pods-Lofti.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lofti.debug.xcconfig"; path = "Target Support Files/Pods-Lofti/Pods-Lofti.debug.xcconfig"; sourceTree = "<group>"; };
+		F303F1CEDAC3A16679DF1DDD /* Pods-Lofti.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lofti.release.xcconfig"; path = "Target Support Files/Pods-Lofti/Pods-Lofti.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,17 +55,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4629A7F1E36B28C73791B4C6 /* Pods_Lofti.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0352D4456532F95800F3B537 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				00550652662810EF30C8D2D8 /* Pods_Lofti.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		67A1FF898C15DB796823DC70 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E483F10AE2A9B441A888DE33 /* Pods-Lofti.debug.xcconfig */,
+				F303F1CEDAC3A16679DF1DDD /* Pods-Lofti.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		B8866D4D218BE5B7002B7CDF = {
 			isa = PBXGroup;
 			children = (
 				B8866D58218BE5B7002B7CDF /* Lofti */,
 				B8866D57218BE5B7002B7CDF /* Products */,
+				67A1FF898C15DB796823DC70 /* Pods */,
+				0352D4456532F95800F3B537 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -95,6 +121,7 @@
 				B8866D6E218BE801002B7CDF /* Space.swift */,
 				B8866D71218BE905002B7CDF /* User.swift */,
 				B8866D73218BE911002B7CDF /* Address.swift */,
+				B816800D21A5CA990042D139 /* YelpSortMode.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -149,6 +176,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B8866D68218BE5BB002B7CDF /* Build configuration list for PBXNativeTarget "Lofti" */;
 			buildPhases = (
+				E4569C90AE31B95CC18D9247 /* [CP] Check Pods Manifest.lock */,
 				B8866D52218BE5B7002B7CDF /* Sources */,
 				B8866D53218BE5B7002B7CDF /* Frameworks */,
 				B8866D54218BE5B7002B7CDF /* Resources */,
@@ -208,6 +236,31 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		E4569C90AE31B95CC18D9247 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Lofti-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B8866D52218BE5B7002B7CDF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -216,6 +269,7 @@
 				B8866D72218BE905002B7CDF /* User.swift in Sources */,
 				B88CACE821938869005786BA /* ViewSpaceViewController.swift in Sources */,
 				B846FD0721A4B46F0034DFB4 /* SpaceServices.swift in Sources */,
+				B816800E21A5CA990042D139 /* YelpSortMode.swift in Sources */,
 				B88BA16C219212E8009C56DC /* HomePageTableViewCell.swift in Sources */,
 				B88BA17321921F89009C56DC /* UIView+Extension.swift in Sources */,
 				B88BA17521927E6F009C56DC /* UIColor+Extension.swift in Sources */,
@@ -368,6 +422,7 @@
 		};
 		B8866D69218BE5BB002B7CDF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E483F10AE2A9B441A888DE33 /* Pods-Lofti.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -386,6 +441,7 @@
 		};
 		B8866D6A218BE5BB002B7CDF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F303F1CEDAC3A16679DF1DDD /* Pods-Lofti.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
