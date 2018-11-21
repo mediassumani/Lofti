@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import BDBOAuth1Manager
 
 struct SpaceServices{
     
@@ -55,7 +54,13 @@ struct SpaceServices{
                 
                 switch unwrapedResponse.statusCode{
                 case 200:
-                    print("success")
+                    do{
+                        let jsonData = try! JSONSerialization.jsonObject(with: unwrapedData, options: []) as! [String: AnyObject]
+                        print(jsonData)
+                        
+                    }catch let error as Error{
+                        print("Failed to load: \(error.localizedDescription)")
+                    }
                     
                 case 400:
                     print("Error Found : Bad Request. Check the URL")
