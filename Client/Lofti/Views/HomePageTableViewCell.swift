@@ -16,9 +16,9 @@ class HomePageTableViewCell: UITableViewCell{
     
     var space: Space?{
         didSet{
-            thumbnail.image = space?.thumbnail
-            spaceNameLabel.text = space?.name
-            priceTextView.text = space?.price.convertDoubleToString()
+//            thumbnail.image = space?.thumbnail
+//            spaceNameLabel.text = space?.name
+//            priceTextView.text = space?.price.convertDoubleToString()
         }
     }
     

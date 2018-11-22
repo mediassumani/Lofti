@@ -56,8 +56,9 @@ struct SpaceServices{
                 switch unwrapedResponse.statusCode{
                 case 200:
                     do{
-                        let jsonData = try! JSONSerialization.jsonObject(with: unwrapedData, options: []) as! [String: AnyObject]
-                        print(jsonData)
+                        let decoder = JSONDecoder()
+                        let space = try decoder.decode(Space.self, from: unwrapedData)
+                        print(space)
                         
                     }catch let error as Error{
                         print("Failed to load: \(error.localizedDescription)")
