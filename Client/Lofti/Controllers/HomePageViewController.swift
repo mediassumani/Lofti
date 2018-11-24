@@ -10,20 +10,35 @@ import UIKit
 
 class HomePageViewController: UITableViewController {
 
-    var spaces: [Space] = [Space]()
-    var categories = ["adultedu", "collegeuniv","highschools", "privateschools", "libraries"]
+    var spaces: Result?{
+        didSet{
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Feeds"
         tableView.register(HomePageTableViewCell.self, forCellReuseIdentifier: Constants.homePageCellID)
-        makeApiRequest(location: "San Francisco")
+        makeApiRequest()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
 
-    func makeApiRequest(location: String){
-        SpaceServices.index { (space) in
-            guard let spaceName = space?.name else {return}
-            //print(spaceName)
+    fileprivate func makeApiRequest(){
+        SpaceServices.index { (spaces) in
+            if let spaces = spaces{
+                self.spaces = spaces
+            }
         }
     }
 }
@@ -32,7 +47,7 @@ class HomePageViewController: UITableViewController {
 extension HomePageViewController{
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return spaces.count
+        return 10
     }
     
     

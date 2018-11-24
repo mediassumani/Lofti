@@ -14,7 +14,7 @@ struct Result: Decodable{
 }
 
 struct Space: Decodable{
-
+    
     let name: String?
     let id: String?
     let phone: String?
