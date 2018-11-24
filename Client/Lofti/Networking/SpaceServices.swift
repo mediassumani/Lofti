@@ -55,11 +55,9 @@ struct SpaceServices{
                 switch unwrapedResponse.statusCode{
                 case 200:
                     do{
-                        var space = try JSONDecoder().decode(Result.self, from: unwrapedData)
-                        //completion(space)
-                        print(space.businesses.last)
-                        //var serialized = try JSONSerialization.jsonObject(with: unwrapedData, options: [])
-                        //print(serialized)
+                        var spaces = try JSONDecoder().decode(Result.self, from: unwrapedData)
+                        print(spaces.businesses.first?.location)
+
                         
 
                     }catch let error{
