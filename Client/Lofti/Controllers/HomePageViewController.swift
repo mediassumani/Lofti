@@ -10,35 +10,50 @@ import UIKit
 
 class HomePageViewController: UITableViewController {
 
-    var spaces: [Space] = [Space]()
+    var spaces: Result?{
+        didSet{
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Feeds"
         tableView.register(HomePageTableViewCell.self, forCellReuseIdentifier: Constants.homePageCellID)
-        makeApiRequest(location: "San Francisco")
+        makeApiRequest()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
 
-    func makeApiRequest(location: String){
-        SpaceServices.index { (space) in
-            print("hi")
+    fileprivate func makeApiRequest(){
+        SpaceServices.index { (spaces) in
+            if let spaces = spaces{
+                self.spaces = spaces
+            }
         }
     }
 }
 
-
 extension HomePageViewController{
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return spaces.count
+        return 10
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell =  tableView.dequeueReusableCell(withIdentifier: Constants.homePageCellID, for: indexPath) as! HomePageTableViewCell
-        let currentLastItem = spaces[indexPath.row]
-        cell.space = currentLastItem
+        
         return cell
     }
     

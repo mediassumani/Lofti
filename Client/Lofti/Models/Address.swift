@@ -8,6 +8,10 @@
 
 import Foundation
 
-struct Address{
+struct Address: Decodable{
     
+    let address1: String?
+    let city: String?
+    let zip_code: String?
+    let state: String?
 }
