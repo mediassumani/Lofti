@@ -43,7 +43,6 @@ class HomePageViewController: UITableViewController {
     }
 }
 
-
 extension HomePageViewController{
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
