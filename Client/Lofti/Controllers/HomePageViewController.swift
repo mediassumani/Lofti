@@ -8,28 +8,35 @@
 
 import UIKit
 
-class HomePageViewController: UITableViewController {
+class HomePageViewController: UIViewController {
 
     var spaces: Result?{
         didSet{
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                self.spaceListTableView.reloadData()
             }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Feeds"
-        tableView.register(HomePageTableViewCell.self, forCellReuseIdentifier: Constants.homePageCellID)
+        
+        self.view.backgroundColor = .white
+        navigationItem.title = "Spaces"
+        self.spaceListTableView.delegate = self as? UITableViewDelegate
+        self.spaceListTableView.dataSource = self as? UITableViewDataSource
+        
+        view.addSubview(spaceListTableView)
+        spaceListTableView.register(HomePageTableViewCell.self, forCellReuseIdentifier: Constants.homePageCellID)
         makeApiRequest()
+        anchorTableView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         DispatchQueue.main.async {
-            self.tableView.reloadData()
+            self.spaceListTableView.reloadData()
         }
     }
     
@@ -41,24 +48,37 @@ class HomePageViewController: UITableViewController {
             }
         }
     }
-}
-
-extension HomePageViewController{
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+    func anchorTableView(){
+        spaceListTableView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: false)
     }
     
+    let spaceListTableView: UITableView = {
+        
+        let tableview = UITableView()
+        tableview.backgroundColor = .clear
+        tableview.translatesAutoresizingMaskIntoConstraints = false
+        return tableview
+    }()
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+}
+
+extension HomePageViewController: UITableViewDataSource, UITableViewDelegate{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return spaces?.businesses.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell =  tableView.dequeueReusableCell(withIdentifier: Constants.homePageCellID, for: indexPath) as! HomePageTableViewCell
+        let cell = spaceListTableView.dequeueReusableCell(withIdentifier: Constants.homePageCellID, for: indexPath) as! HomePageTableViewCell
+        let currentSpace = spaces?.businesses[indexPath.row]
         
+        cell.spaceNameLabel.text = currentSpace?.name
         return cell
     }
     
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let destinationVC = ViewSpaceViewController() as ViewSpaceViewController
         self.navigationController?.pushViewController(destinationVC, animated: true)
     }
