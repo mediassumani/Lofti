@@ -5,7 +5,6 @@
 //  Created by Medi Assumani on 11/20/18.
 //  Copyright © 2018 Medi Assumani. All rights reserved.
 //
-
 import Foundation
 
 struct SpaceServices{
@@ -34,7 +33,7 @@ struct SpaceServices{
      @param completion ->[Space]: The list of reminder objects to be returned after the method call
      */
 
-    static func index(categories: [String],completion: @escaping([Space]?) -> ()){
+    static func index(completion: @escaping(Space?) -> ()){
         
         // base url
         let baseUrl = URL(string: "https://api.yelp.com/v3/businesses/search?latitude=37.785771&longitude=-122.406165&categories=schools,libraries,collegeunive,highschools,adultedu,coffeeshops")
@@ -56,11 +55,14 @@ struct SpaceServices{
                 switch unwrapedResponse.statusCode{
                 case 200:
                     do{
-                        let decoder = JSONDecoder()
-                        let space = try decoder.decode(Space.self, from: unwrapedData)
-                        print(space)
+                        var space = try JSONDecoder().decode(Result.self, from: unwrapedData)
+                        //completion(space)
+                        print(space.businesses.last)
+                        //var serialized = try JSONSerialization.jsonObject(with: unwrapedData, options: [])
+                        //print(serialized)
                         
-                    }catch let error as Error{
+
+                    }catch let error{
                         print("Failed to load: \(error.localizedDescription)")
                     }
                     

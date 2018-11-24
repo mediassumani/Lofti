@@ -21,8 +21,9 @@ class HomePageViewController: UITableViewController {
     }
 
     func makeApiRequest(location: String){
-        SpaceServices.index(categories: categories) { (spaces) in
-            print("yay")
+        SpaceServices.index { (space) in
+            guard let spaceName = space?.name else {return}
+            //print(spaceName)
         }
     }
 }
@@ -38,8 +39,7 @@ extension HomePageViewController{
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell =  tableView.dequeueReusableCell(withIdentifier: Constants.homePageCellID, for: indexPath) as! HomePageTableViewCell
-        let currentLastItem = spaces[indexPath.row]
-        cell.space = currentLastItem
+        
         return cell
     }
     
