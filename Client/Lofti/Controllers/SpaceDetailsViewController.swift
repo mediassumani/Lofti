@@ -9,18 +9,23 @@
 import Foundation
 import UIKit
 
-class SpaceDetailsViewController: UIViewController{
+
+class SpaceDetailsViewController: UIViewController, SpaceDelegate{
     
     var mainStackView = UIStackView()
     var completionHandler: ((String) -> String)?
     var space: Space?
+    let homepage = HomePageViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         view.backgroundColor = .white
         setUpLabels()
         setUpMainStackView()
+        //homepage.spaceDelegate = self
         
     }
 
@@ -56,6 +61,12 @@ class SpaceDetailsViewController: UIViewController{
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
     }()
+    
+    func passSpaceData(space: Space?) {
+        //self.space = space
+        print(self.space?.id)
+    }
+    
     
     
     

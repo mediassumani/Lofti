@@ -8,12 +8,11 @@
 
 import UIKit
 
-
 protocol SpaceDelegate: class{
     func passSpaceData(space: Space?)
 }
 
-class HomePageViewController: UIViewController {
+class HomePageViewController: UIViewController{
 
     var spaces = [Space](){
         didSet{
@@ -22,8 +21,9 @@ class HomePageViewController: UIViewController {
             }
         }
     }
-    
     weak var spaceDelegate: SpaceDelegate?
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,6 +89,7 @@ extension HomePageViewController: UITableViewDataSource, UITableViewDelegate{
 
         let destinationVC = SpaceDetailsViewController() as SpaceDetailsViewController
         let selectedSpace = spaces[indexPath.row]
+        //destinationVC.spaceDelegate = self as? SpaceDelegate
         //spaceDelegate?.passSpaceData(space: selectedSpace)
         destinationVC.space = selectedSpace
         self.navigationController?.pushViewController(destinationVC, animated: true)
