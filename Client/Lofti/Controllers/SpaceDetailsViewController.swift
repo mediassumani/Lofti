@@ -19,8 +19,9 @@ class SpaceDetailsViewController: UIViewController{
         super.viewDidLoad()
         
         view.backgroundColor = .white
+        setUpLabels()
         setUpMainStackView()
-        print(space)
+        
     }
 
     
@@ -40,6 +41,8 @@ class SpaceDetailsViewController: UIViewController{
     // The textview to show the renting price
     private let phoneNumberTextView: UITextView = {
         let textView = UITextView()
+        textView.isEditable = false
+        textView.isScrollEnabled = false
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
     }()
@@ -48,11 +51,20 @@ class SpaceDetailsViewController: UIViewController{
     // The textview to show the time availability of the place
     private let spaceLocation: UITextView = {
         let textView = UITextView()
+        textView.isEditable = false
+        textView.isScrollEnabled = false
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
     }()
     
     
+    
+    fileprivate func setUpLabels(){
+        
+        spaceNameTextView.text = space?.name ?? "Unknown"
+        spaceLocation.text = space?.location.address1 ?? "Unknown"
+        phoneNumberTextView.text = space?.phone ?? "Unknkown"
+    }
     
     fileprivate func setUpMainStackView(){
         
