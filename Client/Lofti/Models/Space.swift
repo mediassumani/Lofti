@@ -9,17 +9,17 @@
 import Foundation
 import UIKit
 
-struct Result: Decodable{
+struct Spaces: Decodable{
     let businesses: [Space]
 }
 
 struct Space: Decodable{
     
-    let name: String?
-    let id: String?
-    let phone: String?
-    let is_closed: Bool?
-    let image_url: String?
-    let location: Address?
+    let name: String
+    let id: String
+    let phone: String
+    let is_closed: Bool
+    let image_url: String
+    //let location: Address?
 }
 

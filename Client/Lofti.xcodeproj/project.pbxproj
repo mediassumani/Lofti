@@ -22,7 +22,7 @@
 		B88BA17321921F89009C56DC /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88BA17221921F89009C56DC /* UIView+Extension.swift */; };
 		B88BA17521927E6F009C56DC /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88BA17421927E6F009C56DC /* UIColor+Extension.swift */; };
 		B88BA177219291D3009C56DC /* Double+String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88BA176219291D3009C56DC /* Double+String+Extension.swift */; };
-		B88CACE821938869005786BA /* ViewSpaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88CACE721938869005786BA /* ViewSpaceViewController.swift */; };
+		B88CACE821938869005786BA /* SpaceDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88CACE721938869005786BA /* SpaceDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,7 +43,7 @@
 		B88BA17221921F89009C56DC /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		B88BA17421927E6F009C56DC /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		B88BA176219291D3009C56DC /* Double+String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+String+Extension.swift"; sourceTree = "<group>"; };
-		B88CACE721938869005786BA /* ViewSpaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSpaceViewController.swift; sourceTree = "<group>"; };
+		B88CACE721938869005786BA /* SpaceDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceDetailsViewController.swift; sourceTree = "<group>"; };
 		E483F10AE2A9B441A888DE33 /* Pods-Lofti.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lofti.debug.xcconfig"; path = "Target Support Files/Pods-Lofti/Pods-Lofti.debug.xcconfig"; sourceTree = "<group>"; };
 		F303F1CEDAC3A16679DF1DDD /* Pods-Lofti.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lofti.release.xcconfig"; path = "Target Support Files/Pods-Lofti/Pods-Lofti.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -135,7 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				B8866D5B218BE5B8002B7CDF /* HomePageViewController.swift */,
-				B88CACE721938869005786BA /* ViewSpaceViewController.swift */,
+				B88CACE721938869005786BA /* SpaceDetailsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -263,7 +263,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B88CACE821938869005786BA /* ViewSpaceViewController.swift in Sources */,
+				B88CACE821938869005786BA /* SpaceDetailsViewController.swift in Sources */,
 				B846FD0721A4B46F0034DFB4 /* SpaceServices.swift in Sources */,
 				B816800E21A5CA990042D139 /* YelpSortMode.swift in Sources */,
 				B88BA16C219212E8009C56DC /* HomePageTableViewCell.swift in Sources */,

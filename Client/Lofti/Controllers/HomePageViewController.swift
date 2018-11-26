@@ -8,15 +8,21 @@
 
 import UIKit
 
+
+protocol SpaceData{
+    func passSpaceData(space: Space?)
+}
+
 class HomePageViewController: UIViewController {
 
-    var spaces: Result?{
-        didSet{
-            DispatchQueue.main.async {
-                self.spaceListTableView.reloadData()
-            }
-        }
-    }
+//    var spaceDelegate: SpaceData!
+//    var spaces: Result?{
+//        didSet{
+//            DispatchQueue.main.async {
+//                self.spaceListTableView.reloadData()
+//            }
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +34,7 @@ class HomePageViewController: UIViewController {
         
         view.addSubview(spaceListTableView)
         spaceListTableView.register(HomePageTableViewCell.self, forCellReuseIdentifier: Constants.homePageCellID)
-        makeApiRequest()
+        //makeApiRequest()
         anchorTableView()
     }
     
@@ -41,13 +47,13 @@ class HomePageViewController: UIViewController {
     }
     
 
-    fileprivate func makeApiRequest(){
-        SpaceServices.index { (spaces) in
-            if let spaces = spaces{
-                self.spaces = spaces
-            }
-        }
-    }
+//    fileprivate func makeApiRequest(){
+//        SpaceServices.index { (spaces) in
+//            if let spaces = spaces{
+//                self.spaces = spaces
+//            }
+//        }
+//    }
     
     func anchorTableView(){
         spaceListTableView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: false)
@@ -66,20 +72,23 @@ class HomePageViewController: UIViewController {
 extension HomePageViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return spaces?.businesses.count ?? 0
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = spaceListTableView.dequeueReusableCell(withIdentifier: Constants.homePageCellID, for: indexPath) as! HomePageTableViewCell
-        let currentSpace = spaces?.businesses[indexPath.row]
-        
-        cell.spaceNameLabel.text = currentSpace?.name
+
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let destinationVC = ViewSpaceViewController() as ViewSpaceViewController
-        self.navigationController?.pushViewController(destinationVC, animated: true)
+        
+//        if let spaces = spaces{
+//            let destinationVC = SpaceDetailsViewController() as SpaceDetailsViewController
+//            let selectedSpace = spaces.businesses[indexPath.row]
+//            spaceDelegate.passSpaceData(space: selectedSpace)
+//            self.navigationController?.pushViewController(destinationVC, animated: true)
+//        }
     }
 }
