@@ -12,22 +12,17 @@ import UIKit
 class SpaceDetailsViewController: UIViewController{
     
     var mainStackView = UIStackView()
-    //var completionHandler: ((String) -> String)?
-    //var space: Space?
+    var completionHandler: ((String) -> String)?
+    var space: Space?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         view.backgroundColor = .white
         setUpMainStackView()
-        getSpaceData()
+        print(space)
     }
-    
-    func getSpaceData(){
-//        let senderVC = HomePageViewController()
-//        senderVC.spaceDelegate = self as? SpaceData
-    }
-    
+
     
     //USER INTERFACE
     
@@ -75,9 +70,10 @@ class SpaceDetailsViewController: UIViewController{
     
 }
 
-//extension SpaceDetailsViewController: SpaceData{
+//extension SpaceDetailsViewController: SpaceDelegate{
 //
 //    func passSpaceData(space: Space?) {
-//        self.space = space
+//        //self.space = space
+//        print(self.space?.id)
 //    }
-
+//}

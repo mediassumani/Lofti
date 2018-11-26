@@ -9,7 +9,7 @@
 import UIKit
 
 
-protocol SpaceData{
+protocol SpaceDelegate: class{
     func passSpaceData(space: Space?)
 }
 
@@ -22,14 +22,8 @@ class HomePageViewController: UIViewController {
             }
         }
     }
-//    var spaceDelegate: SpaceData!
-//    var spaces: Result?{
-//        didSet{
-//            DispatchQueue.main.async {
-//                self.spaceListTableView.reloadData()
-//            }
-//        }
-//    }
+    
+    weak var spaceDelegate: SpaceDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,12 +86,11 @@ extension HomePageViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-//        if let spaces = spaces{
-//            let destinationVC = SpaceDetailsViewController() as SpaceDetailsViewController
-//            let selectedSpace = spaces.businesses[indexPath.row]
-//            spaceDelegate.passSpaceData(space: selectedSpace)
-//            self.navigationController?.pushViewController(destinationVC, animated: true)
-//        }
+
+        let destinationVC = SpaceDetailsViewController() as SpaceDetailsViewController
+        let selectedSpace = spaces[indexPath.row]
+        //spaceDelegate?.passSpaceData(space: selectedSpace)
+        destinationVC.space = selectedSpace
+        self.navigationController?.pushViewController(destinationVC, animated: true)
     }
 }
