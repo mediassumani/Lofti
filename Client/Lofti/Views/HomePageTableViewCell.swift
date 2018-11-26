@@ -42,11 +42,12 @@ class HomePageTableViewCell: UITableViewCell{
         let label = UILabel()
         label.textColor = .black
         label.font = UIFont.boldSystemFont(ofSize: 20)
-        label.textAlignment = .left
+        label.textAlignment = .center
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+
     
     
     //- MARK: Class Methods
@@ -60,7 +61,6 @@ class HomePageTableViewCell: UITableViewCell{
         
         // sets up the anchoring constraint for the name of the space
         spaceNameLabel.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 20, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: false)
-        
     }
     
 }
