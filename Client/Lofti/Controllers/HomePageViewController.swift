@@ -15,6 +15,13 @@ protocol SpaceData{
 
 class HomePageViewController: UIViewController {
 
+    var spaces = [Space](){
+        didSet{
+            DispatchQueue.main.async {
+                self.spaceListTableView.reloadData()
+            }
+        }
+    }
 //    var spaceDelegate: SpaceData!
 //    var spaces: Result?{
 //        didSet{
@@ -29,12 +36,12 @@ class HomePageViewController: UIViewController {
         
         self.view.backgroundColor = .white
         navigationItem.title = "Spaces"
-        self.spaceListTableView.delegate = self as? UITableViewDelegate
-        self.spaceListTableView.dataSource = self as? UITableViewDataSource
+        self.spaceListTableView.delegate = self as UITableViewDelegate
+        self.spaceListTableView.dataSource = self as UITableViewDataSource
         
         view.addSubview(spaceListTableView)
         spaceListTableView.register(HomePageTableViewCell.self, forCellReuseIdentifier: Constants.homePageCellID)
-        //makeApiRequest()
+        fetchSpaces()
         anchorTableView()
     }
     
@@ -47,13 +54,13 @@ class HomePageViewController: UIViewController {
     }
     
 
-//    fileprivate func makeApiRequest(){
-//        SpaceServices.index { (spaces) in
-//            if let spaces = spaces{
-//                self.spaces = spaces
-//            }
-//        }
-//    }
+    fileprivate func fetchSpaces(){
+        SpaceServices.fetchNearbySpaces { (spaces) in
+            spaces.forEach({ (space) in
+                self.spaces.append(space)
+            })
+        }
+    }
     
     func anchorTableView(){
         spaceListTableView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: false)
@@ -72,13 +79,15 @@ class HomePageViewController: UIViewController {
 extension HomePageViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return spaces.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = spaceListTableView.dequeueReusableCell(withIdentifier: Constants.homePageCellID, for: indexPath) as! HomePageTableViewCell
-
+        
+        let selectedSpace = spaces[indexPath.row]
+        cell.spaceNameLabel.text = selectedSpace.name ?? "Unknown"
         return cell
     }
     

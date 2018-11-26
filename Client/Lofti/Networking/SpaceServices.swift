@@ -13,7 +13,7 @@ struct SpaceServices{
     /* Return an array of spaces requested from the Yelp API
      @param completion ->Result: The list of spaces objects to be returned after the method call
      */
-    static func index(completion: @escaping(Spaces) -> ()){
+    static func fetchNearbySpaces(completion: @escaping([Space]) -> ()){
         
         // base url with parameters
         let baseUrl = URL(string: Constants.YELP_API_BASE_URL)
@@ -39,8 +39,7 @@ struct SpaceServices{
                         
                         // Decoding the data and send as callback
                         let spaces = try JSONDecoder().decode(Spaces.self, from: unwrapedData)
-                        print(spaces)
-                        //completion(spaces)
+                        completion(spaces.businesses)
 
                     }catch let error{
                         print("Failed to load: \(error.localizedDescription)")
