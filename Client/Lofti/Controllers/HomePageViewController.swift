@@ -37,6 +37,7 @@ class HomePageViewController: UIViewController{
         spaceListTableView.register(HomePageTableViewCell.self, forCellReuseIdentifier: Constants.homePageCellID)
         fetchSpaces()
         anchorTableView()
+        setUpNavigationBarItems()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,6 +48,27 @@ class HomePageViewController: UIViewController{
         }
     }
     
+    /// Sets up home page title and nav bar items
+    fileprivate func setUpNavigationBarItems(){
+        
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
+        
+        // Styling the home page title
+        titleLabel.text = "Home"
+        titleLabel.textColor = .gray
+        titleLabel.font = UIFont(name: "Rockwell", size: 20)
+        titleLabel.textAlignment = .center
+        titleLabel.backgroundColor = .clear
+        titleLabel.adjustsFontSizeToFitWidth = true
+        
+        // Styling the home page navigation bar
+        navigationItem.titleView = titleLabel
+        navigationController?.navigationBar.backgroundColor = .white
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.alpha = 0.0
+    }
 
     fileprivate func fetchSpaces(){
         SpaceServices.fetchNearbySpaces { (spaces) in
