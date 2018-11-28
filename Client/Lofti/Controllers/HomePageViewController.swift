@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import Foundation
+import CoreLocation
 
 protocol SpaceDelegate: class{
     func passSpaceData(space: Space?)
 }
 
-class HomePageViewController: UIViewController{
+class HomePageViewController: UIViewController, CLLocationManagerDelegate{
 
     var spaces = [Space](){
         didSet{
@@ -21,7 +23,7 @@ class HomePageViewController: UIViewController{
             }
         }
     }
-    weak var spaceDelegate: SpaceDelegate?
+    let locationManager = CLLocationManager()
     
     override func loadView() {
         super.loadView()
@@ -33,13 +35,15 @@ class HomePageViewController: UIViewController{
         
         self.view.backgroundColor = .white
         navigationItem.title = "Spaces"
+        //locationManager.delegate = self as CLLocationManagerDelegate
 //        self.collectionView.delegate = self as UITableViewDelegate
 //        self.collectionView.dataSource = self as UITableViewDataSource
         
         //view.addSubview(collectionView)
        // collectionView.register(HomePageCollectionViewCell.self, forCellWithReuseIdentifier: HomePageCollectionViewCell.identifier)
-        fetchSpaces()
+        //fetchSpaces()
         //anchorCollectionView()
+        getUserCoordinates()
         setUpNavigationBarItems()
     }
     
@@ -49,7 +53,44 @@ class HomePageViewController: UIViewController{
 //        DispatchQueue.main.async {
 //            self.collectionView.reloadData()
 //        }
+//    }'
+    
+    // This function gets the informtaion about the current location(address,city, state)
+//    fileprivate func lookUpCurrentLocation(completionHandler: @escaping (CLPlacemark?)-> Void ) {
+//
+//        if let lastLocation = self.locationManager.location {
+//            let geocoder = CLGeocoder()
+//            geocoder.reverseGeocodeLocation(lastLocation, completionHandler: { (placemarks, error) in
+//                if error == nil {
+//                    let firstLocation = placemarks?[0]
+//                    completionHandler(firstLocation)
+//                }else {
+//                    completionHandler(nil)
+//                }
+//            })
+//        }
+//        else {
+//            completionHandler(nil)
+//        }
 //    }
+    
+    fileprivate func getUserCoordinates(){
+        self.locationManager.requestAlwaysAuthorization()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
+    internal func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else {return}
+        SpaceServices.fetchNearbySpaces(longitude: locValue.longitude, latitude: locValue.latitude) { (spaces) in
+            spaces.forEach({ (space) in
+                self.spaces.append(space)
+            })
+        }
+    }
     
     /// Sets up home page title and nav bar items
     fileprivate func setUpNavigationBarItems(){
@@ -73,13 +114,13 @@ class HomePageViewController: UIViewController{
         navigationController?.navigationBar.alpha = 0.0
     }
 
-    fileprivate func fetchSpaces(){
-        SpaceServices.fetchNearbySpaces { (spaces) in
-            spaces.forEach({ (space) in
-                self.spaces.append(space)
-            })
-        }
-    }
+//    fileprivate func fetchSpaces(){
+//        SpaceServices.fetchNearbySpaces { (spaces) in
+//            spaces.forEach({ (space) in
+//                self.spaces.append(space)
+//            })
+//        }
+//    }
     
     fileprivate func anchorCollectionView(){
         
