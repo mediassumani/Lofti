@@ -34,45 +34,12 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
         super.viewDidLoad()
         
         self.view.backgroundColor = .white
-        navigationItem.title = "Spaces"
-        //locationManager.delegate = self as CLLocationManagerDelegate
-//        self.collectionView.delegate = self as UITableViewDelegate
-//        self.collectionView.dataSource = self as UITableViewDataSource
-        
-        //view.addSubview(collectionView)
-       // collectionView.register(HomePageCollectionViewCell.self, forCellWithReuseIdentifier: HomePageCollectionViewCell.identifier)
-        //fetchSpaces()
-        //anchorCollectionView()
         getUserCoordinates()
         setUpNavigationBarItems()
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//
-//        DispatchQueue.main.async {
-//            self.collectionView.reloadData()
-//        }
-//    }'
+
     
-    // This function gets the informtaion about the current location(address,city, state)
-//    fileprivate func lookUpCurrentLocation(completionHandler: @escaping (CLPlacemark?)-> Void ) {
-//
-//        if let lastLocation = self.locationManager.location {
-//            let geocoder = CLGeocoder()
-//            geocoder.reverseGeocodeLocation(lastLocation, completionHandler: { (placemarks, error) in
-//                if error == nil {
-//                    let firstLocation = placemarks?[0]
-//                    completionHandler(firstLocation)
-//                }else {
-//                    completionHandler(nil)
-//                }
-//            })
-//        }
-//        else {
-//            completionHandler(nil)
-//        }
-//    }
     
     fileprivate func getUserCoordinates(){
         self.locationManager.requestAlwaysAuthorization()
@@ -114,30 +81,11 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
         navigationController?.navigationBar.alpha = 0.0
     }
 
-//    fileprivate func fetchSpaces(){
-//        SpaceServices.fetchNearbySpaces { (spaces) in
-//            spaces.forEach({ (space) in
-//                self.spaces.append(space)
-//            })
-//        }
-//    }
-    
     fileprivate func anchorCollectionView(){
         
         collectionView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: false)
     }
     
-//    func anchorTableView(){
-//        spaceListTableView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: false)
-//    }
-    
-//    let spaceListTableView: UITableView = {
-//
-//        let tableview = UITableView()
-//        tableview.backgroundColor = .clear
-//        tableview.translatesAutoresizingMaskIntoConstraints = false
-//        return tableview
-//    }()
     
     lazy var collectionView: UICollectionView = {
         
@@ -162,29 +110,6 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
 }
 
 extension HomePageViewController: UICollectionViewDataSource, UICollectionViewDelegate{
-    
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return spaces.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//
-//        let cell = spaceListTableView.dequeueReusableCell(withIdentifier: Constants.homePageCellID, for: indexPath) as! HomePageTableViewCell
-//
-//        let selectedSpace = spaces[indexPath.row]
-//        cell.spaceNameLabel.text = selectedSpace.name ?? "Unknown"
-//        return cell
-//    }
-//
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//
-//        let destinationVC = SpaceDetailsViewController() as SpaceDetailsViewController
-//        let selectedSpace = spaces[indexPath.row]
-//        //destinationVC.spaceDelegate = self as? SpaceDelegate
-//        //spaceDelegate?.passSpaceData(space: selectedSpace)
-//        destinationVC.space = selectedSpace
-//        self.navigationController?.pushViewController(destinationVC, animated: true)
-//    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.spaces.count

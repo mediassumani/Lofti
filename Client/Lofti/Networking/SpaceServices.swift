@@ -16,7 +16,7 @@ struct SpaceServices{
     static func fetchNearbySpaces(longitude: Double, latitude: Double, completion: @escaping([Space]) -> Void){
         
         // base url with parameters
-        let baseUrl = URL(string: "https://api.yelp.com/v3/businesses/search?latitude=\(latitude)&longitude=\(longitude)&categories=coffee,libraries,communitycenters")
+        let baseUrl = URL(string: "https://api.yelp.com/v3/businesses/search?latitude=\(latitude)&longitude=\(longitude)&categories=libraries,coffee,communitycenters&limit=\(Constants.SEARCH_LIMIT)")
         
         // request
         var request = URLRequest(url: baseUrl!)

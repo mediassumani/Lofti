@@ -40,7 +40,7 @@ class HomePageCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.textColor = .white
         //label.font = UIFont.boldSystemFont(ofSize: 15)
-        label.font = UIFont(name:"Rockwell", size: 15.0)
+        label.font = UIFont(name:"Helvetica", size: 20.0)
         label.textAlignment = .center
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
