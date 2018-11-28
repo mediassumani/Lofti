@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4629A7F1E36B28C73791B4C6 /* Pods_Lofti.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00550652662810EF30C8D2D8 /* Pods_Lofti.framework */; };
 		B816800E21A5CA990042D139 /* YelpSortMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B816800D21A5CA990042D139 /* YelpSortMode.swift */; };
+		B81BB00821AE5E5F003BD48D /* HomePageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81BB00721AE5E5F003BD48D /* HomePageCollectionViewCell.swift */; };
 		B846FD0721A4B46F0034DFB4 /* SpaceServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = B846FD0621A4B46F0034DFB4 /* SpaceServices.swift */; };
 		B871289521AC810500DBF541 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B871289421AC810500DBF541 /* String+Extensions.swift */; };
 		B871289721AC811E00DBF541 /* Bool+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B871289621AC811E00DBF541 /* Bool+Extensions.swift */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		00550652662810EF30C8D2D8 /* Pods_Lofti.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lofti.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B816800D21A5CA990042D139 /* YelpSortMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpSortMode.swift; sourceTree = "<group>"; };
+		B81BB00721AE5E5F003BD48D /* HomePageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageCollectionViewCell.swift; sourceTree = "<group>"; };
 		B846FD0621A4B46F0034DFB4 /* SpaceServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceServices.swift; sourceTree = "<group>"; };
 		B871289421AC810500DBF541 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		B871289621AC811E00DBF541 /* Bool+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+Extensions.swift"; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				B88BA16B219212E8009C56DC /* HomePageTableViewCell.swift */,
+				B81BB00721AE5E5F003BD48D /* HomePageCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B81BB00821AE5E5F003BD48D /* HomePageCollectionViewCell.swift in Sources */,
 				B88CACE821938869005786BA /* SpaceDetailsViewController.swift in Sources */,
 				B871289521AC810500DBF541 /* String+Extensions.swift in Sources */,
 				B846FD0721A4B46F0034DFB4 /* SpaceServices.swift in Sources */,
