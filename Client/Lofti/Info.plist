@@ -23,7 +23,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Hi</string>
+	<string>Your location is needed to find nearby study spaces for you.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Hello</string>
 	<key>UILaunchStoryboardName</key>

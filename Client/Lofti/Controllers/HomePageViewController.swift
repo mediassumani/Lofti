@@ -16,6 +16,7 @@ protocol SpaceDelegate: class{
 
 class HomePageViewController: UIViewController, CLLocationManagerDelegate{
 
+    let locationManager = CLLocationManager()
     var spaces = [Space](){
         didSet{
             DispatchQueue.main.async {
@@ -23,22 +24,21 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
             }
         }
     }
-    let locationManager = CLLocationManager()
     
     override func loadView() {
         super.loadView()
         view.addSubview(collectionView)
+        
+        getUserCoordinates()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = .white
-        getUserCoordinates()
+        //getUserCoordinates()
         setUpNavigationBarItems()
     }
-    
-
     
     
     fileprivate func getUserCoordinates(){
@@ -50,7 +50,10 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
         }
     }
     
+    
+    
     internal func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else {return}
         SpaceServices.fetchNearbySpaces(longitude: locValue.longitude, latitude: locValue.latitude) { (spaces) in
             spaces.forEach({ (space) in
@@ -59,13 +62,14 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
         }
     }
     
+    
     /// Sets up home page title and nav bar items
     fileprivate func setUpNavigationBarItems(){
         
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
         
         // Styling the home page title
-        titleLabel.text = "Spaces Nearby"
+        titleLabel.text = "Explore Nearby Spaces"
         titleLabel.textColor = .black
         titleLabel.font = UIFont(name: "Rockwell", size: 20)
         titleLabel.textAlignment = .center

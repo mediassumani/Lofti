@@ -47,6 +47,11 @@ class HomePageCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    var distanceLabel: UILabel = {
+        
+        
+    }()
+    
 //    open var spaceLabel: UILabel = {
 //       
 //        let label = UILabel()
