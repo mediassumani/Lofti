@@ -6,5 +6,8 @@ target 'Lofti' do
   use_frameworks!
 
   # Pods for Lofti
+  pod 'Firebase/Core'
+
+
 
 end

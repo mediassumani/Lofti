@@ -13,10 +13,10 @@ struct SpaceServices{
     /* Return an array of spaces requested from the Yelp API
      @param completion ->Result: The list of spaces objects to be returned after the method call
      */
-    static func fetchNearbySpaces(completion: @escaping([Space]) -> Void){
+    static func fetchNearbySpaces(longitude: Double, latitude: Double, completion: @escaping([Space]) -> Void){
         
         // base url with parameters
-        let baseUrl = URL(string: Constants.YELP_API_BASE_URL)
+        let baseUrl = URL(string: "https://api.yelp.com/v3/businesses/search?latitude=\(latitude)&longitude=\(longitude)&categories=libraries,coffee,communitycenters&limit=\(Constants.SEARCH_LIMIT)")
         
         // request
         var request = URLRequest(url: baseUrl!)
