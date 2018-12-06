@@ -30,5 +30,12 @@ extension String {
         guard let date = formatter.date(from: self) else {return nil}
         return date
     }
+    
+    func convertSringToDouble(_ stringValue: String?) -> Double?{
+        guard let stringToBeDouble = stringValue else {
+            return nil
+        }
+        return Double(stringToBeDouble)
+    }
 }
 

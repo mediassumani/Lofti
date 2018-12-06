@@ -11,15 +11,13 @@ import UIKit
 
 extension Double{
     func convertDoubleToString() -> String{
+        
         return String(self)
+    }
+    
+    func roundToThreePlaces() -> Double {
+        
+        return (self * 1000) / 1000
     }
 }
 
-extension String{
-    func convertSringToDouble(_ stringValue: String?) -> Double?{
-        guard let stringToBeDouble = stringValue else {
-            return nil
-        }
-        return Double(stringToBeDouble)
-    }
-}

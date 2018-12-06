@@ -15,13 +15,14 @@ class CustomLabel: UILabel{
         super.init(frame: frame)
     }
     
-    convenience init(fontSize: CGFloat, text: String, textColor: UIColor) {
+    convenience init(fontSize: CGFloat, text: String, textColor: UIColor, textAlignment: NSTextAlignment, fontName: String) {
         
         self.init()
         self.text = text
         self.font = UIFont.boldSystemFont(ofSize: fontSize)
         self.textColor = textColor
-        self.font = UIFont(name: "HelveticaNeue-Light", size: fontSize)
+        self.textAlignment = textAlignment
+        self.font = UIFont(name: fontName, size: fontSize)
         self.translatesAutoresizingMaskIntoConstraints = false
     }
     

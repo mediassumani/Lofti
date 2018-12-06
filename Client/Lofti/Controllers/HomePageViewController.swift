@@ -52,12 +52,24 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
     
     
     
+    
     internal func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else {return}
         SpaceServices.fetchNearbySpaces(longitude: locValue.longitude, latitude: locValue.latitude) { (spaces) in
+            
             spaces.forEach({ (space) in
-                self.spaces.append(space)
+                
+                GeoFence.addressToCoordinate("\(space.location.address1), \(space.location.city), \(space.location.state)", completion: { (coordinates) in
+                    
+                    guard let unwrappedCoordinates = coordinates else {return}
+                    let userLocation = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
+                    let spaceLocation = CLLocation(latitude: unwrappedCoordinates.latitude, longitude: unwrappedCoordinates.longitude)
+                    let distance = round((userLocation.distance(from: spaceLocation) / 1609.344) * 100) / 100
+                    
+                    space.distance = distance
+                    self.spaces.append(space)
+                })
             })
         }
     }
@@ -111,59 +123,4 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
         
         return collectionView
     }()
-}
-
-extension HomePageViewController: UICollectionViewDataSource, UICollectionViewDelegate{
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.spaces.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let destinationVC = SpaceDetailsViewController() as SpaceDetailsViewController
-        let selectedSpace = spaces[indexPath.row]
-        //destinationVC.spaceDelegate = self as? SpaceDelegate
-        //spaceDelegate?.passSpaceData(space: selectedSpace)
-        destinationVC.space = selectedSpace
-        self.navigationController?.pushViewController(destinationVC, animated: true)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomePageCollectionViewCell.identifier, for: indexPath) as! HomePageCollectionViewCell
-        let currentSpace = spaces[indexPath.row]
-        cell.textLabel.text = currentSpace.name
-        
-        return cell
-    }
-}
-
-extension HomePageViewController: UICollectionViewDelegateFlowLayout {
-
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let screenWidth = collectionView.bounds.width
-        return CGSize(width: screenWidth/2.14, height: screenWidth/2)
-    }
-
-
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-    }
-
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 5
-    }
-
 }
