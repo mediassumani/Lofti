@@ -10,83 +10,62 @@ import UIKit
 
 class HomePageCollectionViewCell: UICollectionViewCell {
     
+    // MARK: Properties
     static var identifier: String = "homePageCollectionViewCell"
+    open var spaceNameLabel = CustomLabel(fontSize: 15, text: "", textColor: .white, textAlignment: .center, fontName: "HelveticaNeue-Light")
+    open var spaceDistanceLabel = CustomLabel(fontSize: 15, text: "", textColor: .white, textAlignment: .center, fontName: "HelveticaNeue-Light")
+    open var cellStackView = CustomStackView()
     
+    
+    // MARK: Initializer
     override init(frame: CGRect) {
+        
         super.init(frame: frame)
-        
-        // Layout views inside the cell
-        
-//        let textLabel = UILabel(frame: .zero)
-//        textLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.contentView.addSubview(textLabel)
-        
-        // Aplying constraints
-        NSLayoutConstraint.activate([
-            self.contentView.centerXAnchor.constraint(equalTo: textLabel.centerXAnchor),
-            self.contentView.centerYAnchor.constraint(equalTo: textLabel.centerYAnchor),
-            ])
-        
-        // Customization
         self.backgroundColor = UIColor.black
-        
-        //self.textLabel = textLabel
-        anchorCellItems()
-        
+        configureCellAutoLayout()
     }
-    
-    var textLabel: UILabel = {
-        
-        let label = UILabel()
-        label.textColor = .white
-        //label.font = UIFont.boldSystemFont(ofSize: 15)
-        label.font = UIFont(name:"Helvetica", size: 20.0)
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-//    open var spaceLabel: UILabel = {
-//       
-//        let label = UILabel()
-//        label.textColor = .white
-//        //label.font = UIFont.boldSystemFont(ofSize: 20)aa
-//        label.font = UIFont(name: "Helvetica-Bold", size: 20)
-//        label.textAlignment = .left
-//        label.numberOfLines = 0
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        return label
-//        
-//    }()
-//    
-//    fileprivate func addViews(){
-//        addSubview(spaceLabel)
-//    }
-//    
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-//    
-//    override func prepareForReuse() {
-//        super.prepareForReuse()
-//    }
-//    
-//    fileprivate func setUpViews(){
-//        spaceLabel.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: false)
-//    }
-    
-    func anchorCellItems(){
-        addSubview(textLabel)
-        
-        textLabel.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: false)
-    }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    // MARK: Class Methods
+    
     override func prepareForReuse() {
         super.prepareForReuse()
+    }
+    
+    
+    func configure(_ space: Space){
+
+        spaceNameLabel.text =  space.name
+        spaceDistanceLabel.text = "\(space.distance!.convertDoubleToString()) miles" ?? "No distance found"
+    }
+    
+    fileprivate func configureCellAutoLayout(){
+        
+        cellStackView = CustomStackView(subviews: [spaceNameLabel, spaceDistanceLabel],
+                                        alignment: .center,
+                                        axis: .vertical,
+                                        distribution: .fill)
+        addSubview(cellStackView)
+        cellStackView.anchor(top: topAnchor,
+                             left: leftAnchor,
+                             bottom: bottomAnchor,
+                             right: rightAnchor,
+                             paddingTop: 0,
+                             paddingLeft: 0,
+                             paddingBottom: 0,
+                             paddingRight: 0,
+                             width: 0,
+                             height: 0,
+                             enableInsets: false)
+        
+        spaceNameLabel.centerXAnchor.constraint(equalTo: cellStackView.centerXAnchor).isActive = true
+        spaceNameLabel.centerYAnchor.constraint(equalTo: cellStackView.centerYAnchor).isActive = true
+        
+        spaceDistanceLabel.centerXAnchor.constraint(equalTo: cellStackView.centerXAnchor).isActive = true
+        spaceDistanceLabel.centerYAnchor.constraint(equalTo: cellStackView.centerYAnchor, constant: 25).isActive = true
     }
 }

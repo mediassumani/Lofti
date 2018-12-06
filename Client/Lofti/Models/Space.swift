@@ -13,12 +13,13 @@ struct Spaces: Decodable{
     let businesses: [Space]
 }
 
-struct Space: Decodable{
+class Space: Decodable{
     
     let name: String
     let id: String
     let phone: String
     let image_url: String
     let location: Address
+    var distance: Double?
 }
 
