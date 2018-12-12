@@ -16,25 +16,7 @@ struct Spaces: Decodable{
 
 struct OperatingHour: Decodable{
     
-    let is_open_now: Bool?
-    
-    enum CodingKeys: String, CodingKey{
-        case is_open_now = "is_open_now"
-    }
-
-    enum HoursKey: String, CodingKey{
-        case hours = "hours"
-    }
-
-    init(from decoder: Decoder) throws{
-
-        var values = try decoder.unkeyedContainer()
-        
-        var u = try values.nestedContainer(keyedBy: CodingKeys.self)
-        
-        
-        is_open_now = false
-    }
+    let is_open_now: Bool
 }
 
 class Space: Decodable{
@@ -45,7 +27,7 @@ class Space: Decodable{
     let image_url: String
     let location: Address
     var distance: Double?
-    var hours: OperatingHour?
+    let hours: [OperatingHour]?
 }
 
 

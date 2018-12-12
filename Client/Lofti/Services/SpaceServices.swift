@@ -64,8 +64,8 @@ struct SpaceServices{
                     
                     do {
                         
-                        let space = try? JSONDecoder().decode(Space.self, from: dataFromApi)
-                        print(space)
+                        let space = try JSONDecoder().decode(Space.self, from: dataFromApi)
+                        completion(space)
                         
                     } catch let error{
                         print("Error Found : \(error.localizedDescription)")
