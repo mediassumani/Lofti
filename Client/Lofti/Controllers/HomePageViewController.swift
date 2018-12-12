@@ -55,11 +55,13 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
     
     internal func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
+        let dispatchGroup = DispatchGroup()
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else {return}
         SpaceServices.fetchNearbySpaces(longitude: locValue.longitude, latitude: locValue.latitude) { (spaces) in
             
             spaces.forEach({ (space) in
                 
+                dispatchGroup.enter()
                 GeoFence.addressToCoordinate("\(space.location.address1), \(space.location.city), \(space.location.state)", completion: { (coordinates) in
                     
                     guard let unwrappedCoordinates = coordinates else {return}
@@ -69,7 +71,12 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
                     
                     space.distance = distance
                     self.spaces.append(space)
+                    dispatchGroup.leave()
                 })
+                
+            })
+            dispatchGroup.notify(queue: .global(), execute: {
+                print("Done")
             })
         }
     }

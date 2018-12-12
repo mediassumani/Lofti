@@ -13,5 +13,5 @@ struct Constants{
     static let homePageCellID = "homepagecellidentifier"
     static let YELP_API_KEY: String = "gY2YUHqCE92WGXAVa_c9pCZfaBSXksbKJKIPOxwf_99Nrt1TVonoN2Fyk7YZffBFADtn8da2LbWQdA02G6O8QGXWb8psGP4nVaFXPz4q6QwuwLUwaZ6tA58uZ3n0W3Yx"
     static let YELP_CLIENT_ID = "_GWT2CXiyyxccGtUChLa6Q"
-    static let SEARCH_LIMIT = 40
+    static let SEARCH_LIMIT = 10
 }
