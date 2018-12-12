@@ -12,8 +12,8 @@ class HomePageCollectionViewCell: UICollectionViewCell {
     
     // MARK: Properties
     static var identifier: String = "homePageCollectionViewCell"
-    open var spaceNameLabel = CustomLabel(fontSize: 15, text: "", textColor: .white, textAlignment: .center, fontName: "HelveticaNeue-Light")
-    open var spaceDistanceLabel = CustomLabel(fontSize: 15, text: "", textColor: .white, textAlignment: .center, fontName: "HelveticaNeue-Light")
+    open var spaceNameLabel = CustomLabel(fontSize: 20, text: "", textColor: .black, textAlignment: .center, fontName: "HelveticaNeue-Bold")
+    open var spaceDistanceLabel = CustomLabel(fontSize: 15, text: "", textColor: .black, textAlignment: .center, fontName: "HelveticaNeue-Light")
     open var cellStackView = CustomStackView()
     
     
@@ -21,7 +21,7 @@ class HomePageCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         
         super.init(frame: frame)
-        self.backgroundColor = UIColor.black
+        self.backgroundColor = .white
         configureCellAutoLayout()
     }
 
@@ -40,7 +40,7 @@ class HomePageCollectionViewCell: UICollectionViewCell {
     func configure(_ space: Space){
 
         spaceNameLabel.text =  space.name
-        spaceDistanceLabel.text = "\(space.distance!.convertDoubleToString()) miles" ?? "No distance found"
+        spaceDistanceLabel.text = "\(space.distance!.convertDoubleToString()) miles away" ?? "No distance found"
     }
     
     fileprivate func configureCellAutoLayout(){
@@ -62,6 +62,10 @@ class HomePageCollectionViewCell: UICollectionViewCell {
                              height: 0,
                              enableInsets: false)
         
+        self.layer.cornerRadius = 15
+        self.clipsToBounds = true
+        self.layer.masksToBounds = true
+        self.layer.shadowRadius = 1
         spaceNameLabel.centerXAnchor.constraint(equalTo: cellStackView.centerXAnchor).isActive = true
         spaceNameLabel.centerYAnchor.constraint(equalTo: cellStackView.centerYAnchor).isActive = true
         

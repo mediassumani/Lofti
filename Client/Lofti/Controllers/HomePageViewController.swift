@@ -35,7 +35,7 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = .gray
         //getUserCoordinates()
         setUpNavigationBarItems()
     }
@@ -83,7 +83,7 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
         // Styling the home page title
         titleLabel.text = "Explore Nearby Spaces"
         titleLabel.textColor = .black
-        titleLabel.font = UIFont(name: "Rockwell", size: 20)
+        titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 25)
         titleLabel.textAlignment = .center
         titleLabel.backgroundColor = .white
         titleLabel.adjustsFontSizeToFitWidth = true
@@ -105,20 +105,12 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
     
     lazy var collectionView: UICollectionView = {
         
-        // Instantiating the UICollectionView, using the default flow layout
         let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
-        // Setting the datasource & delegate
         collectionView.dataSource = self
         collectionView.delegate = self
-        
-        
-        // Customization
         collectionView.alwaysBounceVertical = true
-        collectionView.backgroundColor = .white
-        
-        //Registering the cell
+        collectionView.backgroundColor = .lightGray
         collectionView.register(HomePageCollectionViewCell.self, forCellWithReuseIdentifier: HomePageCollectionViewCell.identifier)
         
         return collectionView

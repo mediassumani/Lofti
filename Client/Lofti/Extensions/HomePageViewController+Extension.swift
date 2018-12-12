@@ -41,7 +41,7 @@ extension HomePageViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let screenWidth = collectionView.bounds.width
-        return CGSize(width: screenWidth/2.14, height: screenWidth/2)
+        return CGSize(width: screenWidth/1.2, height: screenWidth/1.5)
     }
     
     
@@ -60,7 +60,7 @@ extension HomePageViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 5
+        return 20
     }
     
 }
