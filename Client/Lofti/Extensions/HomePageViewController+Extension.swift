@@ -18,10 +18,13 @@ extension HomePageViewController: UICollectionViewDataSource, UICollectionViewDe
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let destinationVC = SpaceDetailsViewController() as SpaceDetailsViewController
-        let spaceId = spaces[indexPath.row].id
-        SpaceServices.show(id: spaceId) { (space) in
-            destinationVC.space = space
+        var selectedSpace = spaces[indexPath.row]
+        SpaceServices.show(id: selectedSpace.id) { (space) in
+            
+            selectedSpace.hours?[0] = (space.hours?.first)!
         }
+        
+        destinationVC.space = selectedSpace
         self.navigationController?.pushViewController(destinationVC, animated: true)
     }
     
