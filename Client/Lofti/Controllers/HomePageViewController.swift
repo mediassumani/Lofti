@@ -57,7 +57,7 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
         
         let dispatchGroup = DispatchGroup()
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else {return}
-        SpaceServices.fetchNearbySpaces(longitude: locValue.longitude, latitude: locValue.latitude) { (spaces) in
+        SpaceServices.index(longitude: locValue.longitude, latitude: locValue.latitude) { (spaces) in
             
             spaces.forEach({ (space) in
                 

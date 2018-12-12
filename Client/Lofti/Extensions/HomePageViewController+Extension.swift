@@ -16,12 +16,17 @@ extension HomePageViewController: UICollectionViewDataSource, UICollectionViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         let destinationVC = SpaceDetailsViewController() as SpaceDetailsViewController
         let selectedSpace = spaces[indexPath.row]
-        //destinationVC.spaceDelegate = self as? SpaceDelegate
-        //spaceDelegate?.passSpaceData(space: selectedSpace)
-        destinationVC.space = selectedSpace
-        self.navigationController?.pushViewController(destinationVC, animated: true)
+        SpaceServices.show(id: selectedSpace.id) { (space) in
+            
+            print("testing")
+        }
+//        //destinationVC.spaceDelegate = self as? SpaceDelegate
+//        //spaceDelegate?.passSpaceData(space: selectedSpace)
+//        destinationVC.space = selectedSpace
+//        self.navigationController?.pushViewController(destinationVC, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
