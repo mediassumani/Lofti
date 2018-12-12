@@ -91,7 +91,7 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
         titleLabel.text = "Explore Nearby Spaces"
         titleLabel.textColor = .black
         titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 25)
-        titleLabel.textAlignment = .center
+        titleLabel.textAlignment = .left
         titleLabel.backgroundColor = .white
         titleLabel.adjustsFontSizeToFitWidth = true
         

@@ -12,7 +12,7 @@ import UIKit
 
 class SpaceDetailsViewController: UIViewController, SpaceDelegate{
     
-    var mainStackView = UIStackView()
+    var mainStackView = CustomStackView()
     var completionHandler: ((String) -> String)?
     var space: Space?
     let homepage = HomePageViewController()
@@ -79,11 +79,7 @@ class SpaceDetailsViewController: UIViewController, SpaceDelegate{
     
     fileprivate func setUpMainStackView(){
         
-        mainStackView = UIStackView(arrangedSubviews: [spaceNameTextView, phoneNumberTextView, spaceLocation])
-        mainStackView.alignment = .center
-        mainStackView.axis = .vertical
-        mainStackView.distribution = .fillEqually
-        mainStackView.translatesAutoresizingMaskIntoConstraints = false
+        mainStackView = CustomStackView(subviews: [spaceNameTextView, phoneNumberTextView, spaceLocation], alignment: .center, axis: .vertical, distribution: .fillEqually)
         view.addSubview(mainStackView)
         NSLayoutConstraint.activate([mainStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
                                      mainStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
@@ -93,10 +89,3 @@ class SpaceDetailsViewController: UIViewController, SpaceDelegate{
     
 }
 
-//extension SpaceDetailsViewController: SpaceDelegate{
-//
-//    func passSpaceData(space: Space?) {
-//        //self.space = space
-//        print(self.space?.id)
-//    }
-//}
