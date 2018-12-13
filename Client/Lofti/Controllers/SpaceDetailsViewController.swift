@@ -75,7 +75,7 @@ class SpaceDetailsViewController: UIViewController{
         
         NSLayoutConstraint.activate([isOpenLabel.heightAnchor.constraint(equalTo: isOpenAndWifiStackView.heightAnchor, multiplier: 0.4),
                                      isOpenLabel.widthAnchor.constraint(equalTo: isOpenAndWifiStackView.widthAnchor, multiplier: 0.6),
-                                     wifiImage.heightAnchor.constraint(equalTo: isOpenAndWifiStackView.heightAnchor, multiplier: 0.6),
+                                     wifiImage.heightAnchor.constraint(equalTo: isOpenAndWifiStackView.heightAnchor, multiplier: 0.55),
                                      wifiImage.widthAnchor.constraint(equalTo: isOpenAndWifiStackView.widthAnchor, multiplier: 0.3)])
         
     }
@@ -106,14 +106,14 @@ class SpaceDetailsViewController: UIViewController{
     fileprivate func setUpGetDirectionsButton(){
         
         getDirectionsButton = CustomButton(title: "Get Directions",
-                                           fontSize: 19,
+                                           fontSize: 15,
                                            titleColor: .white,
                                            target: self,
                                            action: #selector(directionsButtonTapped),
                                            event: .touchUpInside)
         
         getDirectionsButton.newLayerColor = .black
-        getDirectionsButton.layer.cornerRadius = 15
+        getDirectionsButton.layer.cornerRadius = 10
         getDirectionsButton.layer.shadowRadius = 1
         getDirectionsButton.layer.masksToBounds = true
         getDirectionsButton.clipsToBounds = true
@@ -142,8 +142,8 @@ class SpaceDetailsViewController: UIViewController{
                                      phoneNumberLabel.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.1),
                                      thumbnailStackView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.6),
                                      thumbnailStackView.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.5),
-                                     getDirectionsButton.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.5),
-                                     getDirectionsButton.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.05)])
+                                     getDirectionsButton.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.6),
+                                     getDirectionsButton.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.08)])
     }
     
     

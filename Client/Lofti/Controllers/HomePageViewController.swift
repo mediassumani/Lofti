@@ -90,9 +90,9 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
         
         // Styling the home page title
-        titleLabel.text = "Explore Nearby Spaces"
+        titleLabel.text = "Nearby Spaces"
         titleLabel.textColor = .black
-        titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 25)
+        titleLabel.font = UIFont(name: "HelveticaNeue-Light", size: 25)
         titleLabel.textAlignment = .left
         titleLabel.backgroundColor = .white
         titleLabel.adjustsFontSizeToFitWidth = true
