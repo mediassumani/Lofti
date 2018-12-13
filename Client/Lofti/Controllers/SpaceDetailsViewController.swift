@@ -16,7 +16,7 @@ class SpaceDetailsViewController: UIViewController{
     var isOpenAndWifiStackView = CustomStackView()
     var thumbnailStackView = CustomStackView()
     var spaceNameLabel = CustomLabel()
-    var isOpenLabel = CustomLabel()
+    var isOpenLabel = UILabel()
     var phoneNumberLabel = CustomLabel()
     var getDirectionsButton = CustomButton()
     var wifiImage = UIImageView(image: UIImage(named: "wifi"))
@@ -29,14 +29,13 @@ class SpaceDetailsViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
         view.backgroundColor = .white
 
-        //setUpMainStackView()
-        //homepage.spaceDelegate = self
         setUpSpaceNameLabel()
         setUpIsOpenLabel()
+        setUpThuumbnails()
+        setUpPhoneNumberLabel()
+        setUpGetDirectionsButton()
         mainStakViewAutoLayout()
     }
     
@@ -46,7 +45,7 @@ class SpaceDetailsViewController: UIViewController{
     
     fileprivate func setUpSpaceNameLabel(){
         
-        spaceNameLabel = CustomLabel(fontSize: 25,
+        spaceNameLabel = CustomLabel(fontSize: 22,
                                      text: space?.name ?? "Unknown",
                                      textColor: .black,
                                      textAlignment: .center,
@@ -55,38 +54,34 @@ class SpaceDetailsViewController: UIViewController{
     }
     
     fileprivate func setUpIsOpenLabel(){
-        
-        var text: String = ""
-        var color: UIColor = .white
+
         isOpenAndWifiStackView = CustomStackView(subviews: [isOpenLabel, wifiImage],
                                         alignment: .center,
                                         axis: .horizontal,
                                         distribution: .fillEqually)
         
-        NSLayoutConstraint.activate([isOpenLabel.heightAnchor.constraint(equalTo: isOpenAndWifiStackView.heightAnchor, multiplier: 0.4),
-                                     isOpenLabel.widthAnchor.constraint(equalTo: isOpenAndWifiStackView.widthAnchor, multiplier: 0.2),
-                                     wifiImage.heightAnchor.constraint(equalTo: isOpenAndWifiStackView.heightAnchor, multiplier: 0.4),
-                                     wifiImage.widthAnchor.constraint(equalTo: isOpenAndWifiStackView.widthAnchor, multiplier: 0.2)])
-        
         if space?.hours?.first?.is_open_now == true{
-            text = "Open"
-            color = .blue
+            
+            isOpenLabel.text = "Open"
+            isOpenLabel.textColor = .blue
+            isOpenLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 19)
         }else{
-            text = "closed"
-            color = .red
+            
+            isOpenLabel.text = "Closed"
+            isOpenLabel.textColor = .red
+            isOpenLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 19)
         }
         
+        NSLayoutConstraint.activate([isOpenLabel.heightAnchor.constraint(equalTo: isOpenAndWifiStackView.heightAnchor, multiplier: 0.4),
+                                     isOpenLabel.widthAnchor.constraint(equalTo: isOpenAndWifiStackView.widthAnchor, multiplier: 0.6),
+                                     wifiImage.heightAnchor.constraint(equalTo: isOpenAndWifiStackView.heightAnchor, multiplier: 0.6),
+                                     wifiImage.widthAnchor.constraint(equalTo: isOpenAndWifiStackView.widthAnchor, multiplier: 0.3)])
         
-        isOpenLabel = CustomLabel(fontSize: 15,
-                                  text: text,
-                                  textColor: color,
-                                  textAlignment: .center,
-                                  fontName: "HelveticaNeue-Bold")
     }
     
     fileprivate func setUpPhoneNumberLabel(){
         
-        phoneNumberLabel = CustomLabel(fontSize: 15,
+        phoneNumberLabel = CustomLabel(fontSize: 19,
                                        text: space?.phone ?? "No phone number",
                                        textColor: .black,
                                        textAlignment: .center,
@@ -100,22 +95,23 @@ class SpaceDetailsViewController: UIViewController{
                                              axis: .vertical,
                                              distribution: .fillEqually)
         
-        NSLayoutConstraint.activate([spaceImagesOne.heightAnchor.constraint(equalTo: thumbnailStackView.heightAnchor, multiplier: 0.5),
-                                     spaceImagesOne.widthAnchor.constraint(equalTo: thumbnailStackView.widthAnchor, multiplier: 0.3),
-                                     spaceImagesTwo.heightAnchor.constraint(equalTo: thumbnailStackView.heightAnchor, multiplier: 0.03),
-                                     spaceImagesTwo.widthAnchor.constraint(equalTo: thumbnailStackView.widthAnchor, multiplier: 0.5)])
+        NSLayoutConstraint.activate([spaceImagesOne.heightAnchor.constraint(equalTo: thumbnailStackView.heightAnchor, multiplier: 0.47),
+                                     spaceImagesOne.widthAnchor.constraint(equalTo: thumbnailStackView.widthAnchor, multiplier: 0.9),
+                                     spaceImagesTwo.heightAnchor.constraint(equalTo: thumbnailStackView.heightAnchor, multiplier: 0.47),
+                                     spaceImagesTwo.widthAnchor.constraint(equalTo: thumbnailStackView.widthAnchor, multiplier: 0.9)])
         
     }
     
     fileprivate func setUpGetDirectionsButton(){
         
-        getDirectionsButton = CustomButton(title: "Directions",
-                                           fontSize: 12,
+        getDirectionsButton = CustomButton(title: "Get Directions",
+                                           fontSize: 19,
                                            titleColor: .white,
                                            target: self,
                                            action: #selector(directionsButtonTapped),
                                            event: .touchUpInside)
         
+        getDirectionsButton.newLayerColor = .black
         getDirectionsButton.layer.cornerRadius = 15
         getDirectionsButton.layer.shadowRadius = 1
         getDirectionsButton.layer.masksToBounds = true
@@ -136,15 +132,17 @@ class SpaceDetailsViewController: UIViewController{
                                      mainStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
                                      mainStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
                                      mainStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+                                     mainStackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.95),
+                                     mainStackView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.95),
                                      spaceNameLabel.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.09),
-                                     isOpenAndWifiStackView.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.2),
-                                     isOpenAndWifiStackView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.2),
-                                     phoneNumberLabel.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.2),
-                                     phoneNumberLabel.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.2),
-                                     thumbnailStackView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.3),
-                                     thumbnailStackView.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.2),
-                                     getDirectionsButton.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.02),
-                                     getDirectionsButton.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.3)])
+                                     isOpenAndWifiStackView.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.1),
+                                     isOpenAndWifiStackView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.3),
+                                     phoneNumberLabel.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.38),
+                                     phoneNumberLabel.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.1),
+                                     thumbnailStackView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.6),
+                                     thumbnailStackView.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.5),
+                                     getDirectionsButton.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.5),
+                                     getDirectionsButton.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.05)])
     }
     
     
