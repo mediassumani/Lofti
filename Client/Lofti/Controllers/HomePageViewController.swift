@@ -70,6 +70,8 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
                     let distance = round((userLocation.distance(from: spaceLocation) / 1609.344) * 100) / 100
                     
                     space.distance = distance
+                    space.latitude = unwrappedCoordinates.latitude
+                    space.longitude = unwrappedCoordinates.longitude
                     self.spaces.append(space)
                     dispatchGroup.leave()
                 })

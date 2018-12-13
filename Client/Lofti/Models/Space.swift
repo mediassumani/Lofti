@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreLocation
 
 struct Spaces: Decodable{
     let businesses: [Space]
@@ -16,7 +17,7 @@ struct Spaces: Decodable{
 
 struct OperatingHour: Decodable{
     
-    let is_open_now: Bool
+    var is_open_now: Bool
 }
 
 class Space: Decodable{
@@ -27,7 +28,9 @@ class Space: Decodable{
     let image_url: String
     let location: Address
     var distance: Double?
-    let hours: [OperatingHour]?
+    var hours: [OperatingHour]?
+    var latitude: CLLocationDegrees?
+    var longitude: CLLocationDegrees?
 }
 
 

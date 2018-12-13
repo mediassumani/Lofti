@@ -8,83 +8,159 @@
 
 import Foundation
 import UIKit
+import CoreLocation
+import MapKit
 
 
-class SpaceDetailsViewController: UIViewController, SpaceDelegate{
+class SpaceDetailsViewController: UIViewController{
     
     var mainStackView = CustomStackView()
-    var completionHandler: ((String) -> String)?
+    var isOpenAndWifiStackView = CustomStackView()
+    var thumbnailStackView = CustomStackView()
+    var spaceNameLabel = CustomLabel()
+    var isOpenLabel = UILabel()
+    var phoneNumberLabel = CustomLabel()
+    var getDirectionsButton = CustomButton()
+    var wifiImage = UIImageView(image: UIImage(named: "wifi"))
+    var spaceImagesOne = UIImageView(image: UIImage(named: "wework_one"))
+    var spaceImagesTwo = UIImageView(image: UIImage(named: "wework_two"))
     var space: Space?
     let homepage = HomePageViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
         view.backgroundColor = .white
-        setUpLabels()
-        setUpMainStackView()
-        //homepage.spaceDelegate = self
-        
+
+        setUpSpaceNameLabel()
+        setUpIsOpenLabel()
+        setUpThuumbnails()
+        setUpPhoneNumberLabel()
+        setUpGetDirectionsButton()
+        mainStakViewAutoLayout()
     }
+    
 
     
     //USER INTERFACE
     
+    fileprivate func setUpSpaceNameLabel(){
+        
+        spaceNameLabel = CustomLabel(fontSize: 22,
+                                     text: space?.name ?? "Unknown",
+                                     textColor: .black,
+                                     textAlignment: .center,
+                                     fontName: "HelveticaNeue-Bold")
+        
+    }
     
-    // The textview to show the name of the space
-    private let spaceNameTextView: UITextView = {
-        let textView = UITextView()
-        textView.textAlignment = .center
-        textView.isEditable = false
-        textView.isScrollEnabled = false
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        return textView
-    }()
+    fileprivate func setUpIsOpenLabel(){
+
+        isOpenAndWifiStackView = CustomStackView(subviews: [isOpenLabel, wifiImage],
+                                        alignment: .center,
+                                        axis: .horizontal,
+                                        distribution: .fillEqually)
+        
+        if space?.hours?.first?.is_open_now == true{
+            
+            isOpenLabel.text = "Open"
+            isOpenLabel.textColor = .blue
+            isOpenLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 19)
+        }else{
+            
+            isOpenLabel.text = "Closed"
+            isOpenLabel.textColor = .red
+            isOpenLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 19)
+        }
+        
+        NSLayoutConstraint.activate([isOpenLabel.heightAnchor.constraint(equalTo: isOpenAndWifiStackView.heightAnchor, multiplier: 0.4),
+                                     isOpenLabel.widthAnchor.constraint(equalTo: isOpenAndWifiStackView.widthAnchor, multiplier: 0.6),
+                                     wifiImage.heightAnchor.constraint(equalTo: isOpenAndWifiStackView.heightAnchor, multiplier: 0.6),
+                                     wifiImage.widthAnchor.constraint(equalTo: isOpenAndWifiStackView.widthAnchor, multiplier: 0.3)])
+        
+    }
     
-    // The textview to show the renting price
-    private let phoneNumberTextView: UITextView = {
-        let textView = UITextView()
-        textView.isEditable = false
-        textView.isScrollEnabled = false
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        return textView
-    }()
+    fileprivate func setUpPhoneNumberLabel(){
+        
+        phoneNumberLabel = CustomLabel(fontSize: 19,
+                                       text: space?.phone ?? "No phone number",
+                                       textColor: .black,
+                                       textAlignment: .center,
+                                       fontName: "HelveticaNeue-Bold")
+    }
     
+    fileprivate func setUpThuumbnails(){
+        
+        thumbnailStackView = CustomStackView(subviews: [spaceImagesOne, spaceImagesTwo],
+                                             alignment: .center,
+                                             axis: .vertical,
+                                             distribution: .fillEqually)
+        
+        NSLayoutConstraint.activate([spaceImagesOne.heightAnchor.constraint(equalTo: thumbnailStackView.heightAnchor, multiplier: 0.47),
+                                     spaceImagesOne.widthAnchor.constraint(equalTo: thumbnailStackView.widthAnchor, multiplier: 0.9),
+                                     spaceImagesTwo.heightAnchor.constraint(equalTo: thumbnailStackView.heightAnchor, multiplier: 0.47),
+                                     spaceImagesTwo.widthAnchor.constraint(equalTo: thumbnailStackView.widthAnchor, multiplier: 0.9)])
+        
+    }
     
-    // The textview to show the time availability of the place
-    private let spaceLocation: UITextView = {
-        let textView = UITextView()
-        textView.isEditable = false
-        textView.isScrollEnabled = false
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        return textView
-    }()
-    
-    func passSpaceData(space: Space?) {
-        //self.space = space
-        print(self.space?.id)
+    fileprivate func setUpGetDirectionsButton(){
+        
+        getDirectionsButton = CustomButton(title: "Get Directions",
+                                           fontSize: 19,
+                                           titleColor: .white,
+                                           target: self,
+                                           action: #selector(directionsButtonTapped),
+                                           event: .touchUpInside)
+        
+        getDirectionsButton.newLayerColor = .black
+        getDirectionsButton.layer.cornerRadius = 15
+        getDirectionsButton.layer.shadowRadius = 1
+        getDirectionsButton.layer.masksToBounds = true
+        getDirectionsButton.clipsToBounds = true
     }
     
     
-    
-    
-    fileprivate func setUpLabels(){
+    fileprivate func mainStakViewAutoLayout(){
         
-        spaceNameTextView.text = space?.name ?? "Unknown"
-        spaceLocation.text = space?.location.address1 ?? "Unknown"
-        phoneNumberTextView.text = space?.phone ?? "Unknkown"
-    }
-    
-    fileprivate func setUpMainStackView(){
+        mainStackView = CustomStackView(subviews: [spaceNameLabel,isOpenAndWifiStackView,phoneNumberLabel,thumbnailStackView,getDirectionsButton],
+                                        alignment: .center,
+                                        axis: .vertical,
+                                        distribution: .fill)
         
-        mainStackView = CustomStackView(subviews: [spaceNameTextView, phoneNumberTextView, spaceLocation], alignment: .center, axis: .vertical, distribution: .fillEqually)
         view.addSubview(mainStackView)
+        
         NSLayoutConstraint.activate([mainStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-                                     mainStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
                                      mainStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-                                     mainStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)])
+                                     mainStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+                                     mainStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+                                     mainStackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.95),
+                                     mainStackView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.95),
+                                     spaceNameLabel.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.09),
+                                     isOpenAndWifiStackView.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.1),
+                                     isOpenAndWifiStackView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.3),
+                                     phoneNumberLabel.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.38),
+                                     phoneNumberLabel.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.1),
+                                     thumbnailStackView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.6),
+                                     thumbnailStackView.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.5),
+                                     getDirectionsButton.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.5),
+                                     getDirectionsButton.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.05)])
+    }
+    
+    
+    
+    @objc fileprivate func directionsButtonTapped(){
+        
+        
+        guard let longitude = space?.longitude, let latitude = space?.latitude else {return}
+        
+        let coordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        let placeMark = MKPlacemark(coordinate: coordinates)
+        let regionSpan = MKCoordinateSpan(latitudeDelta: latitude, longitudeDelta: longitude)
+        let mapItems = MKMapItem(placemark: placeMark)
+        let options = [MKLaunchOptionsMapCenterKey: NSValue(mkCoordinateSpan: regionSpan), MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan)]
+        
+        mapItems.name = space?.name
+        mapItems.openInMaps(launchOptions: options)
     }
     
 }
