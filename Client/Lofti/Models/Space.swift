@@ -16,7 +16,7 @@ struct Spaces: Decodable{
 
 struct OperatingHour: Decodable{
     
-    let is_open_now: Bool
+    var is_open_now: Bool
 }
 
 class Space: Decodable{
