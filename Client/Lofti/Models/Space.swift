@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreLocation
 
 struct Spaces: Decodable{
     let businesses: [Space]
@@ -28,6 +29,8 @@ class Space: Decodable{
     let location: Address
     var distance: Double?
     var hours: [OperatingHour]?
+    var latitude: CLLocationDegrees?
+    var longitude: CLLocationDegrees?
 }
 
 

@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import CoreLocation
+import MapKit
 
 
 class SpaceDetailsViewController: UIViewController{
@@ -22,7 +24,6 @@ class SpaceDetailsViewController: UIViewController{
     var wifiImage = UIImageView(image: UIImage(named: "wifi"))
     var spaceImagesOne = UIImageView(image: UIImage(named: "wework_one"))
     var spaceImagesTwo = UIImageView(image: UIImage(named: "wework_two"))
-    var completionHandler: ((String) -> String)?
     var space: Space?
     let homepage = HomePageViewController()
     
@@ -149,36 +150,18 @@ class SpaceDetailsViewController: UIViewController{
     
     @objc fileprivate func directionsButtonTapped(){
         
-//        let regionSpan = MKCoordinateSpan(latitudeDelta: location.latitude, longitudeDelta: location.longitude)
-//
-//        let options = [MKLaunchOptionsMapCenterKey: NSValue(mkCoordinateSpan: regionSpan), MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan)]
-//
-//        // Aesthetic add in
-//        let placeMark = MKPlacemark(coordinate: location) // pin
-//        let mapItems = MKMapItem(placemark: placeMark)  // the bottom two is for the name showing up
-//        mapItems.name = DataObject.dataArray[row].name  //
-//
-//        mapItems.openInMaps(launchOptions: options)     // function that open maps
-//        print(location)
         
+        guard let longitude = space?.longitude, let latitude = space?.latitude else {return}
+        
+        let coordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        let placeMark = MKPlacemark(coordinate: coordinates)
+        let regionSpan = MKCoordinateSpan(latitudeDelta: latitude, longitudeDelta: longitude)
+        let mapItems = MKMapItem(placemark: placeMark)
+        let options = [MKLaunchOptionsMapCenterKey: NSValue(mkCoordinateSpan: regionSpan), MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan)]
+        
+        mapItems.name = space?.name
+        mapItems.openInMaps(launchOptions: options)
     }
-    
-    fileprivate func setUpLabels(){
-
-        spaceNameLabel.text = space?.name ?? "Unknown"
-//        spaceLocation.text = space?.location.address1 ?? "Unknown"
-//        phoneNumberTextView.text = space?.phone ?? "Unknkown"
-    }
-    
-//    fileprivate func setUpMainStackView(){
-//
-//        mainStackView = CustomStackView(subviews: [spaceNameTextView, phoneNumberTextView, spaceLocation], alignment: .center, axis: .vertical, distribution: .fillEqually)
-//        view.addSubview(mainStackView)
-//        NSLayoutConstraint.activate([mainStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-//                                     mainStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-//                                     mainStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-//                                     mainStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)])
-//    }
     
 }
 
