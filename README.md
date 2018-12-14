@@ -15,7 +15,7 @@ Lofti is an ios application that can seamlessly and smartly find study and worki
 
 ## License
 
-This project is licenced under the MIT License - see the <a href="https://github.com/yveslym/remindMe/blob/dev/LICENSE">LICENSE</a> file for details
+This project is licenced under the MIT License - see the <a href="https://github.com/MediBoss/Lofti/blob/master/LICENSE">LICENSE</a> file for details
 
 ## Acknowledgments
 
