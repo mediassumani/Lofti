@@ -28,7 +28,6 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
     override func loadView() {
         super.loadView()
         view.addSubview(collectionView)
-        
         getUserCoordinates()
     }
     
@@ -90,7 +89,7 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
         
         // Styling the home page title
-        titleLabel.text = "Nearby Spaces"
+        titleLabel.text = "Explore Nearby Spaces"
         titleLabel.textColor = .black
         titleLabel.font = UIFont(name: "HelveticaNeue-Light", size: 25)
         titleLabel.textAlignment = .left

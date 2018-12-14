@@ -64,7 +64,7 @@ class SpaceDetailsViewController: UIViewController{
         if space?.hours?.first?.is_open_now == true{
             
             isOpenLabel.text = "Open"
-            isOpenLabel.textColor = .blue
+            isOpenLabel.textColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
             isOpenLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 19)
         }else{
             

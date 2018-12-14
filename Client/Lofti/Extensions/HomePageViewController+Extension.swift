@@ -23,6 +23,7 @@ extension HomePageViewController: UICollectionViewDataSource, UICollectionViewDe
             
             space.longitude = selectedSpace.longitude
             space.latitude = selectedSpace.latitude
+            selectedSpace.hours = space.hours
             destinationVC.space = selectedSpace
             DispatchQueue.main.async {
                 self.navigationController?.pushViewController(destinationVC, animated: true)
