@@ -29,3 +29,4 @@ This project is licenced under the MIT License - see the <a href="https://github
 - [ ] Improve UX based on TestFlight testers feedbacks
 - [ ] Implement user preferences algorithm
 - [ ] Implement smart query
+- [ ] Review project rubric
