@@ -30,3 +30,4 @@ This project is licenced under the MIT License - see the <a href="https://github
 - [ ] Implement user preferences algorithm
 - [ ] Implement smart query
 - [ ] Review project rubric
+- [ ] Improve Home Page
