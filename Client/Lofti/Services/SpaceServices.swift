@@ -45,8 +45,9 @@ struct SpaceServices{
     }
     
     
-    
-    
+    /* Return a single space object requested from the Yelp API
+     @param completion ->Result: The list of spaces objects to be returned after the method call
+     */
     static func show(id: String, completion: @escaping (Space) -> Void){
         
         let baseUrl = URL(string: "https://api.yelp.com/v3/businesses/\(id)")
