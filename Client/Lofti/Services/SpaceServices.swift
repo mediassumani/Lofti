@@ -15,10 +15,10 @@ struct SpaceServices{
      */
     static func index(longitude: Double, latitude: Double, completion: @escaping([Space]) -> Void){
         
-        let baseUrl = URL(string: "https://api.yelp.com/v3/businesses/search?latitude=\(latitude)&longitude=\(longitude)\(Constants.INDEX_URL_CATEGORIES_PARAM)")
+        let baseUrl = URL(string: "https://api.yelp.com/v3/businesses/search?latitude=\(latitude)&longitude=\(longitude)\(Constant.INDEX_URL_CATEGORIES_PARAM)")
         
         var request = URLRequest(url: baseUrl!)
-        request.setValue("Bearer \(Constants.YELP_API_KEY)", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \(Constant.YELP_API_KEY)", forHTTPHeaderField: "Authorization")
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if error == nil{
@@ -52,7 +52,7 @@ struct SpaceServices{
         
         let baseUrl = URL(string: "https://api.yelp.com/v3/businesses/\(id)")
         var request = URLRequest(url: baseUrl!)
-        request.setValue("Bearer \(Constants.YELP_API_KEY)", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \(Constant.YELP_API_KEY)", forHTTPHeaderField: "Authorization")
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             
