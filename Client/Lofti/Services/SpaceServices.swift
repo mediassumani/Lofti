@@ -15,7 +15,7 @@ struct SpaceServices{
      */
     static func index(longitude: Double, latitude: Double, completion: @escaping([Space]) -> Void){
         
-        let baseUrl = URL(string: "https://api.yelp.com/v3/businesses/search?latitude=\(latitude)&longitude=\(longitude)&categories=libraries,communitycenters,collegeuniv")
+        let baseUrl = URL(string: "https://api.yelp.com/v3/businesses/search?latitude=\(latitude)&longitude=\(longitude)\(Constants.INDEX_URL_CATEGORIES_PARAM)")
         
         var request = URLRequest(url: baseUrl!)
         request.setValue("Bearer \(Constants.YELP_API_KEY)", forHTTPHeaderField: "Authorization")
