@@ -40,6 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      
         window = UIWindow(frame: UIScreen.main.bounds)
         let layoutFlow = UICollectionViewFlowLayout()
+        layoutFlow.scrollDirection = .vertical
         let controller = UserPreferencesViewController(collectionViewLayout: layoutFlow)
         let navigationController = UINavigationController(rootViewController: controller)
         window?.makeKeyAndVisible()

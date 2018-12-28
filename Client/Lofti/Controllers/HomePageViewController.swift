@@ -40,7 +40,7 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
     }
     
     
-    fileprivate func getUserCoordinates(){
+    private func getUserCoordinates(){
         self.locationManager.requestAlwaysAuthorization()
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
@@ -52,7 +52,7 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
     
     
     
-    internal func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let dispatchGroup = DispatchGroup()
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else {return}
@@ -84,7 +84,7 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
     
     
     /// Sets up home page title and nav bar items
-    fileprivate func setUpNavigationBarItems(){
+    private func setUpNavigationBarItems(){
         
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
         
@@ -105,7 +105,7 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
         navigationController?.navigationBar.alpha = 0.0
     }
 
-    fileprivate func anchorCollectionView(){
+    private func anchorCollectionView(){
         
         collectionView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: false)
     }

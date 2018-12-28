@@ -15,6 +15,7 @@ class UserPreferencesViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         layoutCellElements()
+        backgroundColor = .white
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -24,9 +25,14 @@ class UserPreferencesViewCell: UICollectionViewCell {
     
     private func layoutCellElements(){
         
-        preferenceNameLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.5)
-        preferenceNameLabel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5)
-        preferenceNameLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
-        preferenceNameLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
+        addSubview(preferenceNameLabel)
+        NSLayoutConstraint.activate([
+            
+            preferenceNameLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.5),
+            preferenceNameLabel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5),
+            preferenceNameLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            preferenceNameLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            
+            ])
     }
 }
