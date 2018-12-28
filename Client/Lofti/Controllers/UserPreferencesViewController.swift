@@ -51,5 +51,3 @@ class UserPreferencesViewController: UICollectionViewController, UICollectionVie
     }
     
 }
-
-

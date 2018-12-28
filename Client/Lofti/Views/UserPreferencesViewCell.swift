@@ -15,6 +15,7 @@ class UserPreferencesViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         layoutCellElements()
+        //styleCell()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -22,6 +23,13 @@ class UserPreferencesViewCell: UICollectionViewCell {
     }
     
     
+    
+    private func styleCell(){
+        
+        self.layer.cornerRadius = 10
+        self.layer.borderWidth = 1
+        self.layer.masksToBounds = true
+    }
     private func layoutCellElements(){
         
         preferenceNameLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.5)
