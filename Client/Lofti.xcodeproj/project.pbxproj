@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		4629A7F1E36B28C73791B4C6 /* Pods_Lofti.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00550652662810EF30C8D2D8 /* Pods_Lofti.framework */; };
-		B816800E21A5CA990042D139 /* YelpSortMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B816800D21A5CA990042D139 /* YelpSortMode.swift */; };
 		B81BB00821AE5E5F003BD48D /* HomePageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81BB00721AE5E5F003BD48D /* HomePageCollectionViewCell.swift */; };
 		B81E9E6D21B8893100990894 /* CustomViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81E9E6C21B8893100990894 /* CustomViews.swift */; };
 		B81E9E6F21B8934100990894 /* HomePageViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81E9E6E21B8934100990894 /* HomePageViewController+Extension.swift */; };
 		B81E9E7121B8974000990894 /* LocationServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81E9E7021B8974000990894 /* LocationServices.swift */; };
 		B846FD0721A4B46F0034DFB4 /* SpaceServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = B846FD0621A4B46F0034DFB4 /* SpaceServices.swift */; };
+		B8632D2321D8289700FADA49 /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8632D2221D8289700FADA49 /* UIButton+Extensions.swift */; };
 		B86867FE21D578CF00B869DC /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86867FD21D578CF00B869DC /* Constant.swift */; };
 		B868680021D57ABC00B869DC /* UserPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86867FF21D57ABC00B869DC /* UserPreferencesViewController.swift */; };
 		B868680221D57F3100B869DC /* UserPreferencesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B868680121D57F3100B869DC /* UserPreferencesViewCell.swift */; };
@@ -36,12 +36,12 @@
 
 /* Begin PBXFileReference section */
 		00550652662810EF30C8D2D8 /* Pods_Lofti.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lofti.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B816800D21A5CA990042D139 /* YelpSortMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpSortMode.swift; sourceTree = "<group>"; };
 		B81BB00721AE5E5F003BD48D /* HomePageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageCollectionViewCell.swift; sourceTree = "<group>"; };
 		B81E9E6C21B8893100990894 /* CustomViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViews.swift; sourceTree = "<group>"; };
 		B81E9E6E21B8934100990894 /* HomePageViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomePageViewController+Extension.swift"; sourceTree = "<group>"; };
 		B81E9E7021B8974000990894 /* LocationServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServices.swift; sourceTree = "<group>"; };
 		B846FD0621A4B46F0034DFB4 /* SpaceServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceServices.swift; sourceTree = "<group>"; };
+		B8632D2221D8289700FADA49 /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
 		B86867FD21D578CF00B869DC /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		B86867FF21D57ABC00B869DC /* UserPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesViewController.swift; sourceTree = "<group>"; };
 		B868680121D57F3100B869DC /* UserPreferencesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesViewCell.swift; sourceTree = "<group>"; };
@@ -145,7 +145,6 @@
 			children = (
 				B8866D6E218BE801002B7CDF /* Space.swift */,
 				B8866D73218BE911002B7CDF /* Address.swift */,
-				B816800D21A5CA990042D139 /* YelpSortMode.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -189,6 +188,7 @@
 				B871289821AC828A00DBF541 /* Int+Extensions.swift */,
 				B871289A21AC82C100DBF541 /* UIColor+Extensions.swift */,
 				B81E9E6E21B8934100990894 /* HomePageViewController+Extension.swift */,
+				B8632D2221D8289700FADA49 /* UIButton+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -322,8 +322,8 @@
 				B81E9E6D21B8893100990894 /* CustomViews.swift in Sources */,
 				B871289521AC810500DBF541 /* String+Extensions.swift in Sources */,
 				B846FD0721A4B46F0034DFB4 /* SpaceServices.swift in Sources */,
-				B816800E21A5CA990042D139 /* YelpSortMode.swift in Sources */,
 				B88BA17321921F89009C56DC /* UIView+Extension.swift in Sources */,
+				B8632D2321D8289700FADA49 /* UIButton+Extensions.swift in Sources */,
 				B868680221D57F3100B869DC /* UserPreferencesViewCell.swift in Sources */,
 				B8866D5C218BE5B8002B7CDF /* HomePageViewController.swift in Sources */,
 				B8866D5A218BE5B8002B7CDF /* AppDelegate.swift in Sources */,

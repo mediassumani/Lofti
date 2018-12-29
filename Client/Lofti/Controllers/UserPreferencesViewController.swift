@@ -13,6 +13,7 @@ class UserPreferencesViewController: UICollectionViewController, UICollectionVie
     
     private let mainStackView = CustomStackView()
     private var saveButton = CustomButton()
+    private var preferences = [String]()
     
     
     override func viewDidLoad() {
@@ -22,8 +23,6 @@ class UserPreferencesViewController: UICollectionViewController, UICollectionVie
         styleSaveButton()
         mainAutoLayout()
         setUpNavigationBarItems()
-        
-        
     }
     
     private func configureCollectionView(){
@@ -57,7 +56,15 @@ class UserPreferencesViewController: UICollectionViewController, UICollectionVie
     
     
     @objc private func saveButtonIsTapped(_ sender: UIButton){
-        print("save button is pressed")
+        
+        let destinationVC = HomePageViewController()
+        sender.pulsate()
+    
+        preferences.forEach { (preference) in
+            Constant.INDEX_URL_CATEGORIES_PARAM += "\((preference.lowercased()).replacingOccurrences(of: " ", with: ""))"
+        }
+        
+        navigationController?.pushViewController(destinationVC, animated: true)
     }
     
     private func styleSaveButton(){
@@ -83,13 +90,14 @@ class UserPreferencesViewController: UICollectionViewController, UICollectionVie
         NSLayoutConstraint.activate([
             bottomControlsStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             bottomControlsStackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7),
+            bottomControlsStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
             bottomControlsStackView.heightAnchor.constraint(equalToConstant: 50)
             ])
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 6
+        return Constant.PAUSIBLE_PREFERENCES.count
     }
     
     
@@ -97,10 +105,25 @@ class UserPreferencesViewController: UICollectionViewController, UICollectionVie
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.userPreferencesCellID, for: indexPath) as! UserPreferencesViewCell
         
-//        cell.preferenceNameLabel.text =
-        
+        cell.preferenceNameLabel.text = Constant.PAUSIBLE_PREFERENCES[indexPath.row]
         return cell
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let selectedCell = collectionView.cellForItem(at: indexPath)
+        if selectedCell?.isSelected == true{
+            
+            let userChoice = Constant.PAUSIBLE_PREFERENCES[indexPath.row]
+            selectedCell?.backgroundColor = .gray
+            preferences.append("\(userChoice)")
+    
+        }else{
+            selectedCell?.backgroundColor = .white
+            print("Cell at position \(indexPath.row) is deselected")
+        }
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
