@@ -19,14 +19,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        showUserPreferencesPage()
-        //configureUserLocation()
+        checkIfFirstTimeUser()
         FirebaseApp.configure()
         
         return true
     }
+    
+    private func checkIfFirstTimeUser(){
+        
+        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+        if launchedBefore{
+            
+            showHomePage()
+            
+        }else{
+            
+            UserDefaults.standard.set(true, forKey: "launchedBefore")
+            showUserPreferencesPage()
+        }
+    }
 
-    fileprivate func showHomePage(){
+    private func showHomePage(){
         
         window = UIWindow(frame: UIScreen.main.bounds)
         let controller = HomePageViewController()
@@ -36,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
-    fileprivate func showUserPreferencesPage(){
+    private func showUserPreferencesPage(){
      
         window = UIWindow(frame: UIScreen.main.bounds)
         let layoutFlow = UICollectionViewFlowLayout()
