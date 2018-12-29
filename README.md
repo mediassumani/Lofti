@@ -1,6 +1,6 @@
 # Lofti
 
-Lofti is an ios application that can seamlessly and smartly find study and working spaces nearby that conforms to the user personal working and study preferences.Lofti is carefully developed and targeted for college students, high schools students, professional workers, and individual who like to work or study out of their office/home.
+Lofti is an ios application that can seamlessly find study and working spaces nearby based on the user's preferences. It is carefully developed and targeted for college students, high schools students, professional workers, and individual who like to work or study out of their office/home.
 
 ## Author(s)
 
@@ -31,3 +31,4 @@ This project is licenced under the MIT License - see the <a href="https://github
 - [ ] Implement smart query
 - [ ] Review project rubric
 - [ ] Improve Home Page
+- [ ] Add User Onboarding
