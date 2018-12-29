@@ -13,7 +13,7 @@ class UserPreferencesViewController: UICollectionViewController, UICollectionVie
     
     private let mainStackView = CustomStackView()
     private var saveButton = CustomButton()
-    private var preferences = [Preference]()
+    private var preferences = [String]()
     
     
     override func viewDidLoad() {
@@ -56,7 +56,15 @@ class UserPreferencesViewController: UICollectionViewController, UICollectionVie
     
     
     @objc private func saveButtonIsTapped(_ sender: UIButton){
+        
+        let destinationVC = HomePageViewController()
         sender.pulsate()
+    
+        preferences.forEach { (preference) in
+            Constant.INDEX_URL_CATEGORIES_PARAM += "\((preference.lowercased()).replacingOccurrences(of: " ", with: ""))"
+        }
+        
+        navigationController?.pushViewController(destinationVC, animated: true)
     }
     
     private func styleSaveButton(){
@@ -105,8 +113,11 @@ class UserPreferencesViewController: UICollectionViewController, UICollectionVie
         
         let selectedCell = collectionView.cellForItem(at: indexPath)
         if selectedCell?.isSelected == true{
+            
+            let userChoice = Constant.PAUSIBLE_PREFERENCES[indexPath.row]
             selectedCell?.backgroundColor = .gray
-            print("Cell at position \(indexPath.row) is selected")
+            preferences.append("\(userChoice)")
+    
         }else{
             selectedCell?.backgroundColor = .white
             print("Cell at position \(indexPath.row) is deselected")

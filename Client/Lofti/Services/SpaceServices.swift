@@ -17,6 +17,7 @@ struct SpaceServices{
         
         let baseUrl = URL(string: "https://api.yelp.com/v3/businesses/search?latitude=\(latitude)&longitude=\(longitude)\(Constant.INDEX_URL_CATEGORIES_PARAM)")
         
+        
         var request = URLRequest(url: baseUrl!)
         request.setValue("Bearer \(Constant.YELP_API_KEY)", forHTTPHeaderField: "Authorization")
         
