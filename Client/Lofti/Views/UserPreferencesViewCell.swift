@@ -10,7 +10,7 @@ import UIKit
 
 class UserPreferencesViewCell: UICollectionViewCell {
     
-    let preferenceNameLabel = CustomLabel(fontSize: 18, text: "Library", textColor: .black, textAlignment: .center, fontName: "Helvetica-Light")
+    let preferenceNameLabel = CustomLabel(fontSize: 18, text: "", textColor: .black, textAlignment: .center, fontName: "Helvetica-Light")
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,8 +38,8 @@ class UserPreferencesViewCell: UICollectionViewCell {
         addSubview(preferenceNameLabel)
         
         NSLayoutConstraint.activate([
-            preferenceNameLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.5),
-            preferenceNameLabel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5),
+            preferenceNameLabel.widthAnchor.constraint(equalTo: widthAnchor),
+            preferenceNameLabel.heightAnchor.constraint(equalTo: heightAnchor),
             preferenceNameLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             preferenceNameLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
             ])

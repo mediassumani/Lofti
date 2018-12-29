@@ -13,6 +13,7 @@ class UserPreferencesViewController: UICollectionViewController, UICollectionVie
     
     private let mainStackView = CustomStackView()
     private var saveButton = CustomButton()
+    private var preferences = [Preference]()
     
     
     override func viewDidLoad() {
@@ -83,13 +84,14 @@ class UserPreferencesViewController: UICollectionViewController, UICollectionVie
         NSLayoutConstraint.activate([
             bottomControlsStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             bottomControlsStackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7),
+            bottomControlsStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
             bottomControlsStackView.heightAnchor.constraint(equalToConstant: 50)
             ])
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 6
+        return Constant.PAUSIBLE_PREFERENCES.count
     }
     
     
@@ -97,10 +99,22 @@ class UserPreferencesViewController: UICollectionViewController, UICollectionVie
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.userPreferencesCellID, for: indexPath) as! UserPreferencesViewCell
         
-//        cell.preferenceNameLabel.text =
-        
+        cell.preferenceNameLabel.text = Constant.PAUSIBLE_PREFERENCES[indexPath.row]
         return cell
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let selectedCell = collectionView.cellForItem(at: indexPath)
+        if selectedCell?.isSelected == true{
+            selectedCell?.backgroundColor = .gray
+            print("Cell at position \(indexPath.row) is selected")
+        }else{
+            selectedCell?.backgroundColor = .white
+            print("Cell at position \(indexPath.row) is deselected")
+        }
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,

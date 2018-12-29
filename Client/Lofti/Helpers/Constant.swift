@@ -16,5 +16,6 @@ struct Constant{
     static let YELP_CLIENT_ID: String = "_GWT2CXiyyxccGtUChLa6Q"
     static let SEARCH_LIMIT = 10
     static let INDEX_URL_CATEGORIES_PARAM: String = "&categories=libraries,coffeeshops,sharedofficespaces,collegeunive,communitycenters"
+    static let PAUSIBLE_PREFERENCES = ["Library", "Coffee Shop", "Book Store", "Shared Office", "Park", "Comunity Center"]
 }
 
