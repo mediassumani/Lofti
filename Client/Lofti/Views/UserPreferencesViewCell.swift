@@ -14,7 +14,9 @@ class UserPreferencesViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         layoutCellElements()
+        styleCell()
         backgroundColor = .white
     }
     
@@ -26,20 +28,20 @@ class UserPreferencesViewCell: UICollectionViewCell {
     
     private func styleCell(){
         
-        self.layer.cornerRadius = 10
-        self.layer.borderWidth = 1
+        self.layer.cornerRadius = 15
+        self.clipsToBounds = true
         self.layer.masksToBounds = true
+        self.layer.shadowRadius = 1
     }
     private func layoutCellElements(){
         
         addSubview(preferenceNameLabel)
+        
         NSLayoutConstraint.activate([
-            
             preferenceNameLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.5),
             preferenceNameLabel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5),
             preferenceNameLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            preferenceNameLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            
+            preferenceNameLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
             ])
     }
 }

@@ -10,19 +10,25 @@ import UIKit
 
 class UserPreferencesViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
+    
+    private let mainStackView = CustomStackView()
+    private var saveButton = CustomButton()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         configureCollectionView()
-        anchorCollectionView()
+        styleSaveButton()
+        mainAutoLayout()
         setUpNavigationBarItems()
+        
         
     }
     
     private func configureCollectionView(){
         
-        collectionView.backgroundColor = .green
+        collectionView.backgroundColor = .lightGray
         collectionView.register(UserPreferencesViewCell.self, forCellWithReuseIdentifier: Constant.userPreferencesCellID)
     }
     
@@ -35,7 +41,7 @@ class UserPreferencesViewController: UICollectionViewController, UICollectionVie
         // Styling the home page title
         titleLabel.text = "Select your preferences"
         titleLabel.textColor = .black
-        titleLabel.font = UIFont(name: "HelveticaNeue-Light", size: 25)
+        titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 25)
         titleLabel.textAlignment = .left
         titleLabel.backgroundColor = .white
         titleLabel.adjustsFontSizeToFitWidth = true
@@ -49,15 +55,43 @@ class UserPreferencesViewController: UICollectionViewController, UICollectionVie
         navigationController?.navigationBar.alpha = 0.0
     }
     
-    private func anchorCollectionView(){
+    
+    @objc private func saveButtonIsTapped(_ sender: UIButton){
+        print("save button is pressed")
+    }
+    
+    private func styleSaveButton(){
         
-        collectionView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: false)
+        saveButton = CustomButton(title: "Done", fontSize: 20, titleColor: .black, target: self, action: #selector(saveButtonIsTapped(_:)), event: .touchUpInside)
+        
+        saveButton.backgroundColor = .black
+        saveButton.layer.cornerRadius = 15
+        saveButton.clipsToBounds = true
+        saveButton.layer.masksToBounds = true
+        saveButton.layer.shadowRadius = 1
+    }
+    
+    
+    private func mainAutoLayout(){
+        
+        let bottomControlsStackView = UIStackView(arrangedSubviews: [saveButton])
+        bottomControlsStackView.translatesAutoresizingMaskIntoConstraints = false
+        bottomControlsStackView.axis = .horizontal
+        bottomControlsStackView.distribution = .fillEqually
+        view.addSubview(bottomControlsStackView)
+        
+        NSLayoutConstraint.activate([
+            bottomControlsStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            bottomControlsStackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7),
+            bottomControlsStackView.heightAnchor.constraint(equalToConstant: 50)
+            ])
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return 6
     }
+    
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         

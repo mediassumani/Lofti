@@ -119,7 +119,6 @@ class CustomButton: UIButton{
         self.addTarget(target, action: action, for: event)
         self.translatesAutoresizingMaskIntoConstraints = false
         self.isEnabled = true
-        self.backgroundColor = UIColor.white
         
     }
     var shadowLayer: CAShapeLayer!
