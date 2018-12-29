@@ -2,7 +2,9 @@
 
 Lofti is an ios application that can seamlessly find study and working spaces nearby based on the user's preferences. It is carefully developed and targeted for college students, high schools students, professional workers, and individual who like to work or study out of their office/home.
 
-## Author(s)
+## Features
+
+## Engineer(s)
 
 * **Medi Assumani** - *iOS Developer and Founder*
 
@@ -15,13 +17,14 @@ Lofti is an ios application that can seamlessly find study and working spaces ne
 
 ## License
 
-This project is licenced under the MIT License - see the <a href="https://github.com/MediBoss/Lofti/blob/master/LICENSE">LICENSE</a> file for details
+This project is licenced under the Apache 2.0 License - see the <a href="https://github.com/MediBoss/Lofti/blob/master/LICENSE">LICENSE</a> file for details
 
 ## Acknowledgments
 
 * Hat tip to anyone who's code was used
 * My SPD instructor
 * Inspiration
+* Stack overflow
 
 ## ToDO
 
