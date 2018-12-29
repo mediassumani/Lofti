@@ -23,8 +23,6 @@ class UserPreferencesViewController: UICollectionViewController, UICollectionVie
         styleSaveButton()
         mainAutoLayout()
         setUpNavigationBarItems()
-        
-        
     }
     
     private func configureCollectionView(){
@@ -58,7 +56,7 @@ class UserPreferencesViewController: UICollectionViewController, UICollectionVie
     
     
     @objc private func saveButtonIsTapped(_ sender: UIButton){
-        print("save button is pressed")
+        sender.pulsate()
     }
     
     private func styleSaveButton(){
