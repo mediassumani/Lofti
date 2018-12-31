@@ -35,8 +35,8 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
         super.viewDidLoad()
         
         self.view.backgroundColor = .gray
-        //getUserCoordinates()
         setUpNavigationBarItems()
+        
     }
     
     
@@ -50,35 +50,12 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
     }
     
     
-    
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        let dispatchGroup = DispatchGroup()
+
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else {return}
         SpaceServices.index(longitude: locValue.longitude, latitude: locValue.latitude) { (spaces) in
-            
-            spaces.forEach({ (space) in
-                
-                dispatchGroup.enter()
-                GeoFence.addressToCoordinate("\(space.location.address1), \(space.location.city), \(space.location.state)", completion: { (coordinates) in
-                    
-                    guard let unwrappedCoordinates = coordinates else {return}
-                    let userLocation = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
-                    let spaceLocation = CLLocation(latitude: unwrappedCoordinates.latitude, longitude: unwrappedCoordinates.longitude)
-                    let distance = round((userLocation.distance(from: spaceLocation) / 1609.344) * 100) / 100
-                    
-                    space.distance = distance
-                    space.latitude = unwrappedCoordinates.latitude
-                    space.longitude = unwrappedCoordinates.longitude
-                    self.spaces.append(space)
-                    dispatchGroup.leave()
-                })
-                
-            })
-            dispatchGroup.notify(queue: .global(), execute: {
-                print("Done")
-            })
+
+            self.spaces = spaces
         }
     }
     

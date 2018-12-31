@@ -27,7 +27,7 @@ class Space: Decodable{
     let phone: String
     let image_url: String
     let location: Address
-    var distance: Double?
+    let distance: Double?
     var hours: [OperatingHour]?
     var latitude: CLLocationDegrees?
     var longitude: CLLocationDegrees?
