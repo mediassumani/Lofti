@@ -18,6 +18,7 @@ class UserPreferencesViewCell: UICollectionViewCell {
         layoutCellElements()
         styleCell()
         backgroundColor = .white
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
