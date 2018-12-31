@@ -36,11 +36,11 @@ class HomePageCollectionViewCell: UICollectionViewCell {
         super.prepareForReuse()
     }
     
-    
+    /// Adds data from the space model's properties onto the cell
     func configure(_ space: Space){
 
         spaceNameLabel.text =  space.name
-        spaceDistanceLabel.text = "\(space.distance!.convertDoubleToString()) miles away" ?? "No distance found"
+        spaceDistanceLabel.text = "\(round((space.distance! / 1609.344) * 100) / 100) miles away"
     }
     
     fileprivate func configureCellAutoLayout(){
