@@ -67,7 +67,7 @@ struct SpaceServices{
                     
                     do {
                         
-                        var space = try JSONDecoder().decode(Space.self, from: dataFromApi)
+                        let space = try JSONDecoder().decode(Space.self, from: dataFromApi)
                         completion(space)
                         
                     } catch let error{

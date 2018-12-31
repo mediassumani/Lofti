@@ -16,14 +16,13 @@ class SpaceDetailsViewController: UIViewController{
     
     var mainStackView = CustomStackView()
     var isOpenAndWifiStackView = CustomStackView()
-    var thumbnailStackView = CustomStackView()
+    var actionButtonsStackView = CustomStackView()
     var spaceNameLabel = CustomLabel()
     var isOpenLabel = UILabel()
-    var phoneNumberLabel = CustomLabel()
+    var currentWeatherLabel = CustomLabel()
     var getDirectionsButton = CustomButton()
+    var contactButton = CustomButton()
     var wifiImage = UIImageView(image: UIImage(named: "wifi"))
-    var spaceImagesOne = UIImageView(image: UIImage(named: "wework_one"))
-    var spaceImagesTwo = UIImageView(image: UIImage(named: "wework_two"))
     var space: Space?
     let homepage = HomePageViewController()
     
@@ -31,12 +30,13 @@ class SpaceDetailsViewController: UIViewController{
         super.viewDidLoad()
         
         view.backgroundColor = .white
-
+        
         setUpSpaceNameLabel()
         setUpIsOpenLabel()
-        setUpThuumbnails()
-        setUpPhoneNumberLabel()
+        setUpcurrentWeatherLabel()
+        setUpContactButton()
         setUpGetDirectionsButton()
+        setUpActionButtonsStack()
         mainStakViewAutoLayout()
     }
     
@@ -44,7 +44,7 @@ class SpaceDetailsViewController: UIViewController{
     
     //USER INTERFACE
     
-    fileprivate func setUpSpaceNameLabel(){
+    private func setUpSpaceNameLabel(){
         
         spaceNameLabel = CustomLabel(fontSize: 22,
                                      text: space?.name ?? "Unknown",
@@ -54,9 +54,21 @@ class SpaceDetailsViewController: UIViewController{
         
     }
     
-    fileprivate func setUpIsOpenLabel(){
-
-        isOpenAndWifiStackView = CustomStackView(subviews: [isOpenLabel, wifiImage],
+    private func setUpIsOpenLabel(){
+        
+        let wifiStatusLabel = CustomLabel(fontSize: 15,
+                                          text: "WIFI Available",
+                                          textColor: #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1),
+                                          textAlignment: .center,
+                                          fontName: "HelveticaNeue-Light")
+        
+        let wifiStack = CustomStackView(subviews: [wifiImage, wifiStatusLabel],
+                                        alignment: .center,
+                                        axis: .horizontal,
+                                        distribution: .fillEqually)
+        
+        
+        isOpenAndWifiStackView = CustomStackView(subviews: [isOpenLabel, wifiStack],
                                         alignment: .center,
                                         axis: .horizontal,
                                         distribution: .fillEqually)
@@ -65,64 +77,65 @@ class SpaceDetailsViewController: UIViewController{
             
             isOpenLabel.text = "Open"
             isOpenLabel.textColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
-            isOpenLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 19)
+            isOpenLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
         }else{
             
             isOpenLabel.text = "Closed"
             isOpenLabel.textColor = .red
-            isOpenLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 19)
+            isOpenLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
         }
         
         NSLayoutConstraint.activate([isOpenLabel.heightAnchor.constraint(equalTo: isOpenAndWifiStackView.heightAnchor, multiplier: 0.4),
                                      isOpenLabel.widthAnchor.constraint(equalTo: isOpenAndWifiStackView.widthAnchor, multiplier: 0.6),
-                                     wifiImage.heightAnchor.constraint(equalTo: isOpenAndWifiStackView.heightAnchor, multiplier: 0.55),
-                                     wifiImage.widthAnchor.constraint(equalTo: isOpenAndWifiStackView.widthAnchor, multiplier: 0.3)])
+                                     wifiStack.heightAnchor.constraint(equalTo: isOpenAndWifiStackView.heightAnchor, multiplier: 0.55),
+                                     wifiStack.widthAnchor.constraint(equalTo: isOpenAndWifiStackView.widthAnchor, multiplier: 0.4)])
         
     }
     
-    fileprivate func setUpPhoneNumberLabel(){
+    private func setUpcurrentWeatherLabel(){
         
-        phoneNumberLabel = CustomLabel(fontSize: 19,
-                                       text: space?.phone ?? "No phone number",
+        currentWeatherLabel = CustomLabel(fontSize: 19,
+                                       text: "85°FAHRENHEIT",
                                        textColor: .black,
                                        textAlignment: .center,
                                        fontName: "HelveticaNeue-Bold")
     }
     
-    fileprivate func setUpThuumbnails(){
+    private func setUpActionButtonsStack(){
         
-        thumbnailStackView = CustomStackView(subviews: [spaceImagesOne, spaceImagesTwo],
-                                             alignment: .center,
-                                             axis: .vertical,
-                                             distribution: .fillEqually)
-        
-        NSLayoutConstraint.activate([spaceImagesOne.heightAnchor.constraint(equalTo: thumbnailStackView.heightAnchor, multiplier: 0.47),
-                                     spaceImagesOne.widthAnchor.constraint(equalTo: thumbnailStackView.widthAnchor, multiplier: 0.9),
-                                     spaceImagesTwo.heightAnchor.constraint(equalTo: thumbnailStackView.heightAnchor, multiplier: 0.47),
-                                     spaceImagesTwo.widthAnchor.constraint(equalTo: thumbnailStackView.widthAnchor, multiplier: 0.9)])
-        
+        actionButtonsStackView = CustomStackView(subviews: [contactButton, getDirectionsButton],
+                                                 alignment: .center,
+                                                 axis: .vertical,
+                                                 distribution: .fillEqually)
     }
     
-    fileprivate func setUpGetDirectionsButton(){
+    private func setUpGetDirectionsButton(){
         
         getDirectionsButton = CustomButton(title: "Get Directions",
                                            fontSize: 15,
-                                           titleColor: .white,
+                                           titleColor: .black,
                                            target: self,
-                                           action: #selector(directionsButtonTapped),
+                                           action: #selector(directionsButtonTapped(_:)),
                                            event: .touchUpInside)
         
-        getDirectionsButton.newLayerColor = .black
-        getDirectionsButton.layer.cornerRadius = 10
         getDirectionsButton.layer.shadowRadius = 1
-        getDirectionsButton.layer.masksToBounds = true
-        getDirectionsButton.clipsToBounds = true
+    }
+    
+    private func setUpContactButton(){
+        
+        contactButton = CustomButton(title: "Contact",
+                                     fontSize: 23, titleColor: .black,
+                                     target: self,
+                                     action: #selector(contactButtonIsTapped(_:)),
+                                     event: .touchUpInside)
+        
+        contactButton.layer.shadowRadius = 1
     }
     
     
-    fileprivate func mainStakViewAutoLayout(){
+    private func mainStakViewAutoLayout(){
         
-        mainStackView = CustomStackView(subviews: [spaceNameLabel,isOpenAndWifiStackView,phoneNumberLabel,thumbnailStackView,getDirectionsButton],
+        mainStackView = CustomStackView(subviews: [spaceNameLabel,isOpenAndWifiStackView,currentWeatherLabel,actionButtonsStackView],
                                         alignment: .center,
                                         axis: .vertical,
                                         distribution: .fill)
@@ -137,18 +150,16 @@ class SpaceDetailsViewController: UIViewController{
                                      mainStackView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.95),
                                      spaceNameLabel.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.09),
                                      isOpenAndWifiStackView.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.1),
-                                     isOpenAndWifiStackView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.3),
-                                     phoneNumberLabel.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.38),
-                                     phoneNumberLabel.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.1),
-                                     thumbnailStackView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.6),
-                                     thumbnailStackView.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.5),
-                                     getDirectionsButton.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.6),
-                                     getDirectionsButton.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.08)])
+                                     isOpenAndWifiStackView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.7),
+                                     currentWeatherLabel.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.38),
+                                     currentWeatherLabel.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.1),
+                                     actionButtonsStackView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.7),
+                                     actionButtonsStackView.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.1)])
     }
     
     
     
-    @objc fileprivate func directionsButtonTapped(){
+    @objc private func directionsButtonTapped(_ sender: UIButton){
         
         
         guard let longitude = space?.longitude, let latitude = space?.latitude else {return}
@@ -161,6 +172,10 @@ class SpaceDetailsViewController: UIViewController{
         
         mapItems.name = space?.name
         mapItems.openInMaps(launchOptions: options)
+    }
+    
+    @objc private func contactButtonIsTapped(_ sender: UIButton){
+        
     }
     
 }
