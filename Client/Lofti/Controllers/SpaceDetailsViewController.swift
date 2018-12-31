@@ -94,7 +94,7 @@ class SpaceDetailsViewController: UIViewController{
     
     private func setUpcurrentWeatherLabel(){
         
-        currentWeatherLabel = CustomLabel(fontSize: 19,
+        currentWeatherLabel = CustomLabel(fontSize: 15,
                                        text: "85°FAHRENHEIT",
                                        textColor: .black,
                                        textAlignment: .center,
@@ -106,30 +106,34 @@ class SpaceDetailsViewController: UIViewController{
         actionButtonsStackView = CustomStackView(subviews: [contactButton, getDirectionsButton],
                                                  alignment: .center,
                                                  axis: .vertical,
-                                                 distribution: .fillEqually)
+                                                 distribution: .fill)
+        actionButtonsStackView.spacing = 8.0
     }
     
     private func setUpGetDirectionsButton(){
         
         getDirectionsButton = CustomButton(title: "Get Directions",
-                                           fontSize: 15,
+                                           fontSize: 18,
                                            titleColor: .black,
                                            target: self,
                                            action: #selector(directionsButtonTapped(_:)),
-                                           event: .touchUpInside)
+                                           event: .touchUpInside,
+                                           titleFontName: "HelveticaNeue-Light")
         
-        getDirectionsButton.layer.shadowRadius = 1
+        getDirectionsButton.layer.borderWidth = 0.4
     }
     
     private func setUpContactButton(){
         
         contactButton = CustomButton(title: "Contact",
-                                     fontSize: 23, titleColor: .black,
+                                     fontSize: 18, titleColor: .black,
                                      target: self,
                                      action: #selector(contactButtonIsTapped(_:)),
-                                     event: .touchUpInside)
+                                     event: .touchUpInside,
+                                     titleFontName: "HelveticaNeue-Light")
         
-        contactButton.layer.shadowRadius = 1
+        contactButton.layer.borderWidth = 0.4
+
     }
     
     
@@ -154,14 +158,17 @@ class SpaceDetailsViewController: UIViewController{
                                      currentWeatherLabel.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.38),
                                      currentWeatherLabel.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.1),
                                      actionButtonsStackView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.7),
-                                     actionButtonsStackView.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.1)])
+                                     actionButtonsStackView.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.1),
+                                     getDirectionsButton.widthAnchor.constraint(equalTo: actionButtonsStackView.widthAnchor, multiplier: 0.8),
+                                     contactButton.widthAnchor.constraint(equalTo: actionButtonsStackView.widthAnchor, multiplier: 0.8),
+            ])
     }
     
     
     
     @objc private func directionsButtonTapped(_ sender: UIButton){
         
-        
+        sender.pulsate()
         guard let longitude = space?.longitude, let latitude = space?.latitude else {return}
         
         let coordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
@@ -176,6 +183,27 @@ class SpaceDetailsViewController: UIViewController{
     
     @objc private func contactButtonIsTapped(_ sender: UIButton){
         
+        sender.pulsate()
+        guard let number = space?.phone else { return }
+       
+        // Code from Pratik Patel on Stack Overflow
+        if let phoneCallURL:URL = URL(string: "tel:\(number)") {
+            let application:UIApplication = UIApplication.shared
+            if (application.canOpenURL(phoneCallURL)) {
+                let alertController = UIAlertController(title: "Lofti", message: "Are you sure you want to call \n\(number)?", preferredStyle: .alert)
+                let yesPressed = UIAlertAction(title: "Yes", style: .default, handler: { (action) in
+                    application.open(phoneCallURL, options: [:], completionHandler: nil)
+                })
+                let noPressed = UIAlertAction(title: "No", style: .default, handler: { (action) in
+                    
+                })
+                
+                
+                alertController.addAction(yesPressed)
+                alertController.addAction(noPressed)
+                present(alertController, animated: true, completion: nil)
+            }
+        }
     }
     
 }

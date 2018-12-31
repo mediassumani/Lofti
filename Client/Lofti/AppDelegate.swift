@@ -27,14 +27,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func checkIfFirstTimeUser(){
         
-        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
-        if launchedBefore{
+        let isCurrentUser = UserDefaults.standard.bool(forKey: "current_user")
+        if isCurrentUser{
             
             showHomePage()
             
         }else{
             
-            UserDefaults.standard.set(true, forKey: "launchedBefore")
+            UserDefaults.standard.set(false, forKey: "current_user")
             showUserPreferencesPage()
         }
     }

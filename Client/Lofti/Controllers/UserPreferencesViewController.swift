@@ -64,12 +64,20 @@ class UserPreferencesViewController: UICollectionViewController, UICollectionVie
             Constant.INDEX_URL_CATEGORIES_PARAM += "\((preference.lowercased()).replacingOccurrences(of: " ", with: ""))"
         }
         
+        UserDefaults.standard.set(true, forKey: "current_user")
         navigationController?.pushViewController(destinationVC, animated: true)
     }
     
     private func styleSaveButton(){
         
-        saveButton = CustomButton(title: "Done", fontSize: 20, titleColor: .black, target: self, action: #selector(saveButtonIsTapped(_:)), event: .touchUpInside)
+        
+        saveButton = CustomButton(title: "Done",
+                                  fontSize: 20,
+                                  titleColor: .white,
+                                  target: self,
+                                  action: #selector(saveButtonIsTapped(_:)),
+                                  event: .touchUpInside,
+                                  titleFontName: "HelveticaNeue-Light")
         
         saveButton.backgroundColor = .black
         saveButton.layer.cornerRadius = 15

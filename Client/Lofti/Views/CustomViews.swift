@@ -109,43 +109,42 @@ class CustomButton: UIButton{
         
         fatalError("init(coder:) has not been implemented")
     }
-    convenience init(title: String, fontSize: CGFloat, titleColor: UIColor,target: Any?, action: Selector, event: UIControl.Event){
+    convenience init(title: String, fontSize: CGFloat, titleColor: UIColor,target: Any?, action: Selector, event: UIControl.Event, titleFontName: String){
         
         self.init()
         
         self.setTitle(title, for: .normal)
-        self.titleLabel?.font = UIFont.boldSystemFont(ofSize: fontSize)
         self.setTitleColor(titleColor, for: .normal)
         self.addTarget(target, action: action, for: event)
         self.translatesAutoresizingMaskIntoConstraints = false
         self.isEnabled = true
-        
+        self.titleLabel!.font = UIFont(name: titleFontName, size: fontSize)
     }
-    var shadowLayer: CAShapeLayer!
+//    var shadowLayer: CAShapeLayer!
+//
+//    var newLayerColor: UIColor = UIColor.white{
+//        didSet{
+//            if shadowLayer != nil{
+//                shadowLayer.fillColor = newLayerColor.cgColor
+//            }
+//        }
+//    }
     
-    var newLayerColor: UIColor = UIColor.white{
-        didSet{
-            if shadowLayer != nil{
-                shadowLayer.fillColor = newLayerColor.cgColor
-            }
-        }
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        if shadowLayer == nil {
-            shadowLayer = CAShapeLayer()
-            shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: 5).cgPath
-            shadowLayer.fillColor = newLayerColor.cgColor
-            
-            shadowLayer.shadowColor = UIColor.darkGray.cgColor
-            shadowLayer.shadowPath = shadowLayer.path
-            shadowLayer.shadowOffset = CGSize(width: 2.0, height: 2.0)
-            shadowLayer.shadowOpacity = 0.5
-            shadowLayer.shadowRadius = 2
-            
-            layer.insertSublayer(shadowLayer, at: 0)
-        }
-    }
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//
+//        if shadowLayer == nil {
+//            shadowLayer = CAShapeLayer()
+//            shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: 5).cgPath
+//            shadowLayer.fillColor = newLayerColor.cgColor
+//
+//            shadowLayer.shadowColor = UIColor.darkGray.cgColor
+//            shadowLayer.shadowPath = shadowLayer.path
+//            shadowLayer.shadowOffset = CGSize(width: 2.0, height: 2.0)
+//            shadowLayer.shadowOpacity = 0.5
+//            shadowLayer.shadowRadius = 2
+//
+//            layer.insertSublayer(shadowLayer, at: 0)
+//        }
+//    }
 }
