@@ -21,8 +21,6 @@ extension HomePageViewController: UICollectionViewDataSource, UICollectionViewDe
         let selectedSpace = spaces[indexPath.row]
         SpaceServices.show(id: selectedSpace.id) { (space) in
             
-            space.longitude = selectedSpace.longitude
-            space.latitude = selectedSpace.latitude
             selectedSpace.hours = space.hours
             destinationVC.space = selectedSpace
             DispatchQueue.main.async {

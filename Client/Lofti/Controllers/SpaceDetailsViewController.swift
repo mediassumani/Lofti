@@ -46,7 +46,7 @@ class SpaceDetailsViewController: UIViewController{
     
     private func setUpSpaceNameLabel(){
         
-        spaceNameLabel = CustomLabel(fontSize: 22,
+        spaceNameLabel = CustomLabel(fontSize: 23,
                                      text: space?.name ?? "Unknown",
                                      textColor: .black,
                                      textAlignment: .center,
@@ -56,7 +56,7 @@ class SpaceDetailsViewController: UIViewController{
     
     private func setUpIsOpenLabel(){
         
-        let wifiStatusLabel = CustomLabel(fontSize: 15,
+        let wifiStatusLabel = CustomLabel(fontSize: 13,
                                           text: "WIFI Available",
                                           textColor: #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1),
                                           textAlignment: .center,
@@ -77,18 +77,21 @@ class SpaceDetailsViewController: UIViewController{
             
             isOpenLabel.text = "Open"
             isOpenLabel.textColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
-            isOpenLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
+            isOpenLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
         }else{
             
             isOpenLabel.text = "Closed"
             isOpenLabel.textColor = .red
-            isOpenLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
+            isOpenLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
         }
         
         NSLayoutConstraint.activate([isOpenLabel.heightAnchor.constraint(equalTo: isOpenAndWifiStackView.heightAnchor, multiplier: 0.4),
-                                     isOpenLabel.widthAnchor.constraint(equalTo: isOpenAndWifiStackView.widthAnchor, multiplier: 0.6),
+                                     isOpenLabel.widthAnchor.constraint(equalTo: isOpenAndWifiStackView.widthAnchor, multiplier: 0.5),
+                                     wifiImage.widthAnchor.constraint(equalTo: wifiStack.widthAnchor, multiplier: 0.2),
+                                     wifiStatusLabel.widthAnchor.constraint(equalTo: wifiStack.widthAnchor, multiplier: 0.8),
                                      wifiStack.heightAnchor.constraint(equalTo: isOpenAndWifiStackView.heightAnchor, multiplier: 0.55),
-                                     wifiStack.widthAnchor.constraint(equalTo: isOpenAndWifiStackView.widthAnchor, multiplier: 0.4)])
+                                     wifiStack.widthAnchor.constraint(equalTo: isOpenAndWifiStackView.widthAnchor, multiplier: 0.5),
+                                     wifiStack.centerXAnchor.constraint(equalTo: isOpenAndWifiStackView.centerXAnchor)])
         
     }
     
@@ -151,13 +154,15 @@ class SpaceDetailsViewController: UIViewController{
                                      mainStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
                                      mainStackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.95),
                                      mainStackView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.95),
+                                     mainStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
                                      spaceNameLabel.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.09),
                                      isOpenAndWifiStackView.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.1),
                                      isOpenAndWifiStackView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.7),
+                                     isOpenAndWifiStackView.centerXAnchor.constraint(equalTo: mainStackView.centerXAnchor),
                                      currentWeatherLabel.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.38),
                                      currentWeatherLabel.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.1),
                                      actionButtonsStackView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.7),
-                                     actionButtonsStackView.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.1),
+                                     actionButtonsStackView.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.2),
                                      getDirectionsButton.widthAnchor.constraint(equalTo: actionButtonsStackView.widthAnchor, multiplier: 0.8),
                                      getDirectionsButton.heightAnchor.constraint(equalTo: actionButtonsStackView.heightAnchor, multiplier: 0.5),
                                      contactButton.widthAnchor.constraint(equalTo: actionButtonsStackView.widthAnchor, multiplier: 0.8),
