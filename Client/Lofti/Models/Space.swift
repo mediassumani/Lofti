@@ -29,8 +29,6 @@ class Space: Decodable{
     let location: Address
     let distance: Double?
     var hours: [OperatingHour]?
-    var latitude: CLLocationDegrees?
-    var longitude: CLLocationDegrees?
 }
 
 

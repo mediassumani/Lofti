@@ -106,8 +106,7 @@ class SpaceDetailsViewController: UIViewController{
         actionButtonsStackView = CustomStackView(subviews: [contactButton, getDirectionsButton],
                                                  alignment: .center,
                                                  axis: .vertical,
-                                                 distribution: .fill)
-        actionButtonsStackView.spacing = 8.0
+                                                 distribution: .fillEqually)
     }
     
     private func setUpGetDirectionsButton(){
@@ -160,7 +159,9 @@ class SpaceDetailsViewController: UIViewController{
                                      actionButtonsStackView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.7),
                                      actionButtonsStackView.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.1),
                                      getDirectionsButton.widthAnchor.constraint(equalTo: actionButtonsStackView.widthAnchor, multiplier: 0.8),
+                                     getDirectionsButton.heightAnchor.constraint(equalTo: actionButtonsStackView.heightAnchor, multiplier: 0.5),
                                      contactButton.widthAnchor.constraint(equalTo: actionButtonsStackView.widthAnchor, multiplier: 0.8),
+                                     contactButton.heightAnchor.constraint(equalTo: actionButtonsStackView.heightAnchor, multiplier: 0.5)
             ])
     }
     
@@ -169,16 +170,21 @@ class SpaceDetailsViewController: UIViewController{
     @objc private func directionsButtonTapped(_ sender: UIButton){
         
         sender.pulsate()
-        guard let longitude = space?.longitude, let latitude = space?.latitude else {return}
-        
-        let coordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        let placeMark = MKPlacemark(coordinate: coordinates)
-        let regionSpan = MKCoordinateSpan(latitudeDelta: latitude, longitudeDelta: longitude)
-        let mapItems = MKMapItem(placemark: placeMark)
-        let options = [MKLaunchOptionsMapCenterKey: NSValue(mkCoordinateSpan: regionSpan), MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan)]
-        
-        mapItems.name = space?.name
-        mapItems.openInMaps(launchOptions: options)
+        guard let space = self.space else {return}
+        let address = "\(space.location.address1) \(space.location.city) \(space.location.state)"
+        GeoFence.addressToCoordinate(address) { (coordinates) in
+            
+            guard let longitude = coordinates?.longitude, let latitude = coordinates?.latitude else {return}
+            
+            let coordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            let placeMark = MKPlacemark(coordinate: coordinates)
+            let regionSpan = MKCoordinateSpan(latitudeDelta: latitude, longitudeDelta: longitude)
+            let mapItems = MKMapItem(placemark: placeMark)
+            let options = [MKLaunchOptionsMapCenterKey: NSValue(mkCoordinateSpan: regionSpan), MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan)]
+    
+            mapItems.name = space.name
+            mapItems.openInMaps(launchOptions: options)
+        }
     }
     
     @objc private func contactButtonIsTapped(_ sender: UIButton){

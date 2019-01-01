@@ -30,6 +30,7 @@
 		B88BA17321921F89009C56DC /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88BA17221921F89009C56DC /* UIView+Extension.swift */; };
 		B88BA177219291D3009C56DC /* Double+String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88BA176219291D3009C56DC /* Double+String+Extension.swift */; };
 		B88CACE821938869005786BA /* SpaceDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88CACE721938869005786BA /* SpaceDetailsViewController.swift */; };
+		B8AAC02921DC1231004D99C1 /* LocationServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AAC02821DC1231004D99C1 /* LocationServices.swift */; };
 		B8B7121C21B0AAB200F6DAF1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B8B7121B21B0AAB100F6DAF1 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		B88BA17221921F89009C56DC /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		B88BA176219291D3009C56DC /* Double+String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+String+Extension.swift"; sourceTree = "<group>"; };
 		B88CACE721938869005786BA /* SpaceDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceDetailsViewController.swift; sourceTree = "<group>"; };
+		B8AAC02821DC1231004D99C1 /* LocationServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServices.swift; sourceTree = "<group>"; };
 		B8B7121B21B0AAB100F6DAF1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E483F10AE2A9B441A888DE33 /* Pods-Lofti.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lofti.debug.xcconfig"; path = "Target Support Files/Pods-Lofti/Pods-Lofti.debug.xcconfig"; sourceTree = "<group>"; };
 		F303F1CEDAC3A16679DF1DDD /* Pods-Lofti.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lofti.release.xcconfig"; path = "Target Support Files/Pods-Lofti/Pods-Lofti.release.xcconfig"; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				B846FD0621A4B46F0034DFB4 /* SpaceServices.swift */,
+				B8AAC02821DC1231004D99C1 /* LocationServices.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				B8866D6F218BE801002B7CDF /* Space.swift in Sources */,
 				B8866D74218BE911002B7CDF /* Address.swift in Sources */,
 				B868680021D57ABC00B869DC /* UserPreferencesViewController.swift in Sources */,
+				B8AAC02921DC1231004D99C1 /* LocationServices.swift in Sources */,
 				B88BA177219291D3009C56DC /* Double+String+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

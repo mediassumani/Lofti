@@ -62,7 +62,9 @@ class UserPreferencesViewController: UICollectionViewController, UICollectionVie
     
         preferences.forEach { (preference) in
             Constant.INDEX_URL_CATEGORIES_PARAM += "\((preference.lowercased()).replacingOccurrences(of: " ", with: ""))"
+            
         }
+        
         
         UserDefaults.standard.set(true, forKey: "current_user")
         navigationController?.pushViewController(destinationVC, animated: true)
