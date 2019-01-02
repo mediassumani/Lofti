@@ -23,7 +23,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Your location is needed to find nearby study spaces for you.</string>
+	<string>Your current location is only needed to find the distance between you and the study space and getting the weather at that location.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Hello</string>
 	<key>UILaunchStoryboardName</key>

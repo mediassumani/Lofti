@@ -11,11 +11,11 @@ import UIKit
 class OnboardingCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let pages = [
-        Page(imageName: "Logo_onboarding", header: "Welcome to Lofti", description: "Lofti helps you find study and working spaces nearby based on your preferences"),
+        Page(imageName: "Logo_onboarding", header: "Welcome to Lofti", description: "Lofti helps you find your ideal study and working spaces nearby based on your preferences."),
         
-        Page(imageName: "preferences", header: "Preferences", description: "As a first time user, pick your study preferences such as Libraries, Parks, Shared offices(e.g: WeWork), Book Stores, etc…"),
+        Page(imageName: "preferences", header: "Preferences", description: "As a first time user, pick your study/working preferences such as Libraries and Shared offices(e.g: WeWork)."),
         
-        Page(imageName: "wifi_onboarding", header: "Amenities", description: "Click on a specific space to see the wifi availability, the current temperature, and if it’s currently open or closed"),
+        Page(imageName: "wifi_onboarding", header: "Amenities", description: "Click on a specific space to see the wifi availability, the current weather temperature, and its open/closed status."),
         
         Page(imageName: "distance", header: "Distance", description: "Easily check the distance between you and the space in the home page."),
         
