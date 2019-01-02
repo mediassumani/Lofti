@@ -15,6 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var locationManager: CLLocationManager!
+    class var shared: AppDelegate {
+        return UIApplication.shared.delegate as! AppDelegate
+    }
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -35,7 +38,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }else{
             
             UserDefaults.standard.set(false, forKey: "current_user")
-            showUserPreferencesPage()
+            showOnboardingPage()
+        }
+    }
+    
+    
+    private func showOnboardingPage(){
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        if let window = window{
+            
+            let destinationVC = OnboardingCollectionViewController(collectionViewLayout: layout)
+            window.rootViewController = destinationVC
+            window.makeKeyAndVisible()
         }
     }
 
@@ -49,8 +67,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
-    private func showUserPreferencesPage(){
-     
+    public func showUserPreferencesPage(){
+        
         window = UIWindow(frame: UIScreen.main.bounds)
         let layoutFlow = UICollectionViewFlowLayout()
         layoutFlow.scrollDirection = .vertical
@@ -59,7 +77,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         window?.rootViewController = navigationController
     }
-    
-    
 }
 

@@ -65,7 +65,6 @@ class UserPreferencesViewController: UICollectionViewController, UICollectionVie
             
         }
         
-        
         UserDefaults.standard.set(true, forKey: "current_user")
         navigationController?.pushViewController(destinationVC, animated: true)
     }
