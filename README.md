@@ -1,3 +1,5 @@
+<img src= "Screenshots/img1.png" width = 150 height = 150></img>
+
 # Lofti
 
 Lofti is an ios application that can seamlessly find study and working spaces nearby based on the user's preferences. It is carefully developed and targeted for college students, high schools students, professional workers, and individual who like to work or study out of their office/home.
