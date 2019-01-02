@@ -82,11 +82,12 @@ class OnboardingCollectionViewController: UICollectionViewController, UICollecti
     /// Shows the user the signin page if onboarding is skipped
     @objc private func handleSkipButton(_ sender: UIButton){
         
+        sender.pulsate()
         let layoutFlow = UICollectionViewFlowLayout()
         layoutFlow.scrollDirection = .vertical
         let destinationVC = UserPreferencesViewController(collectionViewLayout: layoutFlow)
         AppDelegate.shared.showUserPreferencesPage()
-        sender.pulsate()
+        
     }
     
     override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {

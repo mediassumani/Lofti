@@ -15,7 +15,8 @@ struct SpaceServices{
      */
     static func index(longitude: Double, latitude: Double, completion: @escaping([Space]) -> Void){
         
-        let baseUrl = URL(string: "https://api.yelp.com/v3/businesses/search?latitude=\(latitude)&longitude=\(longitude)\(Constant.INDEX_URL_CATEGORIES_PARAM)")
+        guard let userPreferences = UserDefaults.standard.string(forKey: "user_space_preferences") else {return}
+        let baseUrl = URL(string: "https://api.yelp.com/v3/businesses/search?latitude=\(latitude)&longitude=\(longitude)&categories=\(userPreferences)")
         
         
         var request = URLRequest(url: baseUrl!)

@@ -58,13 +58,14 @@ class UserPreferencesViewController: UICollectionViewController, UICollectionVie
     @objc private func saveButtonIsTapped(_ sender: UIButton){
         
         let destinationVC = HomePageViewController()
+        var userPreferences = ""
         sender.pulsate()
-    
-        preferences.forEach { (preference) in
-            Constant.INDEX_URL_CATEGORIES_PARAM += "\((preference.lowercased()).replacingOccurrences(of: " ", with: ""))"
-            
-        }
         
+        preferences.forEach { (preference) in
+            userPreferences += "\((preference.lowercased()).replacingOccurrences(of: " ", with: ","))"
+        }
+        userPreferences.remove(at: userPreferences.lastIndex(of: ",")!)
+        UserDefaults.standard.set(userPreferences, forKey: "user_space_preferences")
         UserDefaults.standard.set(true, forKey: "current_user")
         navigationController?.pushViewController(destinationVC, animated: true)
     }
@@ -125,7 +126,7 @@ class UserPreferencesViewController: UICollectionViewController, UICollectionVie
             
             let userChoice = Constant.PAUSIBLE_PREFERENCES[indexPath.row]
             selectedCell?.backgroundColor = .gray
-            preferences.append("\(userChoice)")
+            preferences.append("\(userChoice.replacingOccurrences(of: " ", with: "")) ")
     
         }else{
             selectedCell?.backgroundColor = .white

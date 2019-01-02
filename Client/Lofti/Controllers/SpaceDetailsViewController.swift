@@ -57,10 +57,10 @@ class SpaceDetailsViewController: UIViewController{
     private func setUpIsOpenLabel(){
         
         let wifiStatusLabel = CustomLabel(fontSize: 13,
-                                          text: "WIFI Available",
+                                          text: "WIFI AVAILABLE",
                                           textColor: #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1),
                                           textAlignment: .center,
-                                          fontName: "HelveticaNeue-Light")
+                                          fontName: "HelveticaNeue-Bold")
         
         let wifiStack = CustomStackView(subviews: [wifiImage, wifiStatusLabel],
                                         alignment: .center,
