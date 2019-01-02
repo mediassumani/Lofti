@@ -29,10 +29,10 @@ This project is licenced under the Apache 2.0 License - see the <a href="https:/
 
 ## ToDO
 
-- [ ] Improve detail view 
+- [x] Improve detail view 
 - [ ] Improve UX based on TestFlight testers feedbacks
-- [ ] Implement user preferences algorithm
-- [ ] Implement smart query
+- [x] Implement user preferences algorithm
+- [x] Implement smart query
 - [ ] Review project rubric
-- [ ] Improve Home Page
-- [ ] Add User Onboarding
+- [x] Improve Home Page
+- [x] Add User Onboarding
