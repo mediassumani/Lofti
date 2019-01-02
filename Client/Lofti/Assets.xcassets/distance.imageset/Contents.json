@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "library.jpeg",
+      "filename" : "distance.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "library-1.jpeg",
+      "filename" : "distance-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "library-2.jpeg",
+      "filename" : "distance-2.png",
       "scale" : "3x"
     }
   ],
