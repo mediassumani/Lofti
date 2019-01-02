@@ -14,6 +14,7 @@ Lofti is an ios application that can seamlessly find study and working spaces ne
 * [Xcode 10.1](https://developer.apple.com/xcode/)
 * [CocoaPods](https://guides.cocoapods.org/terminal/commands.html)
 * [Apple's CoreLocation API](https://developer.apple.com/documentation/corelocation)
+* [Yelp Fusion API](https://www.yelp.com/developers/documentation/v3)
 
 ## License
 
