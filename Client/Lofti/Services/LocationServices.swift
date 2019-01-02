@@ -9,7 +9,7 @@
 import Foundation
 import CoreLocation
 
-struct GeoFence{
+struct LocationServices{
     
     static func addressToCoordinate(_ address: String, completion: @escaping(CLLocationCoordinate2D?) -> Void){
         

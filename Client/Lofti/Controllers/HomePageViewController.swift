@@ -51,10 +51,12 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
     
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-
+        
+        
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else {return}
+        
         SpaceServices.index(longitude: locValue.longitude, latitude: locValue.latitude) { (spaces) in
-
+            
             self.spaces = spaces
         }
     }

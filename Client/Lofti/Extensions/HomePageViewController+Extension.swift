@@ -19,15 +19,31 @@ extension HomePageViewController: UICollectionViewDataSource, UICollectionViewDe
         
         let destinationVC = SpaceDetailsViewController()
         let selectedSpace = spaces[indexPath.row]
+        let address = "\(selectedSpace.location.address1) \(selectedSpace.location.city) \(selectedSpace.location.state)"
+        
+        
+        
         SpaceServices.show(id: selectedSpace.id) { (space) in
             
             selectedSpace.hours = space.hours
             destinationVC.space = selectedSpace
-            DispatchQueue.main.async {
-                self.navigationController?.pushViewController(destinationVC, animated: true)
-            }
         }
-
+        
+        
+        LocationServices.addressToCoordinate(address) { (coordinates) in
+            
+            guard let longitude = coordinates?.longitude, let latitude = coordinates?.latitude else {return}
+            let weatherServices = WeatherServices.init(latitude, longitude)
+            
+            weatherServices.getForecast({ (weather) in
+                guard let spaceLocationTemperature = weather.temperature else { return }
+                destinationVC.space?.weatherDegree = spaceLocationTemperature
+                DispatchQueue.main.async {
+                    self.navigationController?.pushViewController(destinationVC, animated: true)
+                }
+            })
+            
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

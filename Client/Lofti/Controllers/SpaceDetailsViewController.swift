@@ -97,11 +97,13 @@ class SpaceDetailsViewController: UIViewController{
     
     private func setUpcurrentWeatherLabel(){
         
-        currentWeatherLabel = CustomLabel(fontSize: 15,
-                                       text: "85°FAHRENHEIT",
+        guard let currentTemperature = space?.weatherDegree else { return }
+        
+        currentWeatherLabel = CustomLabel(fontSize: 70,
+                                       text: "\(Int(currentTemperature))°F",
                                        textColor: .black,
                                        textAlignment: .center,
-                                       fontName: "HelveticaNeue-Bold")
+                                       fontName: "HelveticaNeue-Thin")
     }
     
     private func setUpActionButtonsStack(){
@@ -152,15 +154,13 @@ class SpaceDetailsViewController: UIViewController{
                                      mainStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
                                      mainStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
                                      mainStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-                                     mainStackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.95),
-                                     mainStackView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.95),
                                      mainStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
                                      spaceNameLabel.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.09),
                                      isOpenAndWifiStackView.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.1),
                                      isOpenAndWifiStackView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.7),
                                      isOpenAndWifiStackView.centerXAnchor.constraint(equalTo: mainStackView.centerXAnchor),
-                                     currentWeatherLabel.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.38),
-                                     currentWeatherLabel.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.1),
+                                     currentWeatherLabel.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.4),
+                                     currentWeatherLabel.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.6),
                                      actionButtonsStackView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.7),
                                      actionButtonsStackView.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.2),
                                      getDirectionsButton.widthAnchor.constraint(equalTo: actionButtonsStackView.widthAnchor, multiplier: 0.8),
@@ -177,7 +177,7 @@ class SpaceDetailsViewController: UIViewController{
         sender.pulsate()
         guard let space = self.space else {return}
         let address = "\(space.location.address1) \(space.location.city) \(space.location.state)"
-        GeoFence.addressToCoordinate(address) { (coordinates) in
+        LocationServices.addressToCoordinate(address) { (coordinates) in
             
             guard let longitude = coordinates?.longitude, let latitude = coordinates?.latitude else {return}
             
