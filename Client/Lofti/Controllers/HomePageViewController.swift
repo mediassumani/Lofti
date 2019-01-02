@@ -10,12 +10,9 @@ import UIKit
 import Foundation
 import CoreLocation
 
-protocol SpaceDelegate: class{
-    func passSpaceData(space: Space?)
-}
-
 class HomePageViewController: UIViewController, CLLocationManagerDelegate{
 
+    // - MARK: CLASS PROPERTIES
     let locationManager = CLLocationManager()
     var spaces = [Space](){
         didSet{
@@ -25,6 +22,7 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
         }
     }
     
+    // - MARK: VIEW CONTROLLER LIFECYCLE METHODS
     override func loadView() {
         super.loadView()
         view.addSubview(collectionView)
@@ -40,6 +38,9 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
     }
     
     
+    // - MARK: CLASS METHODS
+    
+    /// Propmt the user to grant access to the device's current location
     private func getUserCoordinates(){
         self.locationManager.requestAlwaysAuthorization()
         if CLLocationManager.locationServicesEnabled() {
@@ -49,14 +50,12 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
         }
     }
     
-    
+    /// Make API request to fetch nearby spaces based on the user coordinates
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
         
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else {return}
         
         SpaceServices.index(longitude: locValue.longitude, latitude: locValue.latitude) { (spaces) in
-            
             self.spaces = spaces
         }
     }
@@ -83,7 +82,7 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.alpha = 0.0
     }
-
+    
     private func anchorCollectionView(){
         
         collectionView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: false)

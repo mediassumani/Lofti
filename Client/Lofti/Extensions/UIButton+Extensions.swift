@@ -14,6 +14,7 @@ import Foundation
 // Extension developed and received for Sean Allen
 extension UIButton {
     
+    // Animate a button with a pulse sensation
     func pulsate() {
         
         let pulse = CASpringAnimation(keyPath: "transform.scale")
@@ -28,6 +29,7 @@ extension UIButton {
         layer.add(pulse, forKey: "pulse")
     }
     
+    // Animate the button with a flash sensation
     func flash() {
         
         let flash = CABasicAnimation(keyPath: "opacity")
@@ -41,7 +43,7 @@ extension UIButton {
         layer.add(flash, forKey: nil)
     }
     
-    
+    // Animate the button with a shaky sensation
     func shake() {
         
         let shake = CABasicAnimation(keyPath: "position")

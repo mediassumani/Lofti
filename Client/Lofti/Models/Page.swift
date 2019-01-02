@@ -9,7 +9,7 @@
 import Foundation
 
 /*
- The Page Strutc models each page on the onboarding screen
+ The Page Struct models each page on the onboarding screen
  Properties:
  - imageName : the file name of the image to be displayed on the page
  - header : the short header text to be displayed on the page

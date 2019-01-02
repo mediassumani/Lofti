@@ -28,11 +28,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    /// Check and route the user to the proper page based on if they are a first time user
     private func checkIfFirstTimeUser(){
         
         let isCurrentUser = UserDefaults.standard.bool(forKey: "current_user")
+        
         if isCurrentUser{
-            
+
             showHomePage()
             
         }else{
@@ -42,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    
+    /// Display the onboarding page for first time user
     private func showOnboardingPage(){
         
         let layout = UICollectionViewFlowLayout()
@@ -57,6 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+    /// Render the home page when the app launch
     private func showHomePage(){
         
         window = UIWindow(frame: UIScreen.main.bounds)
@@ -67,6 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
+    /// Show the page for the user to choose their preferences
     public func showUserPreferencesPage(){
         
         window = UIWindow(frame: UIScreen.main.bounds)

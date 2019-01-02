@@ -15,21 +15,21 @@ extension HomePageViewController: UICollectionViewDataSource, UICollectionViewDe
         return self.spaces.count
     }
     
+    // Transfers data of the selected space model to the destination view controller
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let destinationVC = SpaceDetailsViewController()
         let selectedSpace = spaces[indexPath.row]
         let address = "\(selectedSpace.location.address1) \(selectedSpace.location.city) \(selectedSpace.location.state)"
         
-        
-        
+        // Gets the operation hours of the clicked space
         SpaceServices.show(id: selectedSpace.id) { (space) in
             
             selectedSpace.hours = space.hours
             destinationVC.space = selectedSpace
         }
         
-        
+        // Gets the weather tempeterature of the space's location
         LocationServices.addressToCoordinate(address) { (coordinates) in
             
             guard let longitude = coordinates?.longitude, let latitude = coordinates?.latitude else {return}
@@ -57,6 +57,7 @@ extension HomePageViewController: UICollectionViewDataSource, UICollectionViewDe
     }
 }
 
+// This Extension style and configures each collection view cell
 extension HomePageViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView,

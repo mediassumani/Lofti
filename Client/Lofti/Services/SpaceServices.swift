@@ -15,21 +15,25 @@ struct SpaceServices{
      */
     static func index(longitude: Double, latitude: Double, completion: @escaping([Space]) -> Void){
         
+        // Gets the user's space preferences to construct the URL with smart query string
         guard let userPreferences = UserDefaults.standard.string(forKey: "user_space_preferences") else {return}
         let baseUrl = URL(string: "https://api.yelp.com/v3/businesses/search?latitude=\(latitude)&longitude=\(longitude)&categories=\(userPreferences)")
         
-        
+        // Sets up the request to be made to the API with the proper Headers
         var request = URLRequest(url: baseUrl!)
         request.setValue("Bearer \(Constant.YELP_API_KEY)", forHTTPHeaderField: "Authorization")
         
+        // Makes the API request
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if error == nil{
                 
+                // unwrapping the data and response and checking if error has been returned
                 guard let unwrapedResponse = response as? HTTPURLResponse, let unwrapedData = data else {return}
                 switch unwrapedResponse.statusCode{
 
                 case 200:
                     do{
+                        // Decodes the JSON data received into a Spaces object
                         let spaces = try JSONDecoder().decode(Spaces.self, from: unwrapedData)
                         completion(spaces.businesses)
 
@@ -52,6 +56,7 @@ struct SpaceServices{
      */
     static func show(id: String, completion: @escaping (Space) -> Void){
         
+        // Prepars he request to be made to the Yelp API with the proper URL and Headers
         let baseUrl = URL(string: "https://api.yelp.com/v3/businesses/\(id)")
         var request = URLRequest(url: baseUrl!)
         request.setValue("Bearer \(Constant.YELP_API_KEY)", forHTTPHeaderField: "Authorization")
@@ -60,6 +65,7 @@ struct SpaceServices{
             
             if error == nil{
                 
+                // unwrapping the data and response and checking if error has been returned
                 guard let dataFromApi = data, let responseFromApi = response as? HTTPURLResponse else {return}
                 
                 switch responseFromApi.statusCode{
@@ -67,7 +73,7 @@ struct SpaceServices{
                 case 200:
                     
                     do {
-                        
+                        // Decodes the JSON data received into a Space object
                         let space = try JSONDecoder().decode(Space.self, from: dataFromApi)
                         completion(space)
                         

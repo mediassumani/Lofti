@@ -14,6 +14,8 @@
 		B82825A021DC690A0014FD9A /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = B828259F21DC690A0014FD9A /* Weather.swift */; };
 		B82825A221DC69370014FD9A /* WeatherServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82825A121DC69370014FD9A /* WeatherServices.swift */; };
 		B846FD0721A4B46F0034DFB4 /* SpaceServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = B846FD0621A4B46F0034DFB4 /* SpaceServices.swift */; };
+		B84EFCB621DD7DBD004F75BB /* UserPreferencesVC+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84EFCB521DD7DBD004F75BB /* UserPreferencesVC+Extension.swift */; };
+		B84EFCB821DD7E46004F75BB /* OnboardingVC+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84EFCB721DD7E46004F75BB /* OnboardingVC+Extension.swift */; };
 		B84F571F21DC8E3400CA84F2 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84F571E21DC8E3400CA84F2 /* OnboardingViewController.swift */; };
 		B84F572121DC8E5C00CA84F2 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84F572021DC8E5C00CA84F2 /* Page.swift */; };
 		B84F572321DC8ECA00CA84F2 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84F572221DC8ECA00CA84F2 /* OnboardingCollectionViewCell.swift */; };
@@ -47,6 +49,8 @@
 		B828259F21DC690A0014FD9A /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		B82825A121DC69370014FD9A /* WeatherServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherServices.swift; sourceTree = "<group>"; };
 		B846FD0621A4B46F0034DFB4 /* SpaceServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceServices.swift; sourceTree = "<group>"; };
+		B84EFCB521DD7DBD004F75BB /* UserPreferencesVC+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserPreferencesVC+Extension.swift"; sourceTree = "<group>"; };
+		B84EFCB721DD7E46004F75BB /* OnboardingVC+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingVC+Extension.swift"; sourceTree = "<group>"; };
 		B84F571E21DC8E3400CA84F2 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		B84F572021DC8E5C00CA84F2 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		B84F572221DC8ECA00CA84F2 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -204,6 +208,8 @@
 				B871289A21AC82C100DBF541 /* UIColor+Extensions.swift */,
 				B81E9E6E21B8934100990894 /* HomePageViewController+Extension.swift */,
 				B8632D2221D8289700FADA49 /* UIButton+Extensions.swift */,
+				B84EFCB521DD7DBD004F75BB /* UserPreferencesVC+Extension.swift */,
+				B84EFCB721DD7E46004F75BB /* OnboardingVC+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -333,6 +339,7 @@
 			files = (
 				B81E9E6F21B8934100990894 /* HomePageViewController+Extension.swift in Sources */,
 				B81BB00821AE5E5F003BD48D /* HomePageCollectionViewCell.swift in Sources */,
+				B84EFCB621DD7DBD004F75BB /* UserPreferencesVC+Extension.swift in Sources */,
 				B84F572121DC8E5C00CA84F2 /* Page.swift in Sources */,
 				B88CACE821938869005786BA /* SpaceDetailsViewController.swift in Sources */,
 				B81E9E6D21B8893100990894 /* CustomViews.swift in Sources */,
@@ -352,6 +359,7 @@
 				B871289721AC811E00DBF541 /* Bool+Extensions.swift in Sources */,
 				B871289B21AC82C100DBF541 /* UIColor+Extensions.swift in Sources */,
 				B8866D6F218BE801002B7CDF /* Space.swift in Sources */,
+				B84EFCB821DD7E46004F75BB /* OnboardingVC+Extension.swift in Sources */,
 				B8866D74218BE911002B7CDF /* Address.swift in Sources */,
 				B868680021D57ABC00B869DC /* UserPreferencesViewController.swift in Sources */,
 				B8AAC02921DC1231004D99C1 /* LocationServices.swift in Sources */,

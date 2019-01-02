@@ -8,6 +8,14 @@
 
 import Foundation
 
+/*
+ The Weather Struct models each weather object of each space's location
+ Properties:
+ - temperature : the current temperarture of a location in Fahrenheit
+ - summary : the weather summary(e.g: sunny, rainy, ect...)
+ **/
+
+
 struct Weather: Decodable{
     
     let temperature: Double?

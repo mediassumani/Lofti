@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 extension Double{
+    
     func convertDoubleToString() -> String{
         
         return String(self)

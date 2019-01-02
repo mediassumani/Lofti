@@ -10,10 +10,11 @@ import Foundation
 import UIKit
 import CoreLocation
 
+ //The Space and Spaces Structs model each space object
+
 struct Spaces: Decodable{
     let businesses: [Space]
 }
-
 
 struct OperatingHour: Decodable{
     

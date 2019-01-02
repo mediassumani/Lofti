@@ -8,14 +8,14 @@
 
 import UIKit
 
-class UserPreferencesViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class UserPreferencesViewController: UICollectionViewController{
 
-    
+    // - MARK: CLASS PROPERTIES
     private let mainStackView = CustomStackView()
     private var saveButton = CustomButton()
     private var preferences = [String]()
     
-    
+    // - MARK: VIEW CONTROLLER LIFECYCLE METHODS
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,6 +24,9 @@ class UserPreferencesViewController: UICollectionViewController, UICollectionVie
         mainAutoLayout()
         setUpNavigationBarItems()
     }
+    
+    
+    // - MARK: CLASS METHODS
     
     private func configureCollectionView(){
         
@@ -105,6 +108,8 @@ class UserPreferencesViewController: UICollectionViewController, UICollectionVie
             ])
     }
     
+    // - MARK: UICollectionView DATASOURCE METHODS
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return Constant.PAUSIBLE_PREFERENCES.count
@@ -132,33 +137,6 @@ class UserPreferencesViewController: UICollectionViewController, UICollectionVie
             selectedCell?.backgroundColor = .white
             print("Cell at position \(indexPath.row) is deselected")
         }
-    }
-    
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let screenWidth = collectionView.bounds.width
-        return CGSize(width: screenWidth/2.2, height: screenWidth/3)
-    }
-    
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 15
     }
     
 }

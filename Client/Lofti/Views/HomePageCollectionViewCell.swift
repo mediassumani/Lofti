@@ -43,6 +43,7 @@ class HomePageCollectionViewCell: UICollectionViewCell {
         spaceDistanceLabel.text = "\(round((space.distance! / 1609.344) * 100) / 100) miles away"
     }
     
+    // Styles and Configures the Autot layout of the cell
     fileprivate func configureCellAutoLayout(){
         
         cellStackView = CustomStackView(subviews: [spaceNameLabel, spaceDistanceLabel],

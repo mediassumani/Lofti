@@ -14,6 +14,8 @@ import MapKit
 
 class SpaceDetailsViewController: UIViewController{
     
+    // - MARK: CLASS PROPERTIES
+    
     var mainStackView = CustomStackView()
     var isOpenAndWifiStackView = CustomStackView()
     var actionButtonsStackView = CustomStackView()
@@ -25,6 +27,8 @@ class SpaceDetailsViewController: UIViewController{
     var wifiImage = UIImageView(image: UIImage(named: "wifi"))
     var space: Space?
     let homepage = HomePageViewController()
+    
+    // - MARK - VIEW CONTROLLER LIFECYCLE METHODS
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +46,7 @@ class SpaceDetailsViewController: UIViewController{
     
 
     
-    //USER INTERFACE
+    // - MARK: CLASS METHODS
     
     private func setUpSpaceNameLabel(){
         
@@ -171,16 +175,19 @@ class SpaceDetailsViewController: UIViewController{
     }
     
     
-    
+    /// Opens the Map App with the itenerary to the the selected space
     @objc private func directionsButtonTapped(_ sender: UIButton){
         
         sender.pulsate()
         guard let space = self.space else {return}
+        
+        // Get the coordinates of the space's location
         let address = "\(space.location.address1) \(space.location.city) \(space.location.state)"
         LocationServices.addressToCoordinate(address) { (coordinates) in
             
             guard let longitude = coordinates?.longitude, let latitude = coordinates?.latitude else {return}
             
+            // Make proper configuration to open the iOS Map Application
             let coordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
             let placeMark = MKPlacemark(coordinate: coordinates)
             let regionSpan = MKCoordinateSpan(latitudeDelta: latitude, longitudeDelta: longitude)
@@ -192,6 +199,7 @@ class SpaceDetailsViewController: UIViewController{
         }
     }
     
+    /// Makes a phone call to the space's custome service
     @objc private func contactButtonIsTapped(_ sender: UIButton){
         
         sender.pulsate()
@@ -208,7 +216,6 @@ class SpaceDetailsViewController: UIViewController{
                 let noPressed = UIAlertAction(title: "No", style: .default, handler: { (action) in
                     
                 })
-                
                 
                 alertController.addAction(yesPressed)
                 alertController.addAction(noPressed)

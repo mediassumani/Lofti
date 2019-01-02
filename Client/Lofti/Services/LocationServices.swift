@@ -11,7 +11,12 @@ import CoreLocation
 
 struct LocationServices{
     
-    static func addressToCoordinate(_ address: String, completion: @escaping(CLLocationCoordinate2D?) -> Void){
+    /* Return the coordinate of a location based on its address
+     @param -> address : the string formated address of a single location
+     @return ->CLLocationCoordinate2D?: the coordinate obejct with latitude and longitude properties.
+     */
+    
+    static func addressToCoordinate(_ address: String, completion: @escaping(CLLocationCoordinate2D?) ->Void){
         
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(address) {

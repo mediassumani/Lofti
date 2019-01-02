@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+// This class contains custom UIKit Elements used throughout the App
 class CustomLabel: UILabel{
     
     override init(frame: CGRect) {
@@ -120,31 +121,4 @@ class CustomButton: UIButton{
         self.isEnabled = true
         self.titleLabel!.font = UIFont(name: titleFontName, size: fontSize)
     }
-//    var shadowLayer: CAShapeLayer!
-//
-//    var newLayerColor: UIColor = UIColor.white{
-//        didSet{
-//            if shadowLayer != nil{
-//                shadowLayer.fillColor = newLayerColor.cgColor
-//            }
-//        }
-//    }
-    
-//    override func layoutSubviews() {
-//        super.layoutSubviews()
-//
-//        if shadowLayer == nil {
-//            shadowLayer = CAShapeLayer()
-//            shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: 5).cgPath
-//            shadowLayer.fillColor = newLayerColor.cgColor
-//
-//            shadowLayer.shadowColor = UIColor.darkGray.cgColor
-//            shadowLayer.shadowPath = shadowLayer.path
-//            shadowLayer.shadowOffset = CGSize(width: 2.0, height: 2.0)
-//            shadowLayer.shadowOpacity = 0.5
-//            shadowLayer.shadowRadius = 2
-//
-//            layer.insertSublayer(shadowLayer, at: 0)
-//        }
-//    }
 }

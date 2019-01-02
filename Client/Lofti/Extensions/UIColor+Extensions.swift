@@ -8,8 +8,8 @@
 
 import UIKit
 
+// This file contains custom extended UIColors   - Thanks to Ralf Ebert for his amazing color picker tool
 extension UIColor{
-    // This class contains custom UIColors   - Thanks to Ralf Ebert for his amazing color picker tool
     
     static var gloomyBlue = UIColor(red: 20/255, green: 100/255, blue: 175/255, alpha: 1)
     static var gloomyGreen = UIColor(red: 0.0784, green: 0.6275, blue: 0.2157, alpha: 1.0)
