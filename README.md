@@ -2,10 +2,15 @@
 
 # Lofti
 
-Lofti is an ios application that can seamlessly find study and working spaces nearby based on the user's preferences. It is carefully developed and targeted for college students, high schools students, professional workers, and individual who like to work or study out of their office/home.
+Lofti helps you find study and working spaces nearby you based on your preferences. With Lofti, you can select your optimum preferences of a study spot. You can choose from Public Libraries to Shared Offices such as WeWork. Your preferences are stored in the app and used to find the nearest study spots for you based on your chosen preferences.
 
 ## Features
 
+*  At first launch, select your personal study spot preferences.
+* On the home page, see a list a study spaces based on your preferences
+* You can see the distance, in miles, from yourself to the space's location.
+* See the amenities of each location such as wifi, weather temperature, and if it's currently open or closed.
+* Get the directions to the location or contact its customer service with a click of a button.
 ## Engineer(s)
 
 * **Medi Assumani** - *iOS Developer and Founder*
