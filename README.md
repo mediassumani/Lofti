@@ -2,7 +2,7 @@
 
 # Lofti
 
-Lofti helps you find study and working spaces nearby you based on your preferences. With Lofti, you can select your optimum preferences of a study spot. You can choose from Public Libraries to Shared Offices such as WeWork. Your preferences are stored in the app and used to find the nearest study spots for you based on your chosen preferences.
+Lofti helps you find study and working spaces nearby you based on your preferences. With Lofti, you can select your optimum preferences of a study spot. You can choose from Public Libraries to Shared Offices such as WeWork. Your preferences are stored in the app and used to find the nearest study spots for you based on your chosen preferences. Download <a href="https://itunes.apple.com/us/app/lofti-study-space-finder/id1446711696?mt=8">here</a> 
 
 ## Features
 
