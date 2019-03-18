@@ -1,6 +1,4 @@
-Server/node_modules
-Client/Pods
-Client/Lofti/Helpers/Constants.swift
-.gitignore
+Pods
+Lofti/Helpers/Constants.swift
 .DS_Store
 
