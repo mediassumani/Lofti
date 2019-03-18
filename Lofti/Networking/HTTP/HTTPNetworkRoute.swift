@@ -10,7 +10,7 @@ import Foundation
 
 public enum HTTPNetworkRoute: String{
     
-    case posts = "posts/all"
-    case comments = "comments"
+    case spaces = "posts/all"
+    case weather = "https://api.darksky.net/forecast/"
     
 }
