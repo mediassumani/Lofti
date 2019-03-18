@@ -12,6 +12,7 @@ import Foundation
 
 struct Constant{
     
+    
     static let homePageCellID: String = "homepagecellidentifier"
     static let userPreferencesCellID: String = "userPreferencesCellID"
     static let onboardingViewCellIdentifier: String = "onboardingCellId"
