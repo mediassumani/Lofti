@@ -11,6 +11,49 @@ import UIKit
 
 extension UserPreferencesViewController: UICollectionViewDelegateFlowLayout {
     
+    
+    // - MARK: UICollectionView DATASOURCE METHODS
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return Constant.PAUSIBLE_PREFERENCES.count
+    }
+    
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.userPreferencesCellID, for: indexPath) as! UserPreferencesViewCell
+        
+        cell.preferenceNameLabel.text = Constant.PAUSIBLE_PREFERENCES[indexPath.row]
+        return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let selectedCell = collectionView.cellForItem(at: indexPath)
+        if selectedCell?.isSelected == true{
+            
+            selectedCell?.backgroundColor = .gray
+            let userChoice = Constant.PAUSIBLE_PREFERENCES[indexPath.row].replacingOccurrences(of: " ", with: "")
+            
+            if !(preferences.contains(userChoice)){
+                preferences.append(userChoice)
+            }
+        }
+    }
+    
+    
+    override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        
+        let selectedCell = collectionView.cellForItem(at: indexPath)
+        selectedCell?.backgroundColor = .white
+    
+        let userChoice = Constant.PAUSIBLE_PREFERENCES[indexPath.row].replacingOccurrences(of: " ", with: "")
+        if (preferences.contains(userChoice)){
+            preferences.removeAll(where: { $0 == userChoice })
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {

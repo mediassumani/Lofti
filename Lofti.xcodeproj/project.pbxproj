@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4629A7F1E36B28C73791B4C6 /* Pods_Lofti.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00550652662810EF30C8D2D8 /* Pods_Lofti.framework */; };
+		B812C7FC224170F600549BD0 /* Deafults.swift in Sources */ = {isa = PBXBuildFile; fileRef = B812C7FB224170F600549BD0 /* Deafults.swift */; };
 		B81BB00821AE5E5F003BD48D /* HomePageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81BB00721AE5E5F003BD48D /* HomePageCollectionViewCell.swift */; };
 		B81E9E6D21B8893100990894 /* CustomViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81E9E6C21B8893100990894 /* CustomViews.swift */; };
 		B81E9E6F21B8934100990894 /* HomePageViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81E9E6E21B8934100990894 /* HomePageViewController+Extension.swift */; };
@@ -49,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		00550652662810EF30C8D2D8 /* Pods_Lofti.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lofti.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B812C7FB224170F600549BD0 /* Deafults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deafults.swift; sourceTree = "<group>"; };
 		B81BB00721AE5E5F003BD48D /* HomePageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageCollectionViewCell.swift; sourceTree = "<group>"; };
 		B81E9E6C21B8893100990894 /* CustomViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViews.swift; sourceTree = "<group>"; };
 		B81E9E6E21B8934100990894 /* HomePageViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomePageViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 		B82089BD22403EBD00E9B121 /* Caching */ = {
 			isa = PBXGroup;
 			children = (
+				B812C7FB224170F600549BD0 /* Deafults.swift */,
 			);
 			path = Caching;
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B82089D02240401800E9B121 /* HTTPNetworkRoute.swift in Sources */,
+				B812C7FC224170F600549BD0 /* Deafults.swift in Sources */,
 				B81E9E6F21B8934100990894 /* HomePageViewController+Extension.swift in Sources */,
 				B81BB00821AE5E5F003BD48D /* HomePageCollectionViewCell.swift in Sources */,
 				B84EFCB621DD7DBD004F75BB /* UserPreferencesVC+Extension.swift in Sources */,

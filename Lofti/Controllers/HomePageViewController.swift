@@ -55,9 +55,6 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
         
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else {return}
         
-//        SpaceServices.index(longitude: locValue.longitude, latitude: locValue.latitude) { (spaces) in
-//            self.spaces = spaces
-//        }
         SpaceServices.shared.fetchAllSpaces(longitude: locValue.longitude, latitude: locValue.latitude) { (result) in
             
             switch result{

@@ -51,17 +51,9 @@ extension HomePageViewController: UICollectionViewDataSource, UICollectionViewDe
                     print(error)
                 }
             })
-            
-//            weatherServices.getForecast({ (weather) in
-//                guard let spaceLocationTemperature = weather.temperature else { return }
-//                destinationVC.space?.weatherDegree = spaceLocationTemperature
-//                DispatchQueue.main.async {
-//                    self.navigationController?.pushViewController(destinationVC, animated: true)
-//                }
-//            })
-            
         }
     }
+
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
