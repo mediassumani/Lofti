@@ -10,50 +10,49 @@ import Foundation
 
 class WeatherServices{
     
-    let complete_url: URL
-    let latitude: Double
-    let longitude: Double
+    static let shared = WeatherServices()
+    private let weatherSession = URLSession(configuration: .default)
+    private var baseURL = URL(string: "https://api.darksky.net")!
     
-    init(_ latitude: Double, _ longitude: Double) {
-        
-        self.latitude = latitude
-        self.longitude = longitude
-        self.complete_url = URL(string: "\(Constant.WEATHER_URL)\(Constant.WEATHER_API_KEY)" + "/" + "\(latitude)" + "," + "\(longitude)")!
-    }
     
-    /* Return the coordinate of a location based on its address
-     @return ->Weather: the weather object that contains the temperature property
+    /*
+     Fetches the forecast of a single location
+     - Parameters:
+        - longitude: The location's longitude coordinate
+        - latitude: The location's latitude coordinate
+     
+     - Throws:
+     - `HTTPNetworkError.decodingFailed`: If the model fails to decode
+     - `HTTPNetworkError.badRequest`: If the request object is built incorrecttly
+     
+     - Returns: A completion handler that contains a weather object with its temperature and summary
      */
-    func getForecast(_ completionHandler: @escaping (Weather) -> Void){
+    func getForecastAt(with longitude: Double, and latitude: Double,completion: @escaping(Result<Weather>) -> ()){
         
-        // Sets up the request to be made to the API with the proper Headers
-        let request: URLRequest = URLRequest(url: self.complete_url)
-        
-        // unwrapping the data and response and checking if error has been returned
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+        do{
+            let fullPath = baseURL.absoluteString + "/forecast/\(Constant.DARKSKY_API_KEY)/\(latitude),\(longitude)"
+            let request = try HTTPNetworkRequest.configureHTTPRequest(from: fullPath,
+                                                                      with: nil,
+                                                                      includes: nil,
+                                                                      contains: nil,
+                                                                      and: .get)
             
-            if error == nil{
-                guard let httpResponse = response as? HTTPURLResponse else {return}
-                switch httpResponse.statusCode{
+            weatherSession.dataTask(with: request) { (data, res, err) in
+                if let response = res as? HTTPURLResponse, let unwrappedData = data {
                     
-                case 200:
-                    
-                    guard let dataReceivedFromWeb = data else {return}
-                    
-                    do{
-                        // Decodes the JSON data received into a Weather object
-                        let decoder = JSONDecoder()
-                        var weather = try decoder.decode(Weather.self, from: dataReceivedFromWeb)
-                        completionHandler(weather)
-                    }catch let error{
-                        print("ERROR FOUND : \(error.localizedDescription)")
+                    let result = HTTPNetworkResponse.handleNetworkResponse(for: response)
+                    switch result {
+                    case .success:
+                        let result = try? JSONDecoder().decode(Weather.self, from: unwrappedData)
+                        completion(Result.success(result!))
+                        
+                    case .failure:
+                        completion(Result.failure(HTTPNetworkError.decodingFailed))
                     }
-                    
-                default:
-                    print("Error Found : \(httpResponse.statusCode)")
                 }
-            }
+            }.resume()
+        } catch {
+            completion(Result.failure(HTTPNetworkError.badRequest))
         }
-        task.resume()
     }
 }

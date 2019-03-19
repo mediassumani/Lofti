@@ -17,14 +17,14 @@ struct SpaceServices{
      Fetches an array of spaces requested from the Yelp API
      
      - Parameters:
-        - longitude: The person being greeted.
-        - latitude: The person being greeted.
+        - longitude: The location's longitude coordinate
+        - latitude: The location's latitude coordinate
      
      - Throws:
         - `HTTPNetworkError.decodingFailed`: If the model fails to decode
         - `HTTPNetworkError.badRequest`: If the request object is built incorrecttly
      
-     - Returns: A completion handle that contains the list of spaces
+     - Returns: A completion handler that contains the list of spaces
      */
     func fetchAllSpaces(longitude: Double, latitude: Double, _ completion: @escaping(Result<[Space]>) -> ()){
         
@@ -67,7 +67,7 @@ struct SpaceServices{
      - `HTTPNetworkError.decodingFailed`: If the model fails to decode
      - `HTTPNetworkError.badRequest`: If the request object is built incorrecttly
      
-     - Returns: A completion handle that contains a single space object
+     - Returns: A completion handler that contains a single space object
      */
     func fetchSingleSpace(id: String, completion: @escaping (Result<Space>) -> ()){
         

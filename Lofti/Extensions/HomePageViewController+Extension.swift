@@ -22,12 +22,6 @@ extension HomePageViewController: UICollectionViewDataSource, UICollectionViewDe
         let selectedSpace = spaces[indexPath.row]
         let address = "\(selectedSpace.location.address1) \(selectedSpace.location.city) \(selectedSpace.location.state)"
         
-        // Gets the operation hours of the clicked space
-//        SpaceServices.show(id: selectedSpace.id) { (space) in
-//
-//            selectedSpace.hours = space.hours
-//            destinationVC.space = selectedSpace
-//        }
         SpaceServices.shared.fetchSingleSpace(id: selectedSpace.id) { (result) in
             switch result{
             case let .success(space):
@@ -43,15 +37,28 @@ extension HomePageViewController: UICollectionViewDataSource, UICollectionViewDe
         LocationServices.addressToCoordinate(address) { (coordinates) in
             
             guard let longitude = coordinates?.longitude, let latitude = coordinates?.latitude else {return}
-            let weatherServices = WeatherServices.init(latitude, longitude)
             
-            weatherServices.getForecast({ (weather) in
-                guard let spaceLocationTemperature = weather.temperature else { return }
-                destinationVC.space?.weatherDegree = spaceLocationTemperature
-                DispatchQueue.main.async {
-                    self.navigationController?.pushViewController(destinationVC, animated: true)
+            WeatherServices.shared.getForecastAt(with: longitude, and: latitude, completion: { (result) in
+                
+                switch result{
+                case let .success(weather):
+                    guard let spaceLocationTemperature = weather.temperature else { return }
+                    destinationVC.space?.weatherDegree = spaceLocationTemperature
+                    DispatchQueue.main.async {
+                        self.navigationController?.pushViewController(destinationVC, animated: true)
+                    }
+                case let .failure(error):
+                    print(error)
                 }
             })
+            
+//            weatherServices.getForecast({ (weather) in
+//                guard let spaceLocationTemperature = weather.temperature else { return }
+//                destinationVC.space?.weatherDegree = spaceLocationTemperature
+//                DispatchQueue.main.async {
+//                    self.navigationController?.pushViewController(destinationVC, animated: true)
+//                }
+//            })
             
         }
     }
