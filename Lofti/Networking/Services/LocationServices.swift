@@ -16,7 +16,7 @@ struct LocationServices{
      @return ->CLLocationCoordinate2D?: the coordinate obejct with latitude and longitude properties.
      */
     
-    static func addressToCoordinate(_ address: String, completion: @escaping(CLLocationCoordinate2D?) ->Void){
+    static func addressToCoordinate(_ address: String, completion: @escaping(CLLocationCoordinate2D?) ->()){
         
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(address) {

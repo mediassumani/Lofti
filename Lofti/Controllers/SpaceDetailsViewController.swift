@@ -27,6 +27,7 @@ class SpaceDetailsViewController: UIViewController{
     var wifiImage = UIImageView(image: UIImage(named: "wifi"))
     var space: Space?
     let homepage = HomePageViewController()
+    var coordinates: (Double, Double) = (0.0,0.0)
     
     // - MARK - VIEW CONTROLLER LIFECYCLE METHODS
     
@@ -37,11 +38,10 @@ class SpaceDetailsViewController: UIViewController{
         
         setUpSpaceNameLabel()
         setUpIsOpenLabel()
-        setUpcurrentWeatherLabel()
         setUpContactButton()
         setUpGetDirectionsButton()
         setUpActionButtonsStack()
-        mainStakViewAutoLayout()
+        fetchWeather()
     }
     
 
@@ -199,6 +199,22 @@ class SpaceDetailsViewController: UIViewController{
         }
     }
     
+    private func fetchWeather(){
+
+        WeatherServices.shared.getForecastAt(with: coordinates.0, and: coordinates.1) { (result) in
+            switch result{
+            case let .success(weather):
+                guard let tempAtLocation = weather.temperature else { return }
+                
+                self.space?.weatherDegree = tempAtLocation
+                self.setUpcurrentWeatherLabel()
+                self.mainStakViewAutoLayout()
+                
+            case let .failure(error):
+                print(error)
+            }
+        }
+    }
     /// Makes a phone call to the space's custome service
     @objc private func contactButtonIsTapped(_ sender: UIButton){
         

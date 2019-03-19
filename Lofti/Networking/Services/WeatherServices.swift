@@ -44,10 +44,14 @@ class WeatherServices{
                     switch result {
                     case .success:
                         let result = try? JSONDecoder().decode(Weather.self, from: unwrappedData)
-                        completion(Result.success(result!))
-                        
+                        DispatchQueue.main.async {
+                             completion(Result.success(result!))
+                        }
+                       
                     case .failure:
-                        completion(Result.failure(HTTPNetworkError.decodingFailed))
+                        DispatchQueue.main.async {
+                            completion(Result.failure(HTTPNetworkError.decodingFailed))
+                        }
                     }
                 }
             }.resume()
