@@ -1,6 +1,6 @@
 //
 //  HTTPMethod.swift
-//  ProductHunt
+//  Lofti
 //
 //  Created by Medi Assumani on 2/9/19.
 //  Copyright © 2019 Medi Assumani. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  URLParametersEncoder.swift
-//  ProductHunt
+//  Lofti
 //
 //  Created by Medi Assumani on 2/9/19.
 //  Copyright © 2019 Medi Assumani. All rights reserved.
@@ -12,12 +12,14 @@ public struct URLEncoder {
     
     /// Encode and set the parameters of a url request
     static func encodeParameters(for urlRequest: inout URLRequest, with parameters: HTTPParameters) throws {
-        guard let url = urlRequest.url else { throw HTTPNetworkError.missingURL }
+        if parameters == nil { return }
+        guard let url = urlRequest.url, let unwrappedParameters = parameters else { throw HTTPNetworkError.missingURL }
         
-        if var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false), !parameters.isEmpty {
+        
+        if var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false), !unwrappedParameters.isEmpty {
             urlComponents.queryItems = [URLQueryItem]()
             
-            for (key,value) in parameters {
+            for (key,value) in unwrappedParameters {
                 let queryItem = URLQueryItem(name: key, value: "\(value)")
                 
                 urlComponents.queryItems?.append(queryItem)
@@ -31,8 +33,10 @@ public struct URLEncoder {
     /// Set the addition http headers of the request
     static func setHeaders(for urlRequest: inout URLRequest, with headers: HTTPHeaders) throws {
         
-        for (key, value) in headers{
-            urlRequest.setValue(value, forHTTPHeaderField: key)
+        if headers == nil { return }
+        guard let unwrappedHeaders = headers else { throw HTTPNetworkError.headersNil }
+        for (key, value) in unwrappedHeaders{
+            urlRequest.setValue(value as? String, forHTTPHeaderField: key)
         }
     }
 }

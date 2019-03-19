@@ -9,85 +9,90 @@ import Foundation
 
 struct SpaceServices{
 
+    static let shared = SpaceServices()
+    private let spaceSession = URLSession(configuration: .default)
+    let headers: HTTPHeaders = ["Authorization": "Bearer \(Constant.YELP_API_KEY)"]
     
-    /* Return an array of spaces requested from the Yelp API
-     @param completion ->Result: The list of spaces objects to be returned after the method call
+    /*
+     Fetches an array of spaces requested from the Yelp API
+     
+     - Parameters:
+        - longitude: The person being greeted.
+        - latitude: The person being greeted.
+     
+     - Throws:
+        - `HTTPNetworkError.decodingFailed`: If the model fails to decode
+        - `HTTPNetworkError.badRequest`: If the request object is built incorrecttly
+     
+     - Returns: A completion handle that contains the list of spaces
      */
-    static func index(longitude: Double, latitude: Double, completion: @escaping([Space]) -> Void){
+    func fetchAllSpaces(longitude: Double, latitude: Double, _ completion: @escaping(Result<[Space]>) -> ()){
         
-        // Gets the user's space preferences to construct the URL with smart query string
-        guard let userPreferences = UserDefaults.standard.string(forKey: "user_space_preferences") else {return}
-        let baseUrl = URL(string: "https://api.yelp.com/v3/businesses/search?latitude=\(latitude)&longitude=\(longitude)&categories=\(userPreferences)")
-        
-        // Sets up the request to be made to the API with the proper Headers
-        var request = URLRequest(url: baseUrl!)
-        request.setValue("Bearer \(Constant.YELP_API_KEY)", forHTTPHeaderField: "Authorization")
-        
-        // Makes the API request
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if error == nil{
-                
-                // unwrapping the data and response and checking if error has been returned
-                guard let unwrapedResponse = response as? HTTPURLResponse, let unwrapedData = data else {return}
-                switch unwrapedResponse.statusCode{
-
-                case 200:
-                    do{
-                        // Decodes the JSON data received into a Spaces object
-                        let spaces = try JSONDecoder().decode(Spaces.self, from: unwrapedData)
-                        completion(spaces.businesses)
-
-                    }catch let error{
-                        
-                        print("Failed to load: \(error.localizedDescription)")
-                    }
+        do{
+            guard let userPreferences = UserDefaults.standard.string(forKey: "user_space_preferences") else { return }
+            let paramters: HTTPParameters = ["latitude": latitude, "longitude": longitude,"categories": userPreferences]
+            let request = try HTTPNetworkRequest.configureHTTPRequest(from: "https://api.yelp.com/v3/businesses/search?",
+                                                                      with: paramters,
+                                                                      includes: headers,
+                                                                      contains: nil,
+                                                                      and: .get)
+            
+            spaceSession.dataTask(with: request) { (data, res, err) in
+                if let response = res as? HTTPURLResponse, let unwrappedData = data {
                     
-                default:
-                    print("Error : \(error?.localizedDescription)")
+                    let result = HTTPNetworkResponse.handleNetworkResponse(for: response)
+                    switch result {
+                    case .success:
+                        let result = try? JSONDecoder().decode(Spaces.self, from: unwrappedData)
+                        completion(Result.success(result!.businesses))
+                        
+                    case .failure:
+                        completion(Result.failure(HTTPNetworkError.decodingFailed))
+                    }
                 }
-            }
+            }.resume()
+            
+        } catch {
+            completion(Result.failure(HTTPNetworkError.badRequest))
         }
-        task.resume()
     }
     
     
-    /* Return a single space object requested from the Yelp API
-     @param completion ->Result: The list of spaces objects to be returned after the method call
+    /*
+     Fetches a single space from the Yelp API
+     
+     - Parameters - id : The id of the space to be fetched
+     
+     - Throws:
+     - `HTTPNetworkError.decodingFailed`: If the model fails to decode
+     - `HTTPNetworkError.badRequest`: If the request object is built incorrecttly
+     
+     - Returns: A completion handle that contains a single space object
      */
-    static func show(id: String, completion: @escaping (Space) -> Void){
+    func fetchSingleSpace(id: String, completion: @escaping (Result<Space>) -> ()){
         
-        // Prepars he request to be made to the Yelp API with the proper URL and Headers
-        let baseUrl = URL(string: "https://api.yelp.com/v3/businesses/\(id)")
-        var request = URLRequest(url: baseUrl!)
-        request.setValue("Bearer \(Constant.YELP_API_KEY)", forHTTPHeaderField: "Authorization")
-        
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            
-            if error == nil{
-                
-                // unwrapping the data and response and checking if error has been returned
-                guard let dataFromApi = data, let responseFromApi = response as? HTTPURLResponse else {return}
-                
-                switch responseFromApi.statusCode{
+        do{
+            let request = try HTTPNetworkRequest.configureHTTPRequest(from: "https://api.yelp.com/v3/businesses/\(id)",
+                                                                      with: nil,
+                                                                      includes: headers,
+                                                                      contains: nil,
+                                                                      and: .get)
+            spaceSession.dataTask(with: request) { (data, res, err) in
+                if let response = res as? HTTPURLResponse, let unwrappedData = data {
                     
-                case 200:
-                    
-                    do {
-                        // Decodes the JSON data received into a Space object
-                        let space = try JSONDecoder().decode(Space.self, from: dataFromApi)
-                        completion(space)
+                    let result = HTTPNetworkResponse.handleNetworkResponse(for: response)
+                    switch result {
+                    case .success:
+                        let result = try? JSONDecoder().decode(Space.self, from: unwrappedData)
+                        completion(Result.success(result!))
                         
-                    } catch let error{
-                        print("Error Found : \(error.localizedDescription)")
+                    case .failure:
+                        completion(Result.failure(HTTPNetworkError.decodingFailed))
                     }
-                    
-    
-                default:
-                    print("Error found with status code ")
                 }
-            
-            }
+            }.resume()
+        } catch {
+            completion(Result.failure(HTTPNetworkError.badRequest))
         }
-        task.resume()
     }
 }

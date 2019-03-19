@@ -23,10 +23,20 @@ extension HomePageViewController: UICollectionViewDataSource, UICollectionViewDe
         let address = "\(selectedSpace.location.address1) \(selectedSpace.location.city) \(selectedSpace.location.state)"
         
         // Gets the operation hours of the clicked space
-        SpaceServices.show(id: selectedSpace.id) { (space) in
-            
-            selectedSpace.hours = space.hours
-            destinationVC.space = selectedSpace
+//        SpaceServices.show(id: selectedSpace.id) { (space) in
+//
+//            selectedSpace.hours = space.hours
+//            destinationVC.space = selectedSpace
+//        }
+        SpaceServices.shared.fetchSingleSpace(id: selectedSpace.id) { (result) in
+            switch result{
+            case let .success(space):
+                selectedSpace.hours = space.hours
+                destinationVC.space = selectedSpace
+                
+            case let .failure(error):
+                print(error)
+            }
         }
         
         // Gets the weather tempeterature of the space's location

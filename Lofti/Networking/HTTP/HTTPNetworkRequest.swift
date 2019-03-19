@@ -1,6 +1,6 @@
 //
 //  HTTPNetworkRequest.swift
-//  ProductHunt
+//  Lofti
 //
 //  Created by Medi Assumani on 2/16/19.
 //  Copyright © 2019 Medi Assumani. All rights reserved.
@@ -8,17 +8,15 @@
 
 import Foundation
 
-public typealias HTTPParameters = [String: Any]
-public typealias HTTPHeaders = [String: String]
+public typealias HTTPParameters = [String: Any]?
+public typealias HTTPHeaders = [String: Any]?
 
 struct HTTPNetworkRequest {
     
-    static let headers =  ["":""]
-    
     /// Set the body, method, headers, and paramaters of the request
-    static func configureHTTPRequest(from route: HTTPNetworkRoute, with parameters: HTTPParameters, and method: HTTPMethod, contains body: Data?) throws -> URLRequest {
+    static func configureHTTPRequest(from url: String, with parameters: HTTPParameters, includes headers: HTTPHeaders, contains body: Data?, and method: HTTPMethod) throws -> URLRequest {
         
-        guard let url = URL(string: "") else { fatalError("Error while unwrapping url")}
+        guard let url = URL(string: url) else { fatalError("Error while unwrapping url")}
         
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10.0)
         

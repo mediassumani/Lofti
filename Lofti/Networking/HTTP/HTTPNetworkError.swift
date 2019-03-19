@@ -1,6 +1,6 @@
 //
 //  NetworkError.swift
-//  ProductHunt
+//  Lofti
 //
 //  Created by Medi Assumani on 2/9/19.
 //  Copyright © 2019 Medi Assumani. All rights reserved.
@@ -11,7 +11,8 @@ import Foundation
 // The enumeration defines possible errrors to encounter during Network Request
 public enum HTTPNetworkError: String, Error {
     
-    case parametersNil = "Error Found : Parameters URL were nil."
+    case parametersNil = "Error Found : Parameters are nil."
+    case headersNil = "Error Found : Headers are Nil"
     case encodingFailed = "Error Found : Parameter Encoding failed."
     case decodingFailed = "Error Found : Unable to Decode the data."
     case missingURL = "Error Found : The URL is nil."

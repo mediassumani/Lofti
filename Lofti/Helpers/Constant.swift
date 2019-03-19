@@ -13,19 +13,20 @@ import Foundation
 enum Constant{
     
     // Constants for Networking operations
-    static let YELP_API_KEY: String = "gY2YUHqCE92WGXAVa_c9pCZfaBSXksbKJKIPOxwf_99Nrt1TVonoN2Fyk7YZffBFADtn8da2LbWQdA02G6O8QGXWb8psGP4nVaFXPz4q6QwuwLUwaZ6tA58uZ3n0W3Yx"
-    static let YELP_CLIENT_ID: String = "_GWT2CXiyyxccGtUChLa6Q"
-    static let WEATHER_API_KEY: String = "d708f84ed5ebce9e7b93b60a35faf289"
-    static let WEATHER_URL: URL = URL(string: "https://api.darksky.net/forecast/")!
+    static let YELP_API_KEY = "gY2YUHqCE92WGXAVa_c9pCZfaBSXksbKJKIPOxwf_99Nrt1TVonoN2Fyk7YZffBFADtn8da2LbWQdA02G6O8QGXWb8psGP4nVaFXPz4q6QwuwLUwaZ6tA58uZ3n0W3Yx"
+    static let YELP_CLIENT_ID = "_GWT2CXiyyxccGtUChLa6Q"
+    static let YELP_API_URL = "https://api.yelp.com/v3/"
+    static let WEATHER_API_KEY = "d708f84ed5ebce9e7b93b60a35faf289"
+    static let WEATHER_URL = URL(string: "https://api.darksky.net/forecast/")!
     
     static let SEARCH_LIMIT = 10
     static let PAUSIBLE_PREFERENCES = ["Libraries", "Coffee Shops", "Book Stores", "Shared Offices", "Parks", "Comunity Centers"]
     
     
     // Constants for UI related operations
-    static let homePageCellID: String = "homepagecellidentifier"
-    static let userPreferencesCellID: String = "userPreferencesCellID"
-    static let onboardingViewCellIdentifier: String = "onboardingCellId"
+    static let homePageCellID = "homepagecellidentifier"
+    static let userPreferencesCellID = "userPreferencesCellID"
+    static let onboardingViewCellIdentifier = "onboardingCellId"
     
     
     static let pages = [
