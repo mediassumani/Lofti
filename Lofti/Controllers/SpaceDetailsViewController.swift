@@ -27,6 +27,9 @@ class SpaceDetailsViewController: UIViewController{
     var wifiImage = UIImageView(image: UIImage(named: "wifi"))
     var space: Space?
     let homepage = HomePageViewController()
+    var mapView = MKMapView.init()
+    
+    var coordinates = CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
     
     // - MARK - VIEW CONTROLLER LIFECYCLE METHODS
     
@@ -35,13 +38,17 @@ class SpaceDetailsViewController: UIViewController{
         
         view.backgroundColor = .white
         
+        view.addSubview(mapView)
         setUpSpaceNameLabel()
         setUpIsOpenLabel()
-        setUpcurrentWeatherLabel()
         setUpContactButton()
         setUpGetDirectionsButton()
         setUpActionButtonsStack()
-        mainStakViewAutoLayout()
+        fetchWeather()
+        setUpMapView()
+        LocationServices.shared.centerLocationOnMap(coordinates: coordinates,
+                                                    annotationTitle: space!.name,
+                                                    map: mapView)
     }
     
 
@@ -103,7 +110,7 @@ class SpaceDetailsViewController: UIViewController{
         
         guard let currentTemperature = space?.weatherDegree else { return }
         
-        currentWeatherLabel = CustomLabel(fontSize: 70,
+        currentWeatherLabel = CustomLabel(fontSize: 20,
                                        text: "\(Int(currentTemperature))°F",
                                        textColor: .black,
                                        textAlignment: .center,
@@ -144,10 +151,15 @@ class SpaceDetailsViewController: UIViewController{
 
     }
     
+    func setUpMapView(){
+       
+       mapView.layer.cornerRadius = 100
+    }
+
     
     private func mainStakViewAutoLayout(){
         
-        mainStackView = CustomStackView(subviews: [spaceNameLabel,isOpenAndWifiStackView,currentWeatherLabel,actionButtonsStackView],
+        mainStackView = CustomStackView(subviews: [spaceNameLabel,isOpenAndWifiStackView,currentWeatherLabel, mapView, actionButtonsStackView],
                                         alignment: .center,
                                         axis: .vertical,
                                         distribution: .fill)
@@ -163,8 +175,10 @@ class SpaceDetailsViewController: UIViewController{
                                      isOpenAndWifiStackView.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.1),
                                      isOpenAndWifiStackView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.7),
                                      isOpenAndWifiStackView.centerXAnchor.constraint(equalTo: mainStackView.centerXAnchor),
-                                     currentWeatherLabel.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.4),
-                                     currentWeatherLabel.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.6),
+                                     currentWeatherLabel.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.2),
+                                     currentWeatherLabel.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.3),
+                                     mapView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.5),
+                                     mapView.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.3),
                                      actionButtonsStackView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.7),
                                      actionButtonsStackView.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.2),
                                      getDirectionsButton.widthAnchor.constraint(equalTo: actionButtonsStackView.widthAnchor, multiplier: 0.8),
@@ -183,7 +197,7 @@ class SpaceDetailsViewController: UIViewController{
         
         // Get the coordinates of the space's location
         let address = "\(space.location.address1) \(space.location.city) \(space.location.state)"
-        LocationServices.addressToCoordinate(address) { (coordinates) in
+        LocationServices.shared.addressToCoordinate(address) { (coordinates) in
             
             guard let longitude = coordinates?.longitude, let latitude = coordinates?.latitude else {return}
             
@@ -199,6 +213,22 @@ class SpaceDetailsViewController: UIViewController{
         }
     }
     
+    private func fetchWeather(){
+
+        WeatherServices.shared.getForecastAt(longitude: coordinates.longitude, latitude: coordinates.latitude) { (result) in
+            switch result{
+            case let .success(weather):
+                guard let tempAtLocation = weather.temperature else { return }
+                
+                self.space?.weatherDegree = tempAtLocation
+                self.setUpcurrentWeatherLabel()
+                self.mainStakViewAutoLayout()
+                
+            case let .failure(error):
+                print(error)
+            }
+        }
+    }
     /// Makes a phone call to the space's custome service
     @objc private func contactButtonIsTapped(_ sender: UIButton){
         

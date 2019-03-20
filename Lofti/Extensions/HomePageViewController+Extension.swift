@@ -27,30 +27,17 @@ extension HomePageViewController: UICollectionViewDataSource, UICollectionViewDe
             case let .success(space):
                 selectedSpace.hours = space.hours
                 destinationVC.space = selectedSpace
+                LocationServices.shared.addressToCoordinate(address) { (coordinates) in
+                    
+                    guard let unwrappedCoordinates = coordinates else {return}
+
+                    destinationVC.coordinates = unwrappedCoordinates
+                    self.navigationController?.pushViewController(destinationVC, animated: true)
+                }
                 
             case let .failure(error):
                 print(error)
             }
-        }
-        
-        // Gets the weather tempeterature of the space's location
-        LocationServices.addressToCoordinate(address) { (coordinates) in
-            
-            guard let longitude = coordinates?.longitude, let latitude = coordinates?.latitude else {return}
-            
-            WeatherServices.shared.getForecastAt(with: longitude, and: latitude, completion: { (result) in
-                
-                switch result{
-                case let .success(weather):
-                    guard let spaceLocationTemperature = weather.temperature else { return }
-                    destinationVC.space?.weatherDegree = spaceLocationTemperature
-                    DispatchQueue.main.async {
-                        self.navigationController?.pushViewController(destinationVC, animated: true)
-                    }
-                case let .failure(error):
-                    print(error)
-                }
-            })
         }
     }
 

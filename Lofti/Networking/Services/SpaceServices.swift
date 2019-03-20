@@ -44,10 +44,14 @@ struct SpaceServices{
                     switch result {
                     case .success:
                         let result = try? JSONDecoder().decode(Spaces.self, from: unwrappedData)
-                        completion(Result.success(result!.businesses))
+                        DispatchQueue.main.async {
+                            completion(Result.success(result!.businesses))
+                        }
                         
                     case .failure:
-                        completion(Result.failure(HTTPNetworkError.decodingFailed))
+                        DispatchQueue.main.async {
+                            completion(Result.failure(HTTPNetworkError.decodingFailed))
+                        }
                     }
                 }
             }.resume()
@@ -84,10 +88,14 @@ struct SpaceServices{
                     switch result {
                     case .success:
                         let result = try? JSONDecoder().decode(Space.self, from: unwrappedData)
-                        completion(Result.success(result!))
+                        DispatchQueue.main.async {
+                            completion(Result.success(result!))
+                        }
                         
                     case .failure:
-                        completion(Result.failure(HTTPNetworkError.decodingFailed))
+                        DispatchQueue.main.async {
+                            completion(Result.failure(HTTPNetworkError.decodingFailed))
+                        }
                     }
                 }
             }.resume()

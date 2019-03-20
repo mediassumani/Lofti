@@ -27,7 +27,7 @@ class WeatherServices{
      
      - Returns: A completion handler that contains a weather object with its temperature and summary
      */
-    func getForecastAt(with longitude: Double, and latitude: Double,completion: @escaping(Result<Weather>) -> ()){
+    func getForecastAt(longitude: Double, latitude: Double,completion: @escaping(Result<Weather>) -> ()){
         
         do{
             let fullPath = baseURL.absoluteString + "/forecast/\(Constant.DARKSKY_API_KEY)/\(latitude),\(longitude)"
@@ -44,10 +44,14 @@ class WeatherServices{
                     switch result {
                     case .success:
                         let result = try? JSONDecoder().decode(Weather.self, from: unwrappedData)
-                        completion(Result.success(result!))
-                        
+                        DispatchQueue.main.async {
+                             completion(Result.success(result!))
+                        }
+                       
                     case .failure:
-                        completion(Result.failure(HTTPNetworkError.decodingFailed))
+                        DispatchQueue.main.async {
+                            completion(Result.failure(HTTPNetworkError.decodingFailed))
+                        }
                     }
                 }
             }.resume()

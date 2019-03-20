@@ -59,11 +59,9 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
             
             switch result{
             case let .success(fetchedSpaces):
-                self.spaces = fetchedSpaces
-                
+                self.spaces = fetchedSpaces.sorted(by: { $0.distance ?? 0.0 < $1.distance ?? 0.0 })
             case let .failure(error):
                 print(error)
-                
             }
             
         }

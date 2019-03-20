@@ -69,7 +69,7 @@ class UserPreferencesViewController: UICollectionViewController{
         preferences.forEach { (preference) in
             userPreferences += "\((preference.lowercased()).replacingOccurrences(of: " ", with: ","))"
         }
-        userPreferences.remove(at: userPreferences.lastIndex(of: ",")!)
+
         UserDefaults.standard.set(userPreferences, forKey: "user_space_preferences")
         UserDefaults.standard.set(true, forKey: "current_user")
         navigationController?.pushViewController(destinationVC, animated: true)
