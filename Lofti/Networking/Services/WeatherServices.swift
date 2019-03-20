@@ -27,7 +27,7 @@ class WeatherServices{
      
      - Returns: A completion handler that contains a weather object with its temperature and summary
      */
-    func getForecastAt(with longitude: Double, and latitude: Double,completion: @escaping(Result<Weather>) -> ()){
+    func getForecastAt(longitude: Double, latitude: Double,completion: @escaping(Result<Weather>) -> ()){
         
         do{
             let fullPath = baseURL.absoluteString + "/forecast/\(Constant.DARKSKY_API_KEY)/\(latitude),\(longitude)"
