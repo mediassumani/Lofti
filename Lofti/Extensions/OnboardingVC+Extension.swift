@@ -5,10 +5,14 @@
 //  Created by Medi Assumani on 1/2/19.
 //  Copyright © 2019 Medi Assumani. All rights reserved.
 //
+//
+
+import Foundation
+import UIKit
 
 import UIKit
 
-extension OnboardingCollectionViewController: UICollectionViewDelegateFlowLayout {
+extension UserOnboardingViewController: UICollectionViewDelegateFlowLayout {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -16,7 +20,7 @@ extension OnboardingCollectionViewController: UICollectionViewDelegateFlowLayout
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.onboardingViewCellIdentifier, for: indexPath) as! OnboardingCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OnboardingCollectionViewCell.cellIdentifier, for: indexPath) as! OnboardingCollectionViewCell
         let page = Constant.pages[indexPath.row]
         cell.page = page
         
@@ -39,4 +43,3 @@ extension OnboardingCollectionViewController: UICollectionViewDelegateFlowLayout
         pageControll.currentPage = Int(x / view.frame.width)
     }
 }
-

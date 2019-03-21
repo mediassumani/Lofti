@@ -10,6 +10,7 @@ import UIKit
 
 class UserPreferencesViewCell: UICollectionViewCell {
     
+    static let cellIdentifier = "userPreferencesCellID"
     let preferenceNameLabel = CustomLabel(fontSize: 18, text: "", textColor: .black, textAlignment: .center, fontName: "Helvetica-Light")
     
     override init(frame: CGRect) {

@@ -16,16 +16,16 @@ import Foundation
  - description : the description to be displayed on the page
  **/
 
-struct Page{
+struct Page {
     
-    var imageName: String
-    var header: String
-    var description: String
+    let imageName: String
+    let headerText: String
+    let description: String
     
-    init(imageName: String, header: String, description: String) {
+    init(imageName: String, headerText: String, description: String) {
         
         self.imageName = imageName
-        self.header = header
+        self.headerText = headerText
         self.description = description
     }
 }

@@ -23,21 +23,15 @@ enum Constant{
     
     
     // Constants for UI related operations
-    static let homePageCellID = "homepagecellidentifier"
-    static let userPreferencesCellID = "userPreferencesCellID"
-    static let onboardingViewCellIdentifier = "onboardingCellId"
-    
     
     static let pages = [
-        Page(imageName: "Logo_onboarding", header: "Welcome to Lofti", description: "Lofti helps you find your ideal study and working spaces nearby based on your preferences."),
+    
+        Page(imageName: "Logo_onboarding", headerText: "Welcome to Lofti", description: "Lofti's mission is to connect peoole and working spaces based on their preferences."),
+        Page(imageName: "preferences", headerText: "Preferences", description: "As a first time user, select your study/working environment preferences such as Libraries, coffeshops, or Shared offices(e.g: WeWork)."),
+        Page(imageName: "wifi_onboarding", headerText: "Amenities", description: "Click on a specific space to see available amenities such as wifi, restroom, charging stations, and whether it is open or closed at the moment."),
+        Page(imageName: "distance", headerText: "Distance", description: "Working spaces are filtered in order of closest to farthest. Click on a specific space to get a map view of the area."),
         
-        Page(imageName: "preferences", header: "Preferences", description: "As a first time user, pick your study/working preferences such as Libraries and Shared offices(e.g: WeWork)."),
-        
-        Page(imageName: "wifi_onboarding", header: "Amenities", description: "Click on a specific space to see the wifi availability, the current weather temperature, and its open/closed status."),
-        
-        Page(imageName: "distance", header: "Distance", description: "Easily check the distance between you and the space in the home page."),
-        
-        Page(imageName: "contact", header: "Take Action", description: "Contact the space customer service or get the directions there with a click of a button.")
+        Page(imageName: "temperature", headerText: "Weather", description: "Easily see the current weather at the space's location before you leave your house.")
     ]
 }
 

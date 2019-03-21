@@ -22,7 +22,7 @@ extension UserPreferencesViewController: UICollectionViewDelegateFlowLayout {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.userPreferencesCellID, for: indexPath) as! UserPreferencesViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UserPreferencesViewCell.cellIdentifier, for: indexPath) as! UserPreferencesViewCell
         
         cell.preferenceNameLabel.text = Constant.PAUSIBLE_PREFERENCES[indexPath.row]
         return cell

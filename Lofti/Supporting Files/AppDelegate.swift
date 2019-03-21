@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         if let window = window{
             
-            let destinationVC = OnboardingCollectionViewController(collectionViewLayout: layout)
+            let destinationVC = UserOnboardingViewController(collectionViewLayout: layout)
             window.rootViewController = destinationVC
             window.makeKeyAndVisible()
         }
