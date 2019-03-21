@@ -78,6 +78,14 @@ class UserOnboardingViewController: UICollectionViewController{
     /// Swipes to the next page on the onboarding page
     @objc private func handleNextSwipe(_ sender: UIButton){
         
+        if nextButton.titleLabel?.text == "DONE"{
+            self.handleSkipButton(sender)
+        }
+        if pageControll.currentPage == 3 {
+            nextButton.setTitle("DONE", for: .normal)
+        }
+        
+        
         let nextIndex = min(pageControll.currentPage + 1, Constant.pages.count - 1)
         let indexPath = IndexPath(item: nextIndex, section: 0)
         pageControll.currentPage = nextIndex

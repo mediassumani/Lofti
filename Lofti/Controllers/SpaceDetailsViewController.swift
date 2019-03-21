@@ -32,6 +32,7 @@ class SpaceDetailsViewController: UIViewController{
     private var currentWeatherImageView = UIImageView()
     
     var space: Space?
+    var weather: Weather?
     let homepage = HomePageViewController()
     var mapView = MKMapView.init()
     var coordinates = CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
@@ -44,7 +45,6 @@ class SpaceDetailsViewController: UIViewController{
         view.backgroundColor = .white
     
         configureAllButtons()
-        configureAllImages()
         configureWeatherUIElements()
         configureActionButtonsSatckView()
         
@@ -68,7 +68,24 @@ class SpaceDetailsViewController: UIViewController{
                                      fontName: "HelveticaNeue-Bold")
         
         
-        guard let currentTemperature = space?.weatherDegree else { return }
+        guard let currentTemperature = weather?.temperature, let currentWeatherSummary = weather?.summary else { return }
+        
+        switch currentWeatherSummary {
+        case "Sunny":
+            currentWeatherImageView.image = UIImage(named: "sunny")
+        case "Rainny":
+            currentWeatherImageView.image = UIImage(named: "rainy")
+        case "Drizzle":
+            currentWeatherImageView.image = UIImage(named: "drizzle")
+        case "Snowy":
+            currentWeatherImageView.image = UIImage(named: "snowy")
+        case "Clear":
+            currentWeatherImageView.image = UIImage(named: "clear")
+        case "Cloudy":
+            currentWeatherImageView.image = UIImage(named: "cloudy")
+        default:
+            currentWeatherImageView.image = UIImage(named: "clear")
+        }
         
         currentWeatherLabel = CustomLabel(fontSize: 20,
                                           text: "\(Int(currentTemperature))°F",
@@ -130,25 +147,6 @@ class SpaceDetailsViewController: UIViewController{
         ])
     }
     
-    /// Styles and sets up all UIImageView elements in this controller
-    private func configureAllImages(){
-        
-        plugImageView.image = UIImage(named: "plug")
-        bathroomImageView.image = UIImage(named: "toilet")
-        wifiAvailabilityImageView.image = UIImage(named: "wifi")
-        currentWeatherImageView.image = UIImage(named: "snowy")
-        
-        
-        // Configuring the label that displays whether the space is open or closed
-        if space?.hours?.first?.is_open_now == true{
-            spaceOpenStatusImageView.image = UIImage(named: "open")
-            
-        }else{
-            spaceOpenStatusImageView.image = UIImage(named: "close")
-            
-        }
-    }
-    
     private func mainStakViewAutoLayout(){
         
         mainStackView = CustomStackView(subviews: [weatherStackView, spaceNameLabel, mapView, actionButtonsStackView],
@@ -201,9 +199,8 @@ class SpaceDetailsViewController: UIViewController{
         WeatherServices.shared.getForecastAt(longitude: coordinates.longitude, latitude: coordinates.latitude) { (result) in
             switch result{
             case let .success(weather):
-                guard let tempAtLocation = weather.temperature else { return }
                 
-                self.space?.weatherDegree = tempAtLocation
+                self.weather = weather
                 self.configureWeatherUIElements()
                 self.mainStakViewAutoLayout()
                 

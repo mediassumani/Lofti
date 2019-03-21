@@ -21,7 +21,6 @@ enum Constant{
     static let SEARCH_LIMIT = 10
     static let PAUSIBLE_PREFERENCES = ["Libraries", "Coffee Shops", "Book Stores", "Shared Offices", "Parks", "Comunity Centers"]
     
-    
     // Constants for UI related operations
     
     static let pages = [
