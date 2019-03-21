@@ -44,9 +44,20 @@
 		B88BA17321921F89009C56DC /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88BA17221921F89009C56DC /* UIView+Extension.swift */; };
 		B88BA177219291D3009C56DC /* Double+String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88BA176219291D3009C56DC /* Double+String+Extension.swift */; };
 		B88CACE821938869005786BA /* SpaceDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88CACE721938869005786BA /* SpaceDetailsViewController.swift */; };
+		B8A333182242ADDE0046DE07 /* Lofti_XCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A333172242ADDE0046DE07 /* Lofti_XCTests.swift */; };
 		B8AAC02921DC1231004D99C1 /* LocationServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AAC02821DC1231004D99C1 /* LocationServices.swift */; };
 		B8B7121C21B0AAB200F6DAF1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B8B7121B21B0AAB100F6DAF1 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B8A3331A2242ADDE0046DE07 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B8866D4E218BE5B7002B7CDF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B8866D55218BE5B7002B7CDF;
+			remoteInfo = Lofti;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		00550652662810EF30C8D2D8 /* Pods_Lofti.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lofti.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +99,9 @@
 		B88BA17221921F89009C56DC /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		B88BA176219291D3009C56DC /* Double+String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+String+Extension.swift"; sourceTree = "<group>"; };
 		B88CACE721938869005786BA /* SpaceDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceDetailsViewController.swift; sourceTree = "<group>"; };
+		B8A333152242ADDE0046DE07 /* Lofti XCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Lofti XCTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8A333172242ADDE0046DE07 /* Lofti_XCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lofti_XCTests.swift; sourceTree = "<group>"; };
+		B8A333192242ADDE0046DE07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B8AAC02821DC1231004D99C1 /* LocationServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServices.swift; sourceTree = "<group>"; };
 		B8B7121B21B0AAB100F6DAF1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E483F10AE2A9B441A888DE33 /* Pods-Lofti.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lofti.debug.xcconfig"; path = "Target Support Files/Pods-Lofti/Pods-Lofti.debug.xcconfig"; sourceTree = "<group>"; };
@@ -100,6 +114,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4629A7F1E36B28C73791B4C6 /* Pods_Lofti.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B8A333122242ADDE0046DE07 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				B8866D58218BE5B7002B7CDF /* Lofti */,
+				B8A333162242ADDE0046DE07 /* Lofti XCTests */,
 				B8866D57218BE5B7002B7CDF /* Products */,
 				67A1FF898C15DB796823DC70 /* Pods */,
 				0352D4456532F95800F3B537 /* Frameworks */,
@@ -211,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				B8866D56218BE5B7002B7CDF /* Lofti.app */,
+				B8A333152242ADDE0046DE07 /* Lofti XCTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -283,6 +306,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		B8A333162242ADDE0046DE07 /* Lofti XCTests */ = {
+			isa = PBXGroup;
+			children = (
+				B8A333172242ADDE0046DE07 /* Lofti_XCTests.swift */,
+				B8A333192242ADDE0046DE07 /* Info.plist */,
+			);
+			path = "Lofti XCTests";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -305,6 +337,24 @@
 			productReference = B8866D56218BE5B7002B7CDF /* Lofti.app */;
 			productType = "com.apple.product-type.application";
 		};
+		B8A333142242ADDE0046DE07 /* Lofti XCTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B8A3331E2242ADDE0046DE07 /* Build configuration list for PBXNativeTarget "Lofti XCTests" */;
+			buildPhases = (
+				B8A333112242ADDE0046DE07 /* Sources */,
+				B8A333122242ADDE0046DE07 /* Frameworks */,
+				B8A333132242ADDE0046DE07 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B8A3331B2242ADDE0046DE07 /* PBXTargetDependency */,
+			);
+			name = "Lofti XCTests";
+			productName = "Lofti XCTests";
+			productReference = B8A333152242ADDE0046DE07 /* Lofti XCTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -317,6 +367,10 @@
 				TargetAttributes = {
 					B8866D55218BE5B7002B7CDF = {
 						CreatedOnToolsVersion = 10.1;
+					};
+					B8A333142242ADDE0046DE07 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = B8866D55218BE5B7002B7CDF;
 					};
 				};
 			};
@@ -334,6 +388,7 @@
 			projectRoot = "";
 			targets = (
 				B8866D55218BE5B7002B7CDF /* Lofti */,
+				B8A333142242ADDE0046DE07 /* Lofti XCTests */,
 			);
 		};
 /* End PBXProject section */
@@ -346,6 +401,13 @@
 				B8866D64218BE5BB002B7CDF /* LaunchScreen.storyboard in Resources */,
 				B8B7121C21B0AAB200F6DAF1 /* GoogleService-Info.plist in Resources */,
 				B8866D61218BE5BB002B7CDF /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B8A333132242ADDE0046DE07 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,7 +505,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B8A333112242ADDE0046DE07 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8A333182242ADDE0046DE07 /* Lofti_XCTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B8A3331B2242ADDE0046DE07 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B8866D55218BE5B7002B7CDF /* Lofti */;
+			targetProxy = B8A3331A2242ADDE0046DE07 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B8866D62218BE5BB002B7CDF /* LaunchScreen.storyboard */ = {
@@ -613,6 +691,46 @@
 			};
 			name = Release;
 		};
+		B8A3331C2242ADDE0046DE07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 966X5T4Q98;
+				INFOPLIST_FILE = "Lofti XCTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "mediassumani.Lofti-XCTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lofti.app/Lofti";
+			};
+			name = Debug;
+		};
+		B8A3331D2242ADDE0046DE07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 966X5T4Q98;
+				INFOPLIST_FILE = "Lofti XCTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "mediassumani.Lofti-XCTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lofti.app/Lofti";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -630,6 +748,15 @@
 			buildConfigurations = (
 				B8866D69218BE5BB002B7CDF /* Debug */,
 				B8866D6A218BE5BB002B7CDF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B8A3331E2242ADDE0046DE07 /* Build configuration list for PBXNativeTarget "Lofti XCTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B8A3331C2242ADDE0046DE07 /* Debug */,
+				B8A3331D2242ADDE0046DE07 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
