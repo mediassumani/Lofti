@@ -49,10 +49,12 @@ PODS:
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
   - paper-onboarding (5.0.0)
+  - StatusAlert (1.1.0)
 
 DEPENDENCIES:
   - Firebase/Core
   - paper-onboarding
+  - StatusAlert
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -64,6 +66,7 @@ SPEC REPOS:
     - GoogleUtilities
     - nanopb
     - paper-onboarding
+    - StatusAlert
 
 SPEC CHECKSUMS:
   Firebase: 6df9a6114bc9f106a98fe83d5438d4d9833c2019
@@ -74,7 +77,8 @@ SPEC CHECKSUMS:
   GoogleUtilities: 95996bea7c7d9b8fb811b7507669a4a8762f80c7
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   paper-onboarding: a2e3a710fd27ac0b5635ec5490660e7ec09289b5
+  StatusAlert: 4d6dadebf5f7abd5648fa774ef3062f2f95cc4aa
 
-PODFILE CHECKSUM: 258dc3d731965e53762c782daeb2a710b997d79e
+PODFILE CHECKSUM: 707bd3c34ccd938e001ff5bea1ec16b562c6b421
 
 COCOAPODS: 1.6.0.beta.2

@@ -8,6 +8,6 @@ target 'Lofti' do
   # Pods for Lofti
   pod 'Firebase/Core'
   pod 'paper-onboarding'
-
+  pod 'StatusAlert'
 
 end

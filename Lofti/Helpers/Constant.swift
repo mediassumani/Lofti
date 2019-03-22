@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import StatusAlert
 
 // This File contains constants used throughout the application
 
@@ -29,5 +30,31 @@ enum Constant{
         UIImageView(image: UIImage(named: "park")),
         UIImageView(image: UIImage(named: "community_center"))
     ]
+    
+    
+    static func createStatusAlert(title: String, message: String, choice: Selection){
+        
+        let statusAlert = StatusAlert()
+        statusAlert.alertShowingDuration = 3.0
+        
+        switch choice {
+        case .selected:
+            
+            statusAlert.image = UIImage(named: "selected")
+            statusAlert.title = title
+            statusAlert.message = message
+            statusAlert.canBePickedOrDismissed = true
+            
+            
+        case .deselected:
+        
+            statusAlert.image = UIImage(named: "deselect")
+            statusAlert.title = title
+            statusAlert.message = message
+            statusAlert.canBePickedOrDismissed = true
+        }
+        
+        statusAlert.showInKeyWindow()
+    }
 }
 
