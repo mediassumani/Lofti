@@ -18,4 +18,7 @@ extension UIColor{
     static var lightCyan = UIColor(red: 0.9686, green: 0.9843, blue: 1, alpha: 1.0)
     static var lightBlue = UIColor(red: 109/255, green: 188/255, blue: 237/255, alpha: 1.0)
     static var lightDark = UIColor(red: 0.3765, green: 0.3765, blue: 0.3765, alpha: 1.0)
+    static var lightPink = UIColor(red: 1, green: 0.3882, blue: 0.9176, alpha: 1.0)
+    static var cyanGreen = UIColor(red: 0.0627, green: 0.8078, blue: 0.6824, alpha: 1.0)
+    static var customGreen = UIColor(red: 0.4235, green: 0.7569, blue: 0.1647, alpha: 1.0)
 }
