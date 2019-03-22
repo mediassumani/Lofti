@@ -71,7 +71,7 @@ class OnboardingViewController: UIViewController, PaperOnboardingDataSource, Pap
         return [
             OnboardingItemInfo(informationImage: UIImage(named: "Logo_onboarding")!,
                                                title: "Welcome to Lofti",
-                                               description: "Lofti's mission is to connect peoole and working spaces based on their preferences.",
+                                               description: "Lofti's mission is to connect people and nearby working spaces based on their preferences.",
                                                pageIcon: dummyImage!,
                                                color: .black,
                                                titleColor: .white,

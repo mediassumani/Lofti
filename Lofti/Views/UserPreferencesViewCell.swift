@@ -11,14 +11,14 @@ import UIKit
 class UserPreferencesViewCell: UICollectionViewCell {
     
     static let cellIdentifier = "userPreferencesCellID"
-    let preferenceNameLabel = CustomLabel(fontSize: 18, text: "", textColor: .black, textAlignment: .center, fontName: "Helvetica-Light")
+    let preferenceNameLabel = CustomLabel(fontSize: 20, text: "", textColor: .white, textAlignment: .center, fontName: "Helvetica-Bold")
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         layoutCellElements()
-        styleCell()
-        backgroundColor = .white
+        //setUpGradientColor()
+        //backgroundColor = .lightBlue
         
     }
     
@@ -28,13 +28,29 @@ class UserPreferencesViewCell: UICollectionViewCell {
     
     
     
-    private func styleCell(){
+    public func configureCell(preference: String, backgroundImage: UIImageView){
         
+        self.preferenceNameLabel.text = preference
+        self.preferenceNameLabel.numberOfLines = 2
+        self.backgroundView = backgroundImage
         self.layer.cornerRadius = 15
         self.clipsToBounds = true
         self.layer.masksToBounds = true
         self.layer.shadowRadius = 1
     }
+    
+    private func setUpGradientColor(){
+        
+        let gradientLayer = CAGradientLayer()
+        
+        gradientLayer.frame = bounds
+        
+        gradientLayer.colors = [ UIColor.lightBlue.cgColor, UIColor.lightCyan.cgColor, UIColor.lightBlue.cgColor]
+        gradientLayer.locations = [0.0, 0.5, 0.6]
+        
+        layer.addSublayer(gradientLayer)
+    }
+    
     private func layoutCellElements(){
         
         addSubview(preferenceNameLabel)

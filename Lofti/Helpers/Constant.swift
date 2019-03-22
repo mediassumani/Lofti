@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 // This File contains constants used throughout the application
 
@@ -20,5 +21,13 @@ enum Constant{
     static let SEARCH_LIMIT = 10
     static let PAUSIBLE_PREFERENCES = ["Libraries", "Coffee Shops", "Book Stores", "Shared Offices", "Parks", "Comunity Centers"]
     
+    static let PREFERENCE_CELL_IMAGES = [
+        UIImageView(image: UIImage(named: "library")),
+        UIImageView(image: UIImage(named: "coffee_shop")),
+        UIImageView(image: UIImage(named: "book_store")),
+        UIImageView(image: UIImage(named: "shared_office")),
+        UIImageView(image: UIImage(named: "park")),
+        UIImageView(image: UIImage(named: "community_center"))
+    ]
 }
 

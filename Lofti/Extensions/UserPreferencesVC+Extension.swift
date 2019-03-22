@@ -24,7 +24,8 @@ extension UserPreferencesViewController: UICollectionViewDelegateFlowLayout {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UserPreferencesViewCell.cellIdentifier, for: indexPath) as! UserPreferencesViewCell
         
-        cell.preferenceNameLabel.text = Constant.PAUSIBLE_PREFERENCES[indexPath.row]
+        cell.configureCell(preference: Constant.PAUSIBLE_PREFERENCES[indexPath.row], backgroundImage: Constant.PREFERENCE_CELL_IMAGES[indexPath.row])
+
         return cell
     }
     
