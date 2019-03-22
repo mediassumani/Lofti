@@ -15,10 +15,7 @@ class SpaceDetailsViewController: UIViewController{
     // - MARK: CLASS PROPERTIES
     
     private var mainStackView = CustomStackView()
-    private var amenitiesStackView = CustomStackView()
     private var actionButtonsStackView = CustomStackView()
-    private var openAndBathroomStackView = CustomStackView()
-    private var plugAndWifiStackView = CustomStackView()
     private var weatherStackView = CustomStackView()
     
     private var spaceNameLabel = CustomLabel()
@@ -35,6 +32,7 @@ class SpaceDetailsViewController: UIViewController{
     private var currentWeatherImageView = UIImageView()
     
     var space: Space?
+    var weather: Weather?
     let homepage = HomePageViewController()
     var mapView = MKMapView.init()
     var coordinates = CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
@@ -45,16 +43,10 @@ class SpaceDetailsViewController: UIViewController{
         super.viewDidLoad()
         
         view.backgroundColor = .white
-        
-        //configureAllLabels()
+    
         configureAllButtons()
-        configureAllImages()
         configureWeatherUIElements()
-        configureOpenAndBathroomElements()
-        configurePlugAndWifiUIElements()
-        //configureActionButtons()
-        configureAmenitiesUIElements()
-        setUpMapView()
+        configureActionButtonsSatckView()
         
         fetchWeather()
         LocationServices.shared.centerLocationOnMap(coordinates: coordinates,
@@ -65,60 +57,7 @@ class SpaceDetailsViewController: UIViewController{
 
     // - MARK: CLASS METHODS
     
-    private func configureOpenAndBathroomElements(){
-        
-        openAndBathroomStackView = CustomStackView(subviews: [spaceOpenStatusImageView, bathroomImageView],
-                                                   alignment: .center,
-                                                   axis: .horizontal,
-                                                   distribution: .fillEqually)
-        
-        NSLayoutConstraint.activate([
-            
-            spaceOpenStatusImageView.widthAnchor.constraint(equalTo: openAndBathroomStackView.widthAnchor, multiplier: 0.5),
-            spaceOpenStatusImageView.heightAnchor.constraint(equalTo: openAndBathroomStackView.heightAnchor, multiplier: 0.6),
-            bathroomImageView.widthAnchor.constraint(equalTo: openAndBathroomStackView.widthAnchor, multiplier: 0.5),
-            bathroomImageView.heightAnchor.constraint(equalTo: openAndBathroomStackView.heightAnchor, multiplier: 0.6)
-            
-            ])
-    }
-    
-    private func configurePlugAndWifiUIElements(){
-        
-        plugAndWifiStackView = CustomStackView(subviews: [plugImageView, wifiAvailabilityImageView],
-                                               alignment: .center,
-                                               axis: .horizontal,
-                                               distribution: .fill)
-        
-        NSLayoutConstraint.activate([
-            plugImageView.widthAnchor.constraint(equalTo: plugAndWifiStackView.widthAnchor, multiplier: 0.5),
-             plugImageView.heightAnchor.constraint(equalTo: plugAndWifiStackView.heightAnchor, multiplier: 0.6),
-             wifiAvailabilityImageView.widthAnchor.constraint(equalTo: plugAndWifiStackView.widthAnchor, multiplier: 0.5),
-             wifiAvailabilityImageView.heightAnchor.constraint(equalTo: plugAndWifiStackView.heightAnchor, multiplier: 0.7)
-            ])
-    }
-    private func configureAmenitiesUIElements(){
-        
-        amenitiesLabel = CustomLabel(fontSize: 15,
-                                     text: "Amenities & Accomodation",
-                                     textColor: .black,
-                                     textAlignment: .center,
-                                     fontName: "HelveticaNeue-Bold")
-        
-        amenitiesStackView = CustomStackView(subviews: [openAndBathroomStackView, plugAndWifiStackView],
-                                             alignment: .center,
-                                             axis: .vertical,
-                                             distribution: .fillEqually)
-        //amenitiesStackView.spacing = 1
-        
-        NSLayoutConstraint.activate([
-                                     openAndBathroomStackView.widthAnchor.constraint(equalTo: amenitiesStackView.widthAnchor, multiplier: 0.6),
-                                     openAndBathroomStackView.heightAnchor.constraint(equalTo: amenitiesStackView.heightAnchor, multiplier: 0.4),
-                                     plugAndWifiStackView.widthAnchor.constraint(equalTo: amenitiesStackView.widthAnchor, multiplier: 0.4),
-                                     plugAndWifiStackView.heightAnchor.constraint(equalTo: amenitiesStackView.heightAnchor, multiplier: 0.3)
-                                     ])
-        
-        
-    }
+
     /// Styles and sets up all UILabel elements in this controller
     private func configureWeatherUIElements(){
         
@@ -129,7 +68,24 @@ class SpaceDetailsViewController: UIViewController{
                                      fontName: "HelveticaNeue-Bold")
         
         
-        guard let currentTemperature = space?.weatherDegree else { return }
+        guard let currentTemperature = weather?.temperature, let currentWeatherSummary = weather?.summary else { return }
+        
+        switch currentWeatherSummary {
+        case "Sunny":
+            currentWeatherImageView.image = UIImage(named: "sunny")
+        case "Rainny":
+            currentWeatherImageView.image = UIImage(named: "rainy")
+        case "Drizzle":
+            currentWeatherImageView.image = UIImage(named: "drizzle")
+        case "Snowy":
+            currentWeatherImageView.image = UIImage(named: "snowy")
+        case "Clear":
+            currentWeatherImageView.image = UIImage(named: "clear")
+        case "Cloudy":
+            currentWeatherImageView.image = UIImage(named: "cloudy")
+        default:
+            currentWeatherImageView.image = UIImage(named: "clear")
+        }
         
         currentWeatherLabel = CustomLabel(fontSize: 20,
                                           text: "\(Int(currentTemperature))°F",
@@ -153,72 +109,47 @@ class SpaceDetailsViewController: UIViewController{
     /// Styles and sets up all UIButton elements in this controller
     private func configureAllButtons(){
         
-        getDirectionsButton = CustomButton(title: "Get Directions",
-                                           fontSize: 18,
-                                           titleColor: .black,
+        getDirectionsButton = CustomButton(title: "GET DIRECTIONS",
+                                           fontSize: 13,
+                                           titleColor: .white,
                                            target: self,
                                            action: #selector(directionsButtonTapped(_:)),
                                            event: .touchUpInside,
-                                           titleFontName: "HelveticaNeue-Light")
+                                           titleFontName: "PingFangTC-Medium")
+        getDirectionsButton.backgroundColor = .black
         
-        getDirectionsButton.layer.borderWidth = 0.4
+        getDirectionsButton.layer.cornerRadius = 7
         
-        contactButton = CustomButton(title: "Contact",
-                                     fontSize: 18, titleColor: .black,
+        contactButton = CustomButton(title: "CONTACT",
+                                     fontSize: 17, titleColor: .black,
                                      target: self,
                                      action: #selector(contactButtonIsTapped(_:)),
                                      event: .touchUpInside,
                                      titleFontName: "HelveticaNeue-Light")
         
+        contactButton.layer.cornerRadius = 7
         contactButton.layer.borderWidth = 0.4
         
     }
     
-    /// Styles and sets up all UIImageView elements in this controller
-    private func configureAllImages(){
+    private func configureActionButtonsSatckView(){
         
-        plugImageView.image = UIImage(named: "plug")
-        bathroomImageView.image = UIImage(named: "toilet")
-        wifiAvailabilityImageView.image = UIImage(named: "wifi")
-        currentWeatherImageView.image = UIImage(named: "snowy")
-        
-        
-        // Configuring the label that displays whether the space is open or closed
-        if space?.hours?.first?.is_open_now == true{
-            spaceOpenStatusImageView.image = UIImage(named: "open")
-            
-        }else{
-            spaceOpenStatusImageView.image = UIImage(named: "close")
-            
-        }
+        actionButtonsStackView = CustomStackView(subviews: [getDirectionsButton, contactButton],
+                                                 alignment: .center,
+                                                 axis: .vertical,
+                                                 distribution: .fillEqually)
+        actionButtonsStackView.spacing = 3
+        NSLayoutConstraint.activate([
+            getDirectionsButton.widthAnchor.constraint(equalTo: actionButtonsStackView.widthAnchor, multiplier: 0.7),
+            getDirectionsButton.heightAnchor.constraint(equalTo: actionButtonsStackView.heightAnchor, multiplier: 0.45),
+            contactButton.widthAnchor.constraint(equalTo: actionButtonsStackView.widthAnchor, multiplier: 0.7),
+            contactButton.heightAnchor.constraint(equalTo: actionButtonsStackView.heightAnchor, multiplier: 0.45),
+        ])
     }
-    
-//    private func configureActionButtons(){
-//
-//        actionButtonsStackView = CustomStackView(subviews: [getDirectionsButton],
-//                                                         alignment: .center,
-//                                                         axis: .vertical,
-//                                                         distribution: .fillEqually)
-//
-//        NSLayoutConstraint.activate([
-//
-//            getDirectionsButton.widthAnchor.constraint(equalTo: actionButtonsStackView.widthAnchor, multiplier: 1),
-//            getDirectionsButton.heightAnchor.constraint(equalTo: actionButtonsStackView.heightAnchor, multiplier: 1),
-////            contactButton.widthAnchor.constraint(equalTo: actionButtonsStackView.widthAnchor, multiplier: 0.2),
-////
-////            contactButton.heightAnchor.constraint(equalTo: actionButtonsStackView.heightAnchor, multiplier: 0.3)
-//        ])
-//    }
-    
-    func setUpMapView(){
-       
-       mapView.layer.cornerRadius = view.frame.width/2.7
-    }
-
     
     private func mainStakViewAutoLayout(){
         
-        mainStackView = CustomStackView(subviews: [weatherStackView, spaceNameLabel, mapView, amenitiesStackView, getDirectionsButton],
+        mainStackView = CustomStackView(subviews: [weatherStackView, spaceNameLabel, mapView, actionButtonsStackView],
                                         alignment: .center,
                                         axis: .vertical,
                                         distribution: .fill)
@@ -231,12 +162,10 @@ class SpaceDetailsViewController: UIViewController{
                                      weatherStackView.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.07),
                                      weatherStackView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.3),
                                      spaceNameLabel.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.1),
-                                     mapView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.7),
-                                     mapView.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.4),
-                                     amenitiesStackView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.5),
-                                     amenitiesStackView.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.3),
-                                     getDirectionsButton.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.5),
-                                     getDirectionsButton.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.06),
+                                     mapView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 1),
+                                     mapView.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.6),
+                                     actionButtonsStackView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.95),
+                                     actionButtonsStackView.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.16)
             ])
     }
     
@@ -270,9 +199,8 @@ class SpaceDetailsViewController: UIViewController{
         WeatherServices.shared.getForecastAt(longitude: coordinates.longitude, latitude: coordinates.latitude) { (result) in
             switch result{
             case let .success(weather):
-                guard let tempAtLocation = weather.temperature else { return }
                 
-                self.space?.weatherDegree = tempAtLocation
+                self.weather = weather
                 self.configureWeatherUIElements()
                 self.mainStakViewAutoLayout()
                 

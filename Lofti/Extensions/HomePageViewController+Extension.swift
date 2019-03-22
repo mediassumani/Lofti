@@ -44,7 +44,7 @@ extension HomePageViewController: UICollectionViewDataSource, UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomePageCollectionViewCell.identifier, for: indexPath) as! HomePageCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomePageCollectionViewCell.cellIdentifier, for: indexPath) as! HomePageCollectionViewCell
         
         let currentSpace = spaces[indexPath.row]
         cell.configure(currentSpace)

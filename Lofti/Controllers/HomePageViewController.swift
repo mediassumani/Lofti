@@ -104,7 +104,7 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
         collectionView.delegate = self
         collectionView.alwaysBounceVertical = true
         collectionView.backgroundColor = .lightGray
-        collectionView.register(HomePageCollectionViewCell.self, forCellWithReuseIdentifier: HomePageCollectionViewCell.identifier)
+        collectionView.register(HomePageCollectionViewCell.self, forCellWithReuseIdentifier: HomePageCollectionViewCell.cellIdentifier)
         
         return collectionView
     }()

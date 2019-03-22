@@ -13,7 +13,7 @@ struct SpaceServices{
     private let spaceSession = URLSession(configuration: .default)
     let headers: HTTPHeaders = ["Authorization": "Bearer \(Constant.YELP_API_KEY)"]
     
-    /*
+    /**
      Fetches an array of spaces requested from the Yelp API
      
      - Parameters:
@@ -25,7 +25,7 @@ struct SpaceServices{
         - `HTTPNetworkError.badRequest`: If the request object is built incorrecttly
      
      - Returns: A completion handler that contains the list of spaces
-     */
+     **/
     func fetchAllSpaces(longitude: Double, latitude: Double, _ completion: @escaping(Result<[Space]>) -> ()){
         
         do{
@@ -62,7 +62,7 @@ struct SpaceServices{
     }
     
     
-    /*
+    /**
      Fetches a single space from the Yelp API
      
      - Parameters - id : The id of the space to be fetched
@@ -72,7 +72,7 @@ struct SpaceServices{
      - `HTTPNetworkError.badRequest`: If the request object is built incorrecttly
      
      - Returns: A completion handler that contains a single space object
-     */
+     **/
     func fetchSingleSpace(id: String, completion: @escaping (Result<Space>) -> ()){
         
         do{

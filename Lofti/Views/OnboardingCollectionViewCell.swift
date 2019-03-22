@@ -10,12 +10,13 @@ import UIKit
 
 class OnboardingCollectionViewCell: UICollectionViewCell {
     
+    static let cellIdentifier = "onboardingCellId"
     var page: Page?{
         didSet{
             
             guard let unwrappedPage = page else {return}
             
-            let attributedText = NSMutableAttributedString(string: unwrappedPage.header, attributes: [NSAttributedString.Key.font:UIFont.boldSystemFont(ofSize: 23)])
+            let attributedText = NSMutableAttributedString(string: unwrappedPage.headerText, attributes: [NSAttributedString.Key.font:UIFont.boldSystemFont(ofSize: 23)])
             
             attributedText.append(NSAttributedString(string: "\n\n\n\(unwrappedPage.description)", attributes:
                 [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18),
@@ -66,9 +67,9 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
     private func layoutElements(){
         
         let stack = CustomStackView(subviews: [pageImageView, pageDescriptionTextView],
-                                alignment: .center,
-                                axis: .vertical,
-                                distribution: .fill)
+                                    alignment: .center,
+                                    axis: .vertical,
+                                    distribution: .fill)
         
         addSubview(stack)
         
@@ -79,7 +80,7 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
                                      stack.centerYAnchor.constraint(equalTo: centerYAnchor),
                                      pageImageView.heightAnchor.constraint(equalTo: stack.heightAnchor, multiplier: 0.6),
                                      pageImageView.widthAnchor.constraint(equalTo: stack.widthAnchor, multiplier: 0.4),
-                                     pageDescriptionTextView.heightAnchor.constraint(equalTo: stack.heightAnchor, multiplier: 0.3),
-                                     pageDescriptionTextView.widthAnchor.constraint(equalTo: stack.widthAnchor, multiplier: 0.8)])
+                                     pageDescriptionTextView.heightAnchor.constraint(equalTo: stack.heightAnchor, multiplier: 0.5),
+                                     pageDescriptionTextView.widthAnchor.constraint(equalTo: stack.widthAnchor, multiplier: 0.9)])
     }
 }

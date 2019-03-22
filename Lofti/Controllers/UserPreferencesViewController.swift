@@ -33,7 +33,7 @@ class UserPreferencesViewController: UICollectionViewController{
         collectionView.backgroundColor = .lightGray
         collectionView.allowsSelection = true
         collectionView.allowsMultipleSelection = true
-        collectionView.register(UserPreferencesViewCell.self, forCellWithReuseIdentifier: Constant.userPreferencesCellID)
+        collectionView.register(UserPreferencesViewCell.self, forCellWithReuseIdentifier: UserPreferencesViewCell.cellIdentifier)
     }
     
     
