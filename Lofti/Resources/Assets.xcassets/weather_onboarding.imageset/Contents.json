@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "preferences.png",
+      "filename" : "weather_onboarding.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "preferences-1.png",
+      "filename" : "weather_onboarding-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "preferences-2.png",
+      "filename" : "weather_onboarding-2.png",
       "scale" : "3x"
     }
   ],
