@@ -59,7 +59,7 @@ class Onboarding: UIViewController, PaperOnboardingDataSource, PaperOnboardingDe
     }
     
     func onboardingItemsCount() -> Int {
-        return 4
+        return 5
     }
     
     func onboardingItem(at index: Int) -> OnboardingItemInfo {
@@ -68,7 +68,7 @@ class Onboarding: UIViewController, PaperOnboardingDataSource, PaperOnboardingDe
         var backgroundColorTwo = UIColor.lightBlue
         var backgroundColorThree = UIColor(red: 1, green: 0.3882, blue: 0.9176, alpha: 1.0)
         var backgroundColorFour = UIColor(red: 0.0627, green: 0.8078, blue: 0.6824, alpha: 1.0)
-        var backgroundColorFive = UIColor(red: 0.9569, green: 0.8431, blue: 0.0941, alpha: 1.0) /* #f4d718 */
+        var backgroundColorFive = UIColor(red: 0.4235, green: 0.7569, blue: 0.1647, alpha: 1.0) /* #6cc12a */
         
         var titleFont = UIFont(name: "AvenirNext-Bold", size: 24)!
         var descirptionFont = UIFont(name: "AvenirNext-Regular", size: 18)!
@@ -105,6 +105,16 @@ class Onboarding: UIViewController, PaperOnboardingDataSource, PaperOnboardingDe
                                titleFont: titleFont,
                                descriptionFont: descirptionFont),
             
+            OnboardingItemInfo(informationImage: UIImage(named: "contact")!,
+                               title: "Contact",
+                               description: "You have the option to call the customer service of a specific space to learn more about them.",
+                               pageIcon: dummyImage!,
+                               color: backgroundColorFive,
+                               titleColor: .white,
+                               descriptionColor: .white,
+                               titleFont: titleFont,
+                               descriptionFont: descirptionFont),
+            
             OnboardingItemInfo(informationImage: UIImage(named: "weather_onboarding")!,
                                title: "Weather",
                                description: "Easily see the current weather at the space's location before you leave your house.",
@@ -119,9 +129,9 @@ class Onboarding: UIViewController, PaperOnboardingDataSource, PaperOnboardingDe
     
     func onboardingWillTransitonToIndex(_ index: Int) {
         
-        if index == 2 {
+        if index == 3 {
 
-            if self.getStartedButton.alpha == 2 {
+            if self.getStartedButton.alpha == 3 {
                 UIView.animate(withDuration: 0.2, animations: {
                     self.getStartedButton.alpha = 0
                 })
@@ -132,7 +142,7 @@ class Onboarding: UIViewController, PaperOnboardingDataSource, PaperOnboardingDe
     
     
     func onboardingDidTransitonToIndex(_ index: Int) {
-        if index == 3 {
+        if index == 4 {
             UIView.animate(withDuration: 0.4, animations: {
                 self.getStartedButton.alpha = 1
             })
