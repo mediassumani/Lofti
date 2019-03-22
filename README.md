@@ -2,9 +2,9 @@
 
 # Lofti
 
-### Overview
+### Overview & Mission Statement
 
-Lofti's mission is to connect peoole and nearby working spaces based on their preferences. With Lofti, you can select your optimum preferences of a working/study spot ranging from public libraries to shared offices such as WeWork. you can download it <a href="https://itunes.apple.com/us/app/lofti-study-space-finder/id1446711696?mt=8">here</a> 
+Lofti's mission is to connect peoole and nearby working spaces based on their preferences. I believe that your productivity can be tremendously boosted if you are working on a comfortable environtment. With Lofti, you can select your optimum preferences of a working/study spot ranging from public libraries to shared offices such as WeWork. you can download it <a href="https://itunes.apple.com/us/app/lofti-study-space-finder/id1446711696?mt=8">here</a> 
 
 ### Screenshots
 
