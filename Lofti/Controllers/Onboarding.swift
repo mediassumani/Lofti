@@ -20,7 +20,6 @@ class Onboarding: UIViewController, PaperOnboardingDataSource, PaperOnboardingDe
         onboardingView.dataSource = self
         onboardingView.delegate = self
         mainAutoLayout()
-        // Do any additional setup after loading the view.
     }
     
         // creates and styles the button to go foward
@@ -64,7 +63,7 @@ class Onboarding: UIViewController, PaperOnboardingDataSource, PaperOnboardingDe
     
     func onboardingItem(at index: Int) -> OnboardingItemInfo {
         
-        var backgroundColorOne = UIColor.black
+        let backgroundColorOne = UIColor.black
         var backgroundColorTwo = UIColor.lightBlue
         var backgroundColorThree = UIColor(red: 1, green: 0.3882, blue: 0.9176, alpha: 1.0)
         var backgroundColorFour = UIColor(red: 0.0627, green: 0.8078, blue: 0.6824, alpha: 1.0)
@@ -150,6 +149,3 @@ class Onboarding: UIViewController, PaperOnboardingDataSource, PaperOnboardingDe
     }
 }
 
-class OnBoardingView: PaperOnboarding {
-    
-}
