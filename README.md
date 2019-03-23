@@ -28,7 +28,8 @@ Users can...
 
 * [Swift 4.2](https://developer.apple.com/swift/)
 * [Xcode 10.1](https://developer.apple.com/xcode/)
-* [CocoaPods](https://guides.cocoapods.org/terminal/commands.html)
+* [Paper-Onboarding Module](https://github.com/Ramotion/paper-onboarding)
+* [ReachabilitySwift Module](https://github.com/ashleymills/Reachability.swift)
 * [Apple's CoreLocation API](https://developer.apple.com/documentation/corelocation)
 * [Yelp Fusion API](https://www.yelp.com/developers/documentation/v3)
 
