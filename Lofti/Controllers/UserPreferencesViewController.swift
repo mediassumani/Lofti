@@ -12,8 +12,14 @@ class UserPreferencesViewController: UICollectionViewController{
 
     // - MARK: CLASS PROPERTIES
     private let mainStackView = CustomStackView()
-    private var saveButton = CustomButton()
-    var preferences = [String]()
+    var saveButton = CustomButton()
+    var preferences = [String](){
+        didSet{
+            UIView.animate(withDuration: 1.0) {
+                self.saveButton.alpha = 1
+            }
+        }
+    }
     
     // - MARK: VIEW CONTROLLER LIFECYCLE METHODS
     override func viewDidLoad() {
@@ -87,6 +93,7 @@ class UserPreferencesViewController: UICollectionViewController{
                                   event: .touchUpInside,
                                   titleFontName: "HelveticaNeue-Light")
         
+        saveButton.alpha = 0
         saveButton.backgroundColor = .black
         saveButton.layer.cornerRadius = 7
         saveButton.clipsToBounds = true

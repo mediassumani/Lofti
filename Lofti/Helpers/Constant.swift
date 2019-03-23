@@ -20,7 +20,7 @@ enum Constant{
     static let DARKSKY_API_KEY = "d708f84ed5ebce9e7b93b60a35faf289"
     static let WEATHER_URL = URL(string: "https://api.darksky.net/forecast/")!
     static let SEARCH_LIMIT = 10
-    static let PAUSIBLE_PREFERENCES = ["Libraries", "Coffee Shops", "Book Stores", "Shared Offices", "Parks", "Comunity Centers"]
+    static let PAUSIBLE_PREFERENCES = ["Libraries", "Coffee Shops", "Book Stores", "Shared Offices", "Parks", "Comunity Centers", "Hotel Lobbies", "Museums", "Bars", "Sports Clubs"]
     
     static let PREFERENCE_CELL_IMAGES = [
         UIImageView(image: UIImage(named: "library")),
@@ -28,7 +28,11 @@ enum Constant{
         UIImageView(image: UIImage(named: "book_store")),
         UIImageView(image: UIImage(named: "shared_office")),
         UIImageView(image: UIImage(named: "park")),
-        UIImageView(image: UIImage(named: "community_center"))
+        UIImageView(image: UIImage(named: "community_center")),
+        UIImageView(image: UIImage(named: "hotel_lobby")),
+        UIImageView(image: UIImage(named: "museum")),
+        UIImageView(image: UIImage(named: "bar")),
+        UIImageView(image: UIImage(named: "sport_club"))
     ]
     
     

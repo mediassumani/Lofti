@@ -39,18 +39,6 @@ class UserPreferencesViewCell: UICollectionViewCell {
         self.layer.shadowRadius = 1
     }
     
-    private func setUpGradientColor(){
-        
-        let gradientLayer = CAGradientLayer()
-        
-        gradientLayer.frame = bounds
-        
-        gradientLayer.colors = [ UIColor.lightBlue.cgColor, UIColor.lightCyan.cgColor, UIColor.lightBlue.cgColor]
-        gradientLayer.locations = [0.0, 0.5, 0.6]
-        
-        layer.addSublayer(gradientLayer)
-    }
-    
     private func layoutCellElements(){
         
         addSubview(preferenceNameLabel)

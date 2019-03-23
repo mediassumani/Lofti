@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "icons8-scotch-tape-50.png",
+      "filename" : "hotel_lobby.jpeg",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "icons8-scotch-tape-51.png",
+      "filename" : "hotel_lobby-1.jpeg",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "icons8-scotch-tape-52.png",
+      "filename" : "hotel_lobby-2.jpeg",
       "scale" : "3x"
     }
   ],
