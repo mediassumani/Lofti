@@ -37,9 +37,16 @@ extension UserPreferencesViewController: UICollectionViewDelegateFlowLayout {
             
             Constant.createStatusAlert(title: "Saved", message: "The selected preference has been saved.", choice: .selected)
             selectedCell?.alpha = 0.5
-            let userChoice = Constant.PAUSIBLE_PREFERENCES[indexPath.row].replacingOccurrences(of: " ", with: "")
+            var userChoice = Constant.PAUSIBLE_PREFERENCES[indexPath.row].replacingOccurrences(of: " ", with: "")
             
             if !(preferences.contains(userChoice)){
+                
+                if userChoice == "SportsClubs"{
+                    userChoice = "sports_clubs"
+                } else if userChoice == "HotelLobbies" {
+                    userChoice = "hotels"
+                }
+                
                 preferences.append(userChoice)
             }
         }
@@ -52,7 +59,15 @@ extension UserPreferencesViewController: UICollectionViewDelegateFlowLayout {
         Constant.createStatusAlert(title: "Unsaved", message: "The deselected preference has been unsaved.", choice: .deselected)
         selectedCell?.alpha = 1
     
-        let userChoice = Constant.PAUSIBLE_PREFERENCES[indexPath.row].replacingOccurrences(of: " ", with: "")
+        var userChoice = Constant.PAUSIBLE_PREFERENCES[indexPath.row].replacingOccurrences(of: " ", with: "")
+        
+        if userChoice == "SportsClubs"{
+            userChoice = "sports_clubs"
+            
+        } else if userChoice == "HotelLobbies" {
+            userChoice = "hotels"
+        }
+        
         if (preferences.contains(userChoice)){
             preferences.removeAll(where: { $0 == userChoice })
             
