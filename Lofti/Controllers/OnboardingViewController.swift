@@ -12,7 +12,7 @@ import paper_onboarding
 class OnboardingViewController: UIViewController, PaperOnboardingDataSource, PaperOnboardingDelegate {
     
     private let onboardingView = PaperOnboarding()
-    private let dummyImage = UIImage(named: "transparent")
+    private let pagerIcon = UIImage(named: "white_circle.png")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,7 +72,7 @@ class OnboardingViewController: UIViewController, PaperOnboardingDataSource, Pap
             OnboardingItemInfo(informationImage: UIImage(named: "Logo_onboarding")!,
                                                title: "Welcome to Lofti",
                                                description: "Lofti's mission is to connect people and nearby working spaces based on their preferences.",
-                                               pageIcon: dummyImage!,
+                                               pageIcon: pagerIcon!,
                                                color: .black,
                                                titleColor: .white,
                                                descriptionColor: .white,
@@ -82,7 +82,7 @@ class OnboardingViewController: UIViewController, PaperOnboardingDataSource, Pap
             OnboardingItemInfo(informationImage: UIImage(named: "preferences")!,
                                title: "Preferences",
                                description: "Select your study/working environment preferences such as Libraries, coffeshops, or Shared offices(e.g: WeWork).",
-                               pageIcon: dummyImage!,
+                               pageIcon: pagerIcon!,
                                color: .lightPink,
                                titleColor: .white,
                                descriptionColor: .white,
@@ -92,7 +92,7 @@ class OnboardingViewController: UIViewController, PaperOnboardingDataSource, Pap
             OnboardingItemInfo(informationImage: UIImage(named: "distance")!,
                                title: "Distance",
                                description: "Working/Study spaces are presented to you in order of closest to farthest. Click on a specific space to get a map view of the area.",
-                               pageIcon: dummyImage!,
+                               pageIcon: pagerIcon!,
                                color: .cyanGreen,
                                titleColor: .white,
                                descriptionColor: .white,
@@ -102,7 +102,7 @@ class OnboardingViewController: UIViewController, PaperOnboardingDataSource, Pap
             OnboardingItemInfo(informationImage: UIImage(named: "telephone")!,
                                title: "Contact",
                                description: "You have the option to call the customer service of a specific space to learn more about them.",
-                               pageIcon: dummyImage!,
+                               pageIcon: pagerIcon!,
                                color: .white,
                                titleColor: .black,
                                descriptionColor: .black,
@@ -112,7 +112,7 @@ class OnboardingViewController: UIViewController, PaperOnboardingDataSource, Pap
             OnboardingItemInfo(informationImage: UIImage(named: "weather_onboarding")!,
                                title: "Weather",
                                description: "Easily see the current weather at the space's location before you leave your house.",
-                               pageIcon: dummyImage!,
+                               pageIcon: pagerIcon!,
                                color: .lightBlue,
                                titleColor: .white,
                                descriptionColor: .white,

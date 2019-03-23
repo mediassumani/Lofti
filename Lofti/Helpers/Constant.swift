@@ -35,7 +35,6 @@ enum Constant{
     static func createStatusAlert(title: String, message: String, choice: Selection){
         
         let statusAlert = StatusAlert()
-        statusAlert.alertShowingDuration = 3.0
         
         switch choice {
         case .selected:

@@ -35,6 +35,7 @@ extension UserPreferencesViewController: UICollectionViewDelegateFlowLayout {
         let selectedCell = collectionView.cellForItem(at: indexPath)
         if selectedCell?.isSelected == true{
             
+            selectedCell?.alpha = 0.5
             Constant.createStatusAlert(title: "Saved", message: "The selected preference has been saved.", choice: .selected)
             let userChoice = Constant.PAUSIBLE_PREFERENCES[indexPath.row].replacingOccurrences(of: " ", with: "")
             
@@ -47,6 +48,8 @@ extension UserPreferencesViewController: UICollectionViewDelegateFlowLayout {
     /// Uncaches the user's prefernce choice from userdefault if deselected and shows proper alert
     override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         
+        let selectedCell = collectionView.cellForItem(at: indexPath)
+        selectedCell?.alpha = 1
         Constant.createStatusAlert(title: "Unsaved", message: "The deselected preference has been unsaved.", choice: .deselected)
     
         let userChoice = Constant.PAUSIBLE_PREFERENCES[indexPath.row].replacingOccurrences(of: " ", with: "")
@@ -54,6 +57,7 @@ extension UserPreferencesViewController: UICollectionViewDelegateFlowLayout {
             preferences.removeAll(where: { $0 == userChoice })
         }
     }
+    
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,

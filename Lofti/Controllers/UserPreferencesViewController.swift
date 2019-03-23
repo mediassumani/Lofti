@@ -43,7 +43,7 @@ class UserPreferencesViewController: UICollectionViewController{
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
         
         // Styling the home page title
-        titleLabel.text = "Select your preferences"
+        titleLabel.text = "Categories"
         titleLabel.textColor = .black
         titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 25)
         titleLabel.textAlignment = .left
@@ -51,7 +51,8 @@ class UserPreferencesViewController: UICollectionViewController{
         titleLabel.adjustsFontSizeToFitWidth = true
         
         // Styling the home page navigation bar
-        navigationItem.titleView = titleLabel
+        //navigationItem.titleView = titleLabel
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: titleLabel)
         navigationController?.navigationBar.backgroundColor = .white
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
@@ -79,7 +80,7 @@ class UserPreferencesViewController: UICollectionViewController{
         
         
         saveButton = CustomButton(title: "Done",
-                                  fontSize: 20,
+                                  fontSize: 17,
                                   titleColor: .white,
                                   target: self,
                                   action: #selector(saveButtonIsTapped(_:)),
@@ -87,7 +88,7 @@ class UserPreferencesViewController: UICollectionViewController{
                                   titleFontName: "HelveticaNeue-Light")
         
         saveButton.backgroundColor = .black
-        saveButton.layer.cornerRadius = 15
+        saveButton.layer.cornerRadius = 7
         saveButton.clipsToBounds = true
         saveButton.layer.masksToBounds = true
         saveButton.layer.shadowRadius = 1
