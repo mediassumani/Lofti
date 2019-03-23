@@ -10,11 +10,11 @@ import Foundation
 import UIKit
 
 /**
-    Defines a view that can be presented modally(pops up on the screen)
+    Defines a view that can be presented modally.
  
  - Variables:
     - backgroundview: A view that can be displayed on the background of the main view
- - dialogView:
+    - dialogView: An view that can be used to interact with the user.
  
  - Methods:
     - present(animated:) - presentes the view with animation or not
