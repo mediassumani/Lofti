@@ -13,6 +13,11 @@ import CoreLocation
 class HomePageViewController: UIViewController, CLLocationManagerDelegate{
 
     // - MARK: CLASS PROPERTIES
+    let networkManager = NetworkReachabilityServices.shared
+    var customAlertView: CustomAlertView = {
+        let view = CustomAlertView(title: "Unable To Connect", message: "Please check your connection and try again.")
+        return view
+    }()
     let locationManager = CLLocationManager()
     var spaces = [Space](){
         didSet{
@@ -34,7 +39,12 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
         
         self.view.backgroundColor = .gray
         setUpNavigationBarItems()
+        monitorInternetConnectivity()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     
@@ -50,6 +60,27 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
         }
     }
     
+    private func monitorInternetConnectivity() {
+        
+        NetworkReachabilityServices.shared.reachability.whenUnreachable = { reachability in
+            if reachability.connection == .none || (reachability.connection != .wifi && reachability.connection != .cellular) {
+                DispatchQueue.main.async {
+                    self.customAlertView.present(animated: true)
+                }
+            }
+        }
+
+        NetworkReachabilityServices.shared.reachability.whenReachable = { reachability in
+            if reachability.connection == .wifi || reachability.connection == .cellular {
+
+                DispatchQueue.main.async {
+                    self.customAlertView.dismiss(animated: true)
+                }
+            }
+        }
+        
+    }
+    
     /// Make API request to fetch nearby spaces based on the user coordinates
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
@@ -63,7 +94,6 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
             case let .failure(error):
                 print(error)
             }
-            
         }
     }
     
