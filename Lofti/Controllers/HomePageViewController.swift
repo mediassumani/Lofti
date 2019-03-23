@@ -13,6 +13,11 @@ import CoreLocation
 class HomePageViewController: UIViewController, CLLocationManagerDelegate{
 
     // - MARK: CLASS PROPERTIES
+    let networkManager = NetworkReachabilityServices.shared
+    var customAlertView: CustomAlertView = {
+        let view = CustomAlertView(title: "Unable To Connect", message: "Please check your connection and try again.")
+        return view
+    }()
     let locationManager = CLLocationManager()
     var spaces = [Space](){
         didSet{
@@ -36,20 +41,24 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
         setUpNavigationBarItems()
         
         NetworkReachabilityServices.shared.reachability.whenUnreachable = { reachability in
-            
-            if (reachability.connection == .none || reachability.connection != .wifi && reachability.connection != .cellular) {
-                print("Unreachbale")
+            if reachability.connection == .none || (reachability.connection != .wifi && reachability.connection != .cellular) {
+                DispatchQueue.main.async {
+                    self.customAlertView.present(animated: true)
+                }
             }
-            
         }
         
         NetworkReachabilityServices.shared.reachability.whenReachable = { reachability in
             if reachability.connection == .wifi || reachability.connection == .cellular {
                 DispatchQueue.main.async {
-                    print("Reachable")
+                    self.customAlertView.dismiss(animated: true)
                 }
             }
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     

@@ -48,7 +48,6 @@
 		B88CACE821938869005786BA /* SpaceDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88CACE721938869005786BA /* SpaceDetailsViewController.swift */; };
 		B8A333182242ADDE0046DE07 /* Lofti_XCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A333172242ADDE0046DE07 /* Lofti_XCTests.swift */; };
 		B8AAC02921DC1231004D99C1 /* LocationServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AAC02821DC1231004D99C1 /* LocationServices.swift */; };
-		B8B7121C21B0AAB200F6DAF1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B8B7121B21B0AAB100F6DAF1 /* GoogleService-Info.plist */; };
 		B8E5E41B22444A1000E5D1B9 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E5E41A22444A1000E5D1B9 /* OnboardingViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -108,7 +107,6 @@
 		B8A333172242ADDE0046DE07 /* Lofti_XCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lofti_XCTests.swift; sourceTree = "<group>"; };
 		B8A333192242ADDE0046DE07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B8AAC02821DC1231004D99C1 /* LocationServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServices.swift; sourceTree = "<group>"; };
-		B8B7121B21B0AAB100F6DAF1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B8E5E41A22444A1000E5D1B9 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		E483F10AE2A9B441A888DE33 /* Pods-Lofti.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lofti.debug.xcconfig"; path = "Target Support Files/Pods-Lofti/Pods-Lofti.debug.xcconfig"; sourceTree = "<group>"; };
 		F303F1CEDAC3A16679DF1DDD /* Pods-Lofti.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lofti.release.xcconfig"; path = "Target Support Files/Pods-Lofti/Pods-Lofti.release.xcconfig"; sourceTree = "<group>"; };
@@ -267,7 +265,6 @@
 				B86E395021D576A400A969A9 /* Helpers */,
 				B88BA17121921F66009C56DC /* Extensions */,
 				B8866D65218BE5BB002B7CDF /* Info.plist */,
-				B8B7121B21B0AAB100F6DAF1 /* GoogleService-Info.plist */,
 			);
 			path = Lofti;
 			sourceTree = "<group>";
@@ -416,7 +413,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8866D64218BE5BB002B7CDF /* LaunchScreen.storyboard in Resources */,
-				B8B7121C21B0AAB200F6DAF1 /* GoogleService-Info.plist in Resources */,
 				B8866D61218BE5BB002B7CDF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -440,20 +436,16 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Lofti/Pods-Lofti-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/StatusAlert/StatusAlert.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 				"${BUILT_PRODUCTS_DIR}/paper-onboarding/paper_onboarding.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StatusAlert.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/paper_onboarding.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

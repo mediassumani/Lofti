@@ -76,7 +76,7 @@ class CustomAlertView: UIView, ModalViewable {
         backgroundView.frame = self.frame
         backgroundView.backgroundColor = .black
         backgroundView.alpha = 0.6
-        backgroundView.addGestureRecognizer(UIGestureRecognizer(target: self, action: didTapOnBackgroundView()))
+        backgroundView.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(didTapOnBackgroundView)))
         addSubview(backgroundView)
         
         configureMainAutoLayout(title: title, message: message)
@@ -94,6 +94,63 @@ class CustomAlertView: UIView, ModalViewable {
     
     private func configureMainAutoLayout(title: String?, message: String?){
         
+        titleLabel.text = title
+        titleLabel.centerAnchor(centerX: nil, centerY: nil, width: 232, height: 27)
+        separatorLineView.centerAnchor(centerX: nil, centerY: nil, width: 284, height: 2)
+        messageLabel.text = message
+        messageLabel.centerAnchor(centerX: nil, centerY: nil, width: 284, height: 64)
+        
+        let mainStackView = CustomStackView(subviews: [titleLabel, separatorLineView, messageLabel],
+                                            alignment: .center,
+                                            axis: .vertical,
+                                            distribution: .equalSpacing)
+        mainStackView.spacing = 10
+        dialogView.addSubview(mainStackView)
+        
+
+        mainStackView.anchor(top: dialogView.topAnchor,
+                             left: dialogView.leftAnchor,
+                             bottom: nil,
+                             right: dialogView.rightAnchor,
+                             paddingTop: 14,
+                             paddingLeft: 0,
+                             paddingBottom: 0,
+                             paddingRight: 0,
+                             width: 0,
+                             height: 0,
+                             enableInsets: false)
+        
+        dialogView.addSubview(actionButton)
+        actionButton.anchor(centerX: dialogView.centerXAnchor,
+                            centerY: nil,
+                            top: nil,
+                            right: nil,
+                            bottom: dialogView.bottomAnchor,
+                            left: nil,
+                            topPadding: 0,
+                            rightPadding: 0,
+                            bottomPadding: 14,
+                            leftPadding: 0,
+                            height: 41,
+                            width: 176)
+        
+        addSubview(dialogView)
+        dialogView.anchor(
+            centerX: self.centerXAnchor,
+            centerY: self.centerYAnchor,
+            top: nil,
+            right: nil,
+            bottom: nil,
+            left: nil,
+            topPadding: 0,
+            rightPadding: 0,
+            bottomPadding: 0,
+            leftPadding: 0,
+            height: 214,
+            width: 312)
+
     }
 }
+
+
 

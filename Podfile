@@ -6,7 +6,6 @@ target 'Lofti' do
   use_frameworks!
   
   # Pods for Lofti
-  pod 'Firebase/Core'
   pod 'paper-onboarding'
   pod 'StatusAlert'
   pod 'ReachabilitySwift' 
