@@ -10,7 +10,4 @@ import Foundation
 import UIKit
 
 
-extension ModalView where Self: UIView {
-    
-    
-}
+
