@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4629A7F1E36B28C73791B4C6 /* Pods_Lofti.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00550652662810EF30C8D2D8 /* Pods_Lofti.framework */; };
 		B812C7FC224170F600549BD0 /* Deafults.swift in Sources */ = {isa = PBXBuildFile; fileRef = B812C7FB224170F600549BD0 /* Deafults.swift */; };
+		B815DD232246C0FC00AF8DE3 /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B815DD222246C0FC00AF8DE3 /* CustomAlertView.swift */; };
+		B815DD262246C1E800AF8DE3 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B815DD252246C1E800AF8DE3 /* ModalView.swift */; };
 		B81BB00821AE5E5F003BD48D /* HomePageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81BB00721AE5E5F003BD48D /* HomePageCollectionViewCell.swift */; };
 		B81E9E6D21B8893100990894 /* CustomViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81E9E6C21B8893100990894 /* CustomViews.swift */; };
 		B81E9E6F21B8934100990894 /* HomePageViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81E9E6E21B8934100990894 /* HomePageViewController+Extension.swift */; };
@@ -33,6 +35,7 @@
 		B871289721AC811E00DBF541 /* Bool+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B871289621AC811E00DBF541 /* Bool+Extensions.swift */; };
 		B871289921AC828A00DBF541 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B871289821AC828A00DBF541 /* Int+Extensions.swift */; };
 		B871289B21AC82C100DBF541 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B871289A21AC82C100DBF541 /* UIColor+Extensions.swift */; };
+		B87A32B32246BAB400C9130F /* NetworkReachabilityServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87A32B22246BAB400C9130F /* NetworkReachabilityServices.swift */; };
 		B8866D5A218BE5B8002B7CDF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8866D59218BE5B8002B7CDF /* AppDelegate.swift */; };
 		B8866D5C218BE5B8002B7CDF /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8866D5B218BE5B8002B7CDF /* HomePageViewController.swift */; };
 		B8866D61218BE5BB002B7CDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8866D60218BE5BB002B7CDF /* Assets.xcassets */; };
@@ -61,6 +64,8 @@
 /* Begin PBXFileReference section */
 		00550652662810EF30C8D2D8 /* Pods_Lofti.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lofti.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B812C7FB224170F600549BD0 /* Deafults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deafults.swift; sourceTree = "<group>"; };
+		B815DD222246C0FC00AF8DE3 /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
+		B815DD252246C1E800AF8DE3 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		B81BB00721AE5E5F003BD48D /* HomePageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageCollectionViewCell.swift; sourceTree = "<group>"; };
 		B81E9E6C21B8893100990894 /* CustomViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViews.swift; sourceTree = "<group>"; };
 		B81E9E6E21B8934100990894 /* HomePageViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomePageViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -85,6 +90,7 @@
 		B871289621AC811E00DBF541 /* Bool+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+Extensions.swift"; sourceTree = "<group>"; };
 		B871289821AC828A00DBF541 /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
 		B871289A21AC82C100DBF541 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		B87A32B22246BAB400C9130F /* NetworkReachabilityServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityServices.swift; sourceTree = "<group>"; };
 		B8866D56218BE5B7002B7CDF /* Lofti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lofti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8866D59218BE5B8002B7CDF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8866D5B218BE5B8002B7CDF /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
@@ -140,6 +146,14 @@
 				F303F1CEDAC3A16679DF1DDD /* Pods-Lofti.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		B815DD242246C1CF00AF8DE3 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				B815DD252246C1E800AF8DE3 /* ModalView.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		B82089BB22403E0B00E9B121 /* Supporting Files */ = {
@@ -204,6 +218,7 @@
 				B846FD0621A4B46F0034DFB4 /* SpaceServices.swift */,
 				B8AAC02821DC1231004D99C1 /* LocationServices.swift */,
 				B82825A121DC69370014FD9A /* WeatherServices.swift */,
+				B87A32B22246BAB400C9130F /* NetworkReachabilityServices.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -239,6 +254,7 @@
 		B8866D58218BE5B7002B7CDF /* Lofti */ = {
 			isa = PBXGroup;
 			children = (
+				B815DD242246C1CF00AF8DE3 /* Protocols */,
 				B8866D6B218BE7D9002B7CDF /* Models */,
 				B8866D6D218BE7EA002B7CDF /* Controllers */,
 				B8866D6C218BE7DF002B7CDF /* Views */,
@@ -272,6 +288,7 @@
 				B81BB00721AE5E5F003BD48D /* HomePageCollectionViewCell.swift */,
 				B81E9E6C21B8893100990894 /* CustomViews.swift */,
 				B868680121D57F3100B869DC /* UserPreferencesViewCell.swift */,
+				B815DD222246C0FC00AF8DE3 /* CustomAlertView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -421,6 +438,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Lofti/Pods-Lofti-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/StatusAlert/StatusAlert.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 				"${BUILT_PRODUCTS_DIR}/paper-onboarding/paper_onboarding.framework",
@@ -430,6 +448,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StatusAlert.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/paper_onboarding.framework",
@@ -478,6 +497,7 @@
 				B88CACE821938869005786BA /* SpaceDetailsViewController.swift in Sources */,
 				B81E9E6D21B8893100990894 /* CustomViews.swift in Sources */,
 				B871289521AC810500DBF541 /* String+Extensions.swift in Sources */,
+				B815DD262246C1E800AF8DE3 /* ModalView.swift in Sources */,
 				B846FD0721A4B46F0034DFB4 /* SpaceServices.swift in Sources */,
 				B88BA17321921F89009C56DC /* UIView+Extension.swift in Sources */,
 				B82089CA2240401800E9B121 /* URLEncoder.swift in Sources */,
@@ -486,6 +506,7 @@
 				B868680221D57F3100B869DC /* UserPreferencesViewCell.swift in Sources */,
 				B8866D5C218BE5B8002B7CDF /* HomePageViewController.swift in Sources */,
 				B8E5E41B22444A1000E5D1B9 /* OnboardingViewController.swift in Sources */,
+				B87A32B32246BAB400C9130F /* NetworkReachabilityServices.swift in Sources */,
 				B8866D5A218BE5B8002B7CDF /* AppDelegate.swift in Sources */,
 				B871289921AC828A00DBF541 /* Int+Extensions.swift in Sources */,
 				B82825A221DC69370014FD9A /* WeatherServices.swift in Sources */,
@@ -497,6 +518,7 @@
 				B8866D6F218BE801002B7CDF /* Space.swift in Sources */,
 				B82089CD2240401800E9B121 /* Result.swift in Sources */,
 				B8866D74218BE911002B7CDF /* Address.swift in Sources */,
+				B815DD232246C0FC00AF8DE3 /* CustomAlertView.swift in Sources */,
 				B82089CC2240401800E9B121 /* HTTPNetworkError.swift in Sources */,
 				B868680021D57ABC00B869DC /* UserPreferencesViewController.swift in Sources */,
 				B82089CB2240401800E9B121 /* HTTPNetworkRequest.swift in Sources */,

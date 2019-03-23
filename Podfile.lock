@@ -49,11 +49,13 @@ PODS:
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
   - paper-onboarding (5.0.0)
+  - ReachabilitySwift (4.3.0)
   - StatusAlert (1.1.0)
 
 DEPENDENCIES:
   - Firebase/Core
   - paper-onboarding
+  - ReachabilitySwift
   - StatusAlert
 
 SPEC REPOS:
@@ -66,6 +68,7 @@ SPEC REPOS:
     - GoogleUtilities
     - nanopb
     - paper-onboarding
+    - ReachabilitySwift
     - StatusAlert
 
 SPEC CHECKSUMS:
@@ -77,8 +80,9 @@ SPEC CHECKSUMS:
   GoogleUtilities: 95996bea7c7d9b8fb811b7507669a4a8762f80c7
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   paper-onboarding: a2e3a710fd27ac0b5635ec5490660e7ec09289b5
+  ReachabilitySwift: 408477d1b6ed9779dba301953171e017c31241f3
   StatusAlert: 4d6dadebf5f7abd5648fa774ef3062f2f95cc4aa
 
-PODFILE CHECKSUM: 707bd3c34ccd938e001ff5bea1ec16b562c6b421
+PODFILE CHECKSUM: a69164676239c61cfbf082adad0ac563b219808a
 
 COCOAPODS: 1.6.0.beta.2

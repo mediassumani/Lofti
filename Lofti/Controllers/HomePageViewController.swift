@@ -35,6 +35,21 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
         self.view.backgroundColor = .gray
         setUpNavigationBarItems()
         
+        NetworkReachabilityServices.shared.reachability.whenUnreachable = { reachability in
+            
+            if (reachability.connection == .none || reachability.connection != .wifi && reachability.connection != .cellular) {
+                print("Unreachbale")
+            }
+            
+        }
+        
+        NetworkReachabilityServices.shared.reachability.whenReachable = { reachability in
+            if reachability.connection == .wifi || reachability.connection == .cellular {
+                DispatchQueue.main.async {
+                    print("Reachable")
+                }
+            }
+        }
     }
     
     

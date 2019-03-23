@@ -9,5 +9,6 @@ target 'Lofti' do
   pod 'Firebase/Core'
   pod 'paper-onboarding'
   pod 'StatusAlert'
+  pod 'ReachabilitySwift' 
 
 end
