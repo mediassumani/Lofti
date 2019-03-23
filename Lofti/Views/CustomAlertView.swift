@@ -33,7 +33,7 @@ class CustomAlertView: UIView, ModalViewable {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "AvenirNext-DemiBold", size: 20)
+        label.font = UIFont(name: "Helvetica-Bold", size: 20)
         label.textAlignment = .center
         label.textColor = .black
         return label
@@ -41,7 +41,7 @@ class CustomAlertView: UIView, ModalViewable {
     
     let messageLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "AvenirNext-Medium", size: 17)
+        label.font = UIFont(name: "Helvetica", size: 17)
         label.textAlignment = .center
         label.textColor = .black
         label.numberOfLines = 2
@@ -51,7 +51,7 @@ class CustomAlertView: UIView, ModalViewable {
     let actionButton: UIButton = {
         let button = UIButton()
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont(name: "AvenirNext-Medium", size: 17)
+        button.titleLabel?.font = UIFont(name: "Helvetica", size: 17)
         button.setTitle("Okay", for: .normal)
         button.backgroundColor = .lightBlue
         button.layer.cornerRadius = 20
@@ -96,7 +96,7 @@ class CustomAlertView: UIView, ModalViewable {
         
         titleLabel.text = title
         titleLabel.centerAnchor(centerX: nil, centerY: nil, width: 232, height: 27)
-        separatorLineView.centerAnchor(centerX: nil, centerY: nil, width: 284, height: 2)
+        separatorLineView.centerAnchor(centerX: nil, centerY: nil, width: 284, height: 1)
         messageLabel.text = message
         messageLabel.centerAnchor(centerX: nil, centerY: nil, width: 284, height: 64)
         
