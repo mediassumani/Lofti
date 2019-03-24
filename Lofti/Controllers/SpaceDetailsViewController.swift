@@ -131,11 +131,11 @@ class SpaceDetailsViewController: UIViewController{
         getDirectionsButton.layer.cornerRadius = 25
         
         contactButton = CustomButton(title: "CONTACT",
-                                     fontSize: 17, titleColor: .black,
+                                     fontSize: 17, titleColor: .white,
                                      target: self,
                                      action: #selector(contactButtonIsTapped(_:)),
                                      event: .touchUpInside,
-                                     titleFontName: "HelveticaNeue-Light")
+                                     titleFontName: "PingFangTC-Medium")
         contactButton.backgroundColor = .darkBlue
         contactButton.layer.cornerRadius = 25
         
