@@ -21,4 +21,5 @@ extension UIColor{
     static var lightPink = UIColor(red: 1, green: 0.3882, blue: 0.9176, alpha: 1.0)
     static var cyanGreen = UIColor(red: 0.0627, green: 0.8078, blue: 0.6824, alpha: 1.0)
     static var customGreen = UIColor(red: 0.4235, green: 0.7569, blue: 0.1647, alpha: 1.0)
+    static let darkBlue = UIColor(red: 0.1294, green: 0.2706, blue: 0.3765, alpha: 1.0) /* #214560 */
 }

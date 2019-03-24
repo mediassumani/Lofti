@@ -116,7 +116,7 @@ class SpaceDetailsViewController: UIViewController{
                                            action: #selector(directionsButtonTapped(_:)),
                                            event: .touchUpInside,
                                            titleFontName: "PingFangTC-Medium")
-        getDirectionsButton.backgroundColor = .black
+        getDirectionsButton.backgroundColor = .darkBlue
         
         getDirectionsButton.layer.cornerRadius = 7
         

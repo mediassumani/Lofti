@@ -10,6 +10,7 @@ import CoreLocation
 import Foundation
 import NVActivityIndicatorView
 import UIKit
+import ViewAnimator
 
 class HomePageViewController: UIViewController, CLLocationManagerDelegate{
 
@@ -35,6 +36,7 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
     
     static var loadingIndicator: NVActivityIndicatorView!
     let locationManager = CLLocationManager()
+    let animations = [AnimationType.from(direction: .right, offset: 30.0)]
     
     var spaces = [Space](){
         didSet{
@@ -50,6 +52,7 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
         super.loadView()
         view.addSubview(collectionView)
         getUserCoordinates()
+
     }
     
     override func viewDidLoad() {
@@ -59,12 +62,11 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
         configureLoadingIndicator()
         setUpNavigationBarItems()
         monitorInternetConnectivity()
-        
     }
     
     
     // - MARK: CLASS METHODS
-    
+
     /// Sets up the loading indicator in the center of the screen when data are being fetched
     private func configureLoadingIndicator() {
         
@@ -75,6 +77,17 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
         view.addSubview(HomePageViewController.loadingIndicator)
     }
     
+    private func animateCells(){
+        
+        collectionView.reloadData()
+        collectionView.performBatchUpdates({
+            UIView.animate(views: self.collectionView.orderedVisibleCells,
+                           animations: animations, duration: 0.5, completion: {
+                            
+            })
+        }, completion: nil)
+
+    }
     
     /// Propmt the user to grant access to the device's current location
     private func getUserCoordinates(){
@@ -118,6 +131,8 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
             switch result{
             case let .success(fetchedSpaces):
                 self.spaces = fetchedSpaces.sorted(by: { $0.distance ?? 0.0 < $1.distance ?? 0.0 })
+                self.animateCells()
+        
             case let .failure(error):
                 print(error)
             }
@@ -131,15 +146,15 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
         
         // Styling the home page title
-        titleLabel.text = "Explore Nearby Spaces"
-        titleLabel.textColor = .black
-        titleLabel.font = UIFont(name: "HelveticaNeue-Light", size: 25)
+        titleLabel.text = "Home"
+        titleLabel.textColor = .darkBlue
+        titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 25)
         titleLabel.textAlignment = .left
         titleLabel.backgroundColor = .white
         titleLabel.adjustsFontSizeToFitWidth = true
         
         // Styling the home page navigation bar
-        navigationItem.titleView = titleLabel
+        navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: titleLabel)
         navigationController?.navigationBar.backgroundColor = .white
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)

@@ -58,7 +58,7 @@ class UserPreferencesViewController: UICollectionViewController{
         
         // Styling the home page navigation bar
         //navigationItem.titleView = titleLabel
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: titleLabel)
+        navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: titleLabel)
         navigationController?.navigationBar.backgroundColor = .white
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
