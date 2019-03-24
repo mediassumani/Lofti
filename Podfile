@@ -10,4 +10,5 @@ target 'Lofti' do
   pod 'StatusAlert'
   pod 'ReachabilitySwift' 
   pod 'NVActivityIndicatorView'
+  pod "ViewAnimator"
 end

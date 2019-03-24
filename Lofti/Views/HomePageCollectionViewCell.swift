@@ -12,8 +12,8 @@ class HomePageCollectionViewCell: UICollectionViewCell {
     
     // MARK: Properties
     static var cellIdentifier: String = "homePageCollectionViewCell"
-    open var spaceNameLabel = CustomLabel(fontSize: 20, text: "", textColor: .black, textAlignment: .center, fontName: "HelveticaNeue-Bold")
-    open var spaceDistanceLabel = CustomLabel(fontSize: 15, text: "", textColor: .black, textAlignment: .center, fontName: "HelveticaNeue-Light")
+    open var spaceNameLabel = CustomLabel(fontSize: 20, text: "", textColor: .darkBlue, textAlignment: .center, fontName: "HelveticaNeue-Bold")
+    open var spaceDistanceLabel = CustomLabel(fontSize: 15, text: "", textColor: .gray, textAlignment: .center, fontName: "HelveticaNeue-Light")
     open var cellStackView = CustomStackView()
     
     
