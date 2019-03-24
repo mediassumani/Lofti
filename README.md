@@ -11,6 +11,8 @@ Lofti's mission is to connect people and nearby working spaces based on their pr
 <img src= "Screenshots/preferences.jpg" width = 255 height = 450>
 <img src= "Screenshots/home.jpg" width = 255 height = 450>
 <img src= "Screenshots/details.jpg" width = 255 height = 450>
+<img src= "Screenshots/contact.jpg" width = 255 height = 450>
+<img src= "Screenshots/map.jpg" width = 255 height = 450>
 ### Features
 
 Users can...
