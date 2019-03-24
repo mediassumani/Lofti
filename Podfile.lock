@@ -1,24 +1,30 @@
 PODS:
+  - NVActivityIndicatorView (4.6.1):
+    - NVActivityIndicatorView/Presenter (= 4.6.1)
+  - NVActivityIndicatorView/Presenter (4.6.1)
   - paper-onboarding (5.0.0)
   - ReachabilitySwift (4.3.0)
   - StatusAlert (1.1.0)
 
 DEPENDENCIES:
+  - NVActivityIndicatorView
   - paper-onboarding
   - ReachabilitySwift
   - StatusAlert
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - NVActivityIndicatorView
     - paper-onboarding
     - ReachabilitySwift
     - StatusAlert
 
 SPEC CHECKSUMS:
+  NVActivityIndicatorView: 4ca19fccc84595a78957336a086d00a49be6ce61
   paper-onboarding: a2e3a710fd27ac0b5635ec5490660e7ec09289b5
   ReachabilitySwift: 408477d1b6ed9779dba301953171e017c31241f3
   StatusAlert: 4d6dadebf5f7abd5648fa774ef3062f2f95cc4aa
 
-PODFILE CHECKSUM: 5fc60bcd71612295cf98d1b93f67f8f80a022b1e
+PODFILE CHECKSUM: 1d03838faaa6d9a8c314bb25406ed29b6f4c2a47
 
 COCOAPODS: 1.6.0.beta.2

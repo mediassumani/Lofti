@@ -9,5 +9,5 @@ target 'Lofti' do
   pod 'paper-onboarding'
   pod 'StatusAlert'
   pod 'ReachabilitySwift' 
-
+  pod 'NVActivityIndicatorView'
 end

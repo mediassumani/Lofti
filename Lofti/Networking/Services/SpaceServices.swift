@@ -46,6 +46,7 @@ struct SpaceServices{
                         let result = try? JSONDecoder().decode(Spaces.self, from: unwrappedData)
                         DispatchQueue.main.async {
                             completion(Result.success(result!.businesses))
+                            HomePageViewController.loadingIndicator.stopAnimating()
                         }
                         
                     case .failure:
