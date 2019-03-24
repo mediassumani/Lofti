@@ -7,10 +7,10 @@
 Lofti's mission is to connect people and nearby working spaces based on their preferences. I believe that your productivity can be tremendously boosted if you are working on a comfortable environtment. With Lofti, you can select your optimum preferences of a working/study spot ranging from public libraries to shared offices such as WeWork. you can download it <a href="https://itunes.apple.com/us/app/lofti-study-space-finder/id1446711696?mt=8">here</a> 
 
 ### Screenshots
-<img src= "Screenshots/onboarding.png" width = 255 height = 450></img><img src= "screenshots/sc2.PNG" width = 255 height = 450>
-<img src= "Screenshots/preferences.png" width = 255 height = 450><img src= "screenshots/sc4.jpg" width = 255 height = 450>
-<img src= "Screenshots/home.png" width = 255 height = 450><img src= "screenshots/sc6.PNG" width = 255 height = 450>
-<img src= "Screenshots/details.png" width = 255 height = 450><img src= "screenshots/sc6.PNG" width = 255 height = 450>
+<img src= "Screenshots/onboarding.jpg" width = 255 height = 450></img>
+<img src= "Screenshots/preferences.jpg" width = 255 height = 450>
+<img src= "Screenshots/home.jpg" width = 255 height = 450>
+<img src= "Screenshots/details.jpg" width = 255 height = 450>
 ### Features
 
 Users can...
