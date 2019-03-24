@@ -36,8 +36,10 @@ struct LocationServices{
         
     }
     
-    func centerLocationOnMap(coordinates: CLLocationCoordinate2D, annotationTitle: String, map: MKMapView){
+    func centerLocationOnMap(coordinates: CLLocationCoordinate2D, annotationTitle: String, map: MKMapView, isOpen: Bool){
         
+        var openStatus = ""
+        if isOpen { openStatus = "Open" } else { openStatus = "Closed" }
         let regionRadius = 1000.0
         let region = MKCoordinateRegion(center: coordinates,
                                         latitudinalMeters: regionRadius,
@@ -45,7 +47,8 @@ struct LocationServices{
         map.setRegion(region, animated: true)
         
         let targetLocationAnnotation = MKPointAnnotation()
-        targetLocationAnnotation.title = annotationTitle
+        targetLocationAnnotation.title = "\(annotationTitle) (\(openStatus))"
+//        targetLocationAnnotation.subtitle = "Open"
         targetLocationAnnotation.coordinate = CLLocationCoordinate2D(latitude: coordinates.latitude, longitude: coordinates.longitude)
         map.addAnnotation(targetLocationAnnotation)
     }

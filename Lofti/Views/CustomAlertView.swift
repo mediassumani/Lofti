@@ -27,7 +27,7 @@ class CustomAlertView: UIView, ModalViewable {
     
     var separatorLineView: UIView = {
         let view = UIView()
-        view.backgroundColor = .lightBlue
+        view.backgroundColor = .darkBlue
         return view
     }()
     
@@ -53,7 +53,7 @@ class CustomAlertView: UIView, ModalViewable {
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont(name: "Helvetica", size: 17)
         button.setTitle("Okay", for: .normal)
-        button.backgroundColor = .lightBlue
+        button.backgroundColor = .darkBlue
         button.layer.cornerRadius = 20
         button.addTarget(self, action: #selector(didTapActionButton), for: .touchUpInside)
         return button

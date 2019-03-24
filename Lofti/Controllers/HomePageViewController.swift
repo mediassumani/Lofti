@@ -70,7 +70,7 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
     /// Sets up the loading indicator in the center of the screen when data are being fetched
     private func configureLoadingIndicator() {
         
-        var frame = CGRect(x: view.bounds.midX, y: view.bounds.midY, width: 50, height: 50)
+        let frame = CGRect(x: view.bounds.midX, y: view.bounds.midY, width: 50, height: 50)
         HomePageViewController.loadingIndicator = NVActivityIndicatorView(frame: frame, type: .ballSpinFadeLoader, color: .darkGray, padding: 0)
         HomePageViewController.loadingIndicator.startAnimating()
         HomePageViewController.loadingIndicator.center = view.center

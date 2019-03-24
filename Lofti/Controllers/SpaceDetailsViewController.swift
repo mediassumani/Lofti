@@ -47,11 +47,11 @@ class SpaceDetailsViewController: UIViewController{
         configureAllButtons()
         configureWeatherUIElements()
         configureActionButtonsSatckView()
-        
+        setUpNavigationBarItems()
         fetchWeather()
         LocationServices.shared.centerLocationOnMap(coordinates: coordinates,
                                                     annotationTitle: space!.name,
-                                                    map: mapView)
+                                                    map: mapView, isOpen: (space?.hours?.first?.is_open_now)!)
     }
     
 
@@ -61,22 +61,15 @@ class SpaceDetailsViewController: UIViewController{
     /// Styles and sets up all UILabel elements in this controller
     private func configureWeatherUIElements(){
         
-        spaceNameLabel = CustomLabel(fontSize: 23,
-                                     text: space?.name ?? "Unknown",
-                                     textColor: .black,
-                                     textAlignment: .center,
-                                     fontName: "HelveticaNeue-Bold")
-        
-        
         guard let currentTemperature = weather?.temperature, let currentWeatherSummary = weather?.summary else { return }
         
         switch currentWeatherSummary {
         case "Sunny":
-            currentWeatherImageView.image = UIImage(named: "sunny")
+            currentWeatherImageView.image = UIImage(named: "sun")
         case "Rainny":
-            currentWeatherImageView.image = UIImage(named: "rainy")
+            currentWeatherImageView.image = UIImage(named: "rain")
         case "Drizzle":
-            currentWeatherImageView.image = UIImage(named: "drizzle")
+            currentWeatherImageView.image = UIImage(named: "rain")
         case "Snowy":
             currentWeatherImageView.image = UIImage(named: "snowy")
         case "Clear":
@@ -87,11 +80,11 @@ class SpaceDetailsViewController: UIViewController{
             currentWeatherImageView.image = UIImage(named: "clear")
         }
         
-        currentWeatherLabel = CustomLabel(fontSize: 20,
+        currentWeatherLabel = CustomLabel(fontSize: 25,
                                           text: "\(Int(currentTemperature))°F",
-            textColor: .black,
+            textColor: .darkBlue,
             textAlignment: .center,
-            fontName: "HelveticaNeue-Thin")
+            fontName: "HelveticaNeue-Light")
         
         
         
@@ -101,9 +94,27 @@ class SpaceDetailsViewController: UIViewController{
                                            distribution: .fillEqually)
         
         NSLayoutConstraint.activate([currentWeatherImageView.widthAnchor.constraint(equalTo: weatherStackView.widthAnchor, multiplier: 0.35),
-                                     currentWeatherImageView.heightAnchor.constraint(equalTo: weatherStackView.heightAnchor, multiplier: 0.8),
+                                     currentWeatherImageView.heightAnchor.constraint(equalTo: weatherStackView.heightAnchor, multiplier: 0.95),
                                      currentWeatherLabel.widthAnchor.constraint(equalTo: weatherStackView.widthAnchor, multiplier: 0.5),
-                                     currentWeatherLabel.heightAnchor.constraint(equalTo: weatherStackView.heightAnchor, multiplier: 0.4)])
+                                     currentWeatherLabel.heightAnchor.constraint(equalTo: weatherStackView.heightAnchor, multiplier: 0.5)
+                                     ])
+    }
+    
+    private func setUpNavigationBarItems(){
+        
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
+        
+        // Styling the home page title
+        titleLabel.text = space?.name
+        titleLabel.textColor = .darkBlue
+        titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
+        titleLabel.textAlignment = .left
+        titleLabel.backgroundColor = .white
+        titleLabel.adjustsFontSizeToFitWidth = true
+        
+        navigationItem.titleView = titleLabel
+        navigationController?.navigationBar.backgroundColor = .white
+        navigationController?.navigationBar.alpha = 1
     }
     
     /// Styles and sets up all UIButton elements in this controller
@@ -117,8 +128,7 @@ class SpaceDetailsViewController: UIViewController{
                                            event: .touchUpInside,
                                            titleFontName: "PingFangTC-Medium")
         getDirectionsButton.backgroundColor = .darkBlue
-        
-        getDirectionsButton.layer.cornerRadius = 7
+        getDirectionsButton.layer.cornerRadius = 25
         
         contactButton = CustomButton(title: "CONTACT",
                                      fontSize: 17, titleColor: .black,
@@ -126,9 +136,8 @@ class SpaceDetailsViewController: UIViewController{
                                      action: #selector(contactButtonIsTapped(_:)),
                                      event: .touchUpInside,
                                      titleFontName: "HelveticaNeue-Light")
-        
-        contactButton.layer.cornerRadius = 7
-        contactButton.layer.borderWidth = 0.4
+        contactButton.backgroundColor = .darkBlue
+        contactButton.layer.cornerRadius = 25
         
     }
     
@@ -149,23 +158,26 @@ class SpaceDetailsViewController: UIViewController{
     
     private func mainStakViewAutoLayout(){
         
-        mainStackView = CustomStackView(subviews: [weatherStackView, spaceNameLabel, mapView, actionButtonsStackView],
+        mainStackView = CustomStackView(subviews: [mapView],
                                         alignment: .center,
                                         axis: .vertical,
                                         distribution: .fill)
         view.addSubview(mainStackView)
-        
-        NSLayoutConstraint.activate([mainStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-                                     mainStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+        mapView.addSubview(weatherStackView)
+        mapView.addSubview(actionButtonsStackView)
+        NSLayoutConstraint.activate([
+                                     mainStackView.safeAreaLayoutGuide.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+                                     mainStackView.safeAreaLayoutGuide.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
                                      mainStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-                                     mainStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-                                     weatherStackView.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.07),
-                                     weatherStackView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.3),
-                                     spaceNameLabel.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.1),
-                                     mapView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 1),
-                                     mapView.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.6),
-                                     actionButtonsStackView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.95),
-                                     actionButtonsStackView.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.16)
+                                     mainStackView.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+                                     weatherStackView.heightAnchor.constraint(equalTo: mapView.heightAnchor, multiplier: 0.1),
+                                     weatherStackView.widthAnchor.constraint(equalTo: mapView.widthAnchor, multiplier: 0.3),
+                                     weatherStackView.safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: mapView.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+                                     mapView.safeAreaLayoutGuide.widthAnchor.constraint(equalTo: mainStackView.safeAreaLayoutGuide.widthAnchor, multiplier: 1),
+                                     mapView.safeAreaLayoutGuide.heightAnchor.constraint(equalTo: mainStackView.safeAreaLayoutGuide.heightAnchor, multiplier: 1),
+                                     actionButtonsStackView.safeAreaLayoutGuide.widthAnchor.constraint(equalTo: mapView.safeAreaLayoutGuide.widthAnchor, multiplier: 0.95),
+                                     actionButtonsStackView.safeAreaLayoutGuide.heightAnchor.constraint(equalTo: mapView.safeAreaLayoutGuide.heightAnchor, multiplier: 0.17),
+                                     actionButtonsStackView.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: mapView.safeAreaLayoutGuide.bottomAnchor, constant: -20)
             ])
     }
     
@@ -219,7 +231,7 @@ class SpaceDetailsViewController: UIViewController{
         if let phoneCallURL:URL = URL(string: "tel:\(number)") {
             let application:UIApplication = UIApplication.shared
             if (application.canOpenURL(phoneCallURL)) {
-                let alertController = UIAlertController(title: "Lofti", message: "Are you sure you want to call \n\(number)?", preferredStyle: .alert)
+                let alertController = UIAlertController(title: "Contact", message: "Are you sure you want to call \n\(number)?", preferredStyle: .alert)
                 let yesPressed = UIAlertAction(title: "Yes", style: .default, handler: { (action) in
                     application.open(phoneCallURL, options: [:], completionHandler: nil)
                 })
