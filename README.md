@@ -26,12 +26,13 @@ Users can...
 
 ### Project Built With
 
-* [Swift 4.2](https://developer.apple.com/swift/)
-* [Xcode 10.1](https://developer.apple.com/xcode/)
-* [Paper-Onboarding Module](https://github.com/Ramotion/paper-onboarding)
-* [ReachabilitySwift Module](https://github.com/ashleymills/Reachability.swift)
-* [Apple's CoreLocation API](https://developer.apple.com/documentation/corelocation)
-* [Yelp Fusion API](https://www.yelp.com/developers/documentation/v3)
+* [Swift 4.2](https://developer.apple.com/swift/) - Used for core app features.
+* [Xcode 10.1](https://developer.apple.com/xcode/) - Used as main IDE.
+* [Paper-Onboarding Module](https://github.com/Ramotion/paper-onboarding) - Used for user onboarding animation.
+* [ReachabilitySwift Module](https://github.com/ashleymills/Reachability.swift) - Used to manage device's internet. connectivity.
+* [Apple's CoreLocation API](https://developer.apple.com/documentation/corelocation) -  Used to get user's coordinates to fetch nearby working/study spaces.
+* [NVActivityIndicatorView](https://github.com/ninjaprox/NVActivityIndicatorView) - Used for beautifull loading indicator.
+* [Yelp Fusion API](https://www.yelp.com/developers/documentation/v3) - Powers the app by providing locations on the backend.
 
 ### License
 
