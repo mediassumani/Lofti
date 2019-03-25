@@ -50,7 +50,6 @@ enum Constant{
             statusAlert.message = message
             statusAlert.canBePickedOrDismissed = true
             
-            
         case .deselected:
         
             statusAlert.image = UIImage(named: "deselect")

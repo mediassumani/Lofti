@@ -94,7 +94,7 @@ class UserPreferencesViewController: UICollectionViewController{
         
         saveButton.alpha = 0
         saveButton.backgroundColor = .darkBlue
-        saveButton.layer.cornerRadius = 7
+        saveButton.layer.cornerRadius = 25
         saveButton.clipsToBounds = true
         saveButton.layer.masksToBounds = true
         saveButton.layer.shadowRadius = 1
