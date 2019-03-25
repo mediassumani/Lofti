@@ -2,10 +2,10 @@ PODS:
   - NVActivityIndicatorView (4.6.1):
     - NVActivityIndicatorView/Presenter (= 4.6.1)
   - NVActivityIndicatorView/Presenter (4.6.1)
-  - paper-onboarding (5.0.0)
+  - paper-onboarding (5.0.1)
   - ReachabilitySwift (4.3.0)
   - StatusAlert (1.1.0)
-  - ViewAnimator (2.2.2)
+  - ViewAnimator (2.4.0)
 
 DEPENDENCIES:
   - NVActivityIndicatorView
@@ -24,10 +24,10 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   NVActivityIndicatorView: 4ca19fccc84595a78957336a086d00a49be6ce61
-  paper-onboarding: a2e3a710fd27ac0b5635ec5490660e7ec09289b5
+  paper-onboarding: ae39e418748c0b4eab39b2e59f398b48cdebfae5
   ReachabilitySwift: 408477d1b6ed9779dba301953171e017c31241f3
   StatusAlert: 4d6dadebf5f7abd5648fa774ef3062f2f95cc4aa
-  ViewAnimator: 6eaa112663b6a2d9e6b2573df65b416dd051cbe4
+  ViewAnimator: 28b9ef703e280a02852b1271ef36295ea96eae4b
 
 PODFILE CHECKSUM: 2119cabb6477971ff319e501f9e80a35ef8db222
 

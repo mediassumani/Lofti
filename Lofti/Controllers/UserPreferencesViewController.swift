@@ -25,10 +25,10 @@ class UserPreferencesViewController: UICollectionViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setUpNavigationBarItems()
         configureCollectionView()
         styleSaveButton()
         mainAutoLayout()
-        setUpNavigationBarItems()
     }
     
     
@@ -50,14 +50,13 @@ class UserPreferencesViewController: UICollectionViewController{
         
         // Styling the home page title
         titleLabel.text = "Categories"
-        titleLabel.textColor = .black
+        titleLabel.textColor = .darkBlue
         titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 25)
         titleLabel.textAlignment = .left
         titleLabel.backgroundColor = .white
         titleLabel.adjustsFontSizeToFitWidth = true
         
         // Styling the home page navigation bar
-        //navigationItem.titleView = titleLabel
         navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: titleLabel)
         navigationController?.navigationBar.backgroundColor = .white
         navigationController?.navigationBar.isTranslucent = false
@@ -85,16 +84,16 @@ class UserPreferencesViewController: UICollectionViewController{
     private func styleSaveButton(){
         
         
-        saveButton = CustomButton(title: "Done",
-                                  fontSize: 17,
+        saveButton = CustomButton(title: "DONE",
+                                  fontSize: 13,
                                   titleColor: .white,
                                   target: self,
                                   action: #selector(saveButtonIsTapped(_:)),
                                   event: .touchUpInside,
-                                  titleFontName: "HelveticaNeue-Light")
+                                  titleFontName: "PingFangTC-Medium")
         
         saveButton.alpha = 0
-        saveButton.backgroundColor = .black
+        saveButton.backgroundColor = .darkBlue
         saveButton.layer.cornerRadius = 7
         saveButton.clipsToBounds = true
         saveButton.layer.masksToBounds = true

@@ -78,20 +78,10 @@ class OnboardingViewController: UIViewController, PaperOnboardingDataSource, Pap
                                                descriptionColor: .white,
                                                titleFont: titleFont,
                                                descriptionFont: descirptionFont),
-                            
-            OnboardingItemInfo(informationImage: UIImage(named: "preferences")!,
-                               title: "Preferences",
-                               description: "Select your study/working environment preferences such as Libraries, coffeshops, or Shared offices(e.g: WeWork).",
-                               pageIcon: pagerIcon!,
-                               color: .lightPink,
-                               titleColor: .white,
-                               descriptionColor: .white,
-                               titleFont: titleFont,
-                               descriptionFont: descirptionFont),
             
             OnboardingItemInfo(informationImage: UIImage(named: "distance")!,
                                title: "Distance",
-                               description: "Working/Study spaces are presented to you in order of closest to farthest. Click on a specific space to get a map view of the area.",
+                               description: "Working/study spaces are presented to you in order of closest to farthest. Click on a specific space to get a map view of the area.",
                                pageIcon: pagerIcon!,
                                color: .cyanGreen,
                                titleColor: .white,
@@ -101,7 +91,7 @@ class OnboardingViewController: UIViewController, PaperOnboardingDataSource, Pap
             
             OnboardingItemInfo(informationImage: UIImage(named: "telephone")!,
                                title: "Contact",
-                               description: "You have the option to call the customer service of a specific space to learn more about them.",
+                               description: "Want to learn more about a specific space? You can call their customer service through the app.",
                                pageIcon: pagerIcon!,
                                color: .white,
                                titleColor: .black,
@@ -117,7 +107,17 @@ class OnboardingViewController: UIViewController, PaperOnboardingDataSource, Pap
                                titleColor: .white,
                                descriptionColor: .white,
                                titleFont: titleFont,
-                               descriptionFont: descirptionFont)
+                               descriptionFont: descirptionFont),
+            
+            OnboardingItemInfo(informationImage: UIImage(named: "preferences")!,
+                               title: "Preferences",
+                               description: "Where are you productive? Libraries, coffeeshops, or shared offices (e.g. WeWork)? Choose your preferences on the next page.",
+                               pageIcon: pagerIcon!,
+                               color: .lightPink,
+                               titleColor: .white,
+                               descriptionColor: .white,
+                               titleFont: titleFont,
+                               descriptionFont: descirptionFont),
             ][index] as OnboardingItemInfo
     }
     

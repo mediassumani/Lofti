@@ -63,6 +63,7 @@ class HomePageCollectionViewCell: UICollectionViewCell {
                              height: 0,
                              enableInsets: false)
         
+        spaceNameLabel.numberOfLines = 2
         self.layer.cornerRadius = 15
         self.clipsToBounds = true
         self.layer.masksToBounds = true
@@ -71,6 +72,6 @@ class HomePageCollectionViewCell: UICollectionViewCell {
         spaceNameLabel.centerYAnchor.constraint(equalTo: cellStackView.centerYAnchor).isActive = true
         
         spaceDistanceLabel.centerXAnchor.constraint(equalTo: cellStackView.centerXAnchor).isActive = true
-        spaceDistanceLabel.centerYAnchor.constraint(equalTo: cellStackView.centerYAnchor, constant: 25).isActive = true
+        spaceDistanceLabel.centerYAnchor.constraint(equalTo: cellStackView.centerYAnchor, constant: 40).isActive = true
     }
 }
