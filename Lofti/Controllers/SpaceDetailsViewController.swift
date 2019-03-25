@@ -73,11 +73,11 @@ class SpaceDetailsViewController: UIViewController{
         case "Snowy":
             currentWeatherImageView.image = UIImage(named: "snowy")
         case "Clear":
-            currentWeatherImageView.image = UIImage(named: "clear")
+            currentWeatherImageView.image = UIImage(named: "cloudy")
         case "Cloudy":
             currentWeatherImageView.image = UIImage(named: "cloudy")
         default:
-            currentWeatherImageView.image = UIImage(named: "clear")
+            currentWeatherImageView.image = UIImage(named: "cloudy")
         }
         
         currentWeatherLabel = CustomLabel(fontSize: 25,
