@@ -73,11 +73,13 @@ class SpaceDetailsViewController: UIViewController{
         case "Snowy":
             currentWeatherImageView.image = UIImage(named: "snowy")
         case "Clear":
-            currentWeatherImageView.image = UIImage(named: "clear")
+            currentWeatherImageView.image = UIImage(named: "cloudy")
         case "Cloudy":
             currentWeatherImageView.image = UIImage(named: "cloudy")
+        case "Windy":
+            currentWeatherImageView.image = UIImage(named: "windy")
         default:
-            currentWeatherImageView.image = UIImage(named: "clear")
+            currentWeatherImageView.image = UIImage(named: "cloudy")
         }
         
         currentWeatherLabel = CustomLabel(fontSize: 25,
@@ -131,7 +133,7 @@ class SpaceDetailsViewController: UIViewController{
         getDirectionsButton.layer.cornerRadius = 25
         
         contactButton = CustomButton(title: "CONTACT",
-                                     fontSize: 17, titleColor: .white,
+                                     fontSize: 13, titleColor: .white,
                                      target: self,
                                      action: #selector(contactButtonIsTapped(_:)),
                                      event: .touchUpInside,

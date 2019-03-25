@@ -36,7 +36,7 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
     
     static var loadingIndicator: NVActivityIndicatorView!
     let locationManager = CLLocationManager()
-    let animations = [AnimationType.from(direction: .top, offset: 30.0)]
+    let animations = [AnimationType.from(direction: .right, offset: 30.0)]
     var animationCounter = 0
     
     var spaces = [Space](){
@@ -85,7 +85,7 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
             collectionView.reloadData()
             collectionView.performBatchUpdates({
                 UIView.animate(views: self.collectionView.orderedVisibleCells,
-                               animations: animations, duration: 0.4, completion: {
+                               animations: animations, duration: 0.5, completion: {
                     self.animationCounter += 1
                 })
             }, completion: nil)
@@ -94,7 +94,7 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
         }
     }
     
-    /// Propmts the user to grant access to the device's current location
+    /// Propmt the user to grant access to the device's current location
     private func getUserCoordinates(){
         self.locationManager.requestAlwaysAuthorization()
         if CLLocationManager.locationServicesEnabled() {
@@ -135,9 +135,9 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
             
             switch result{
             case let .success(fetchedSpaces):
-                
                 self.spaces = fetchedSpaces.sorted(by: { $0.distance ?? 0.0 < $1.distance ?? 0.0 })
                 self.animateCells()
+                //print("data fetched")
         
             case let .failure(error):
                 print(error)
