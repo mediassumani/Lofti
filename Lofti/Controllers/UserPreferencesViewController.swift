@@ -85,17 +85,17 @@ class UserPreferencesViewController: UICollectionViewController{
     private func styleSaveButton(){
         
         
-        saveButton = CustomButton(title: "Done",
-                                  fontSize: 17,
+        saveButton = CustomButton(title: "DONE",
+                                  fontSize: 13,
                                   titleColor: .white,
                                   target: self,
                                   action: #selector(saveButtonIsTapped(_:)),
                                   event: .touchUpInside,
-                                  titleFontName: "HelveticaNeue-Light")
+                                  titleFontName: "PingFangTC-Medium")
         
         saveButton.alpha = 0
-        saveButton.backgroundColor = .black
-        saveButton.layer.cornerRadius = 7
+        saveButton.backgroundColor = .darkBlue
+        saveButton.layer.cornerRadius = 25
         saveButton.clipsToBounds = true
         saveButton.layer.masksToBounds = true
         saveButton.layer.shadowRadius = 1

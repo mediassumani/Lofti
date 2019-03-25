@@ -117,7 +117,6 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
 
         NetworkReachabilityServices.shared.reachability.whenReachable = { reachability in
             if reachability.connection == .wifi || reachability.connection == .cellular {
-
                 DispatchQueue.main.async {
                     self.customAlertView.dismiss(animated: true)
                 }
