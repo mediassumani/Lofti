@@ -27,7 +27,7 @@ Users can...
 
 ### Engineer(s)
 
-* **Medi Assumani** - *iOS Developer and Founder*
+* **Medi Assumani** - *iOS Engineer and Founder*
 
 ### Project Built With
 
