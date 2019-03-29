@@ -53,6 +53,7 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
         
         super.loadView()
         view.addSubview(collectionView)
+        setUpNavigationBarItems()
         getUserCoordinates()
     }
     
@@ -61,7 +62,7 @@ class HomePageViewController: UIViewController, CLLocationManagerDelegate{
         
         self.view.backgroundColor = .gray
         configureLoadingIndicator()
-        setUpNavigationBarItems()
+//        setUpNavigationBarItems()
         monitorInternetConnectivity()
     }
     

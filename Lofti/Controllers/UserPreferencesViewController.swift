@@ -98,6 +98,7 @@ class UserPreferencesViewController: UICollectionViewController{
         saveButton.clipsToBounds = true
         saveButton.layer.masksToBounds = true
         saveButton.layer.shadowRadius = 1
+        saveButton.shake()
     }
     
     
