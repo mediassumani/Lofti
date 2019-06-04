@@ -1,5 +1,5 @@
+<a href="https://itunes.apple.com/us/app/lofti-study-space-finder/id1446711696?mt=8" rel="some text">![Foo](https://raw.githubusercontent.com/GitHawkApp/GitHawk/master/images/app-store-badge.png)</a>
 # Lofti
-<a href="https://itunes.apple.com/us/app/lofti-study-space-finder/id1446711696?mt=8" rel="some text">![Foo](https://raw.githubusercontent.com/GitHawkApp/GitHawk/master/images/app-store-badge.png)]</a>
 
 ### Overview & Mission Statement
 
